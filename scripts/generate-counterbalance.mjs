@@ -1,18 +1,19 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
-const participantCount = 300;
-const vignettesPerParticipant = 6;
+const participantCount = 500;
+const vignettesPerParticipant = 8;
 const vignettes = JSON.parse(
   readFileSync(new URL("../config/vignettes.json", import.meta.url), "utf8"),
 );
 
 const taskTypes = [
   "information-seeking",
-  "brainstorming-ideation",
-  "feedback-validation",
+  "brainstorming",
+  "feedback",
+  "validation",
 ];
-const factorKeys = ["leadership", "knowledge_type", "impact_level"];
-const lowLevels = ["human-led", "generic", "personal"];
+const factorKeys = ["ai_role", "knowledge_type", "impact_level"];
+const lowLevels = ["supporting", "generic", "personal"];
 
 function binaryCode(vignette) {
   return factorKeys
@@ -70,7 +71,7 @@ function mulberry32(seed) {
   };
 }
 
-const random = mulberry32(20260715);
+const random = mulberry32(20260804);
 const positionCounts = Object.fromEntries(
   vignettes.map((vignette) => [
     vignette.id,
@@ -113,9 +114,13 @@ for (const order of orders) {
   for (const id of order.vignetteIds) exposureCounts[id] += 1;
 }
 
+const expectedExposures =
+  (participantCount * vignettesPerParticipant) / vignettes.length;
 for (const [id, count] of Object.entries(exposureCounts)) {
-  if (count !== 75) {
-    throw new Error(`${id} has ${count} exposures instead of 75.`);
+  if (count !== expectedExposures) {
+    throw new Error(
+      `${id} has ${count} exposures instead of ${expectedExposures}.`,
+    );
   }
   const positions = positionCounts[id];
   if (Math.max(...positions) - Math.min(...positions) > 1) {
@@ -124,14 +129,18 @@ for (const [id, count] of Object.entries(exposureCounts)) {
 }
 
 const output = {
-  design: "balanced-six-of-24",
+  design: "balanced-eight-of-32",
   plannedParticipants: participantCount,
   vignettesPerParticipant,
-  exposuresPerVignette: 75,
+  exposuresPerVignette: expectedExposures,
   orders,
 };
 
 writeFileSync(
   new URL("../config/counterbalance.json", import.meta.url),
   `${JSON.stringify(output, null, 2)}\n`,
+);
+
+console.log(
+  `Wrote ${orders.length} orders; ${expectedExposures} exposures per vignette.`,
 );

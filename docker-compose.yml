@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vignette
+      POSTGRES_PASSWORD: vignette
+      POSTGRES_DB: vignette_survey
+    ports:
+      - "5432:5432"
+    volumes:
+      - vignette_pg_data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vignette -d vignette_survey"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  vignette_pg_data:

@@ -6,7 +6,7 @@ import type {
 } from "@/types/study";
 
 const EXPECTED_IDS = Array.from(
-  { length: 24 },
+  { length: 32 },
   (_, index) => `v${String(index + 1).padStart(2, "0")}`,
 );
 
@@ -22,31 +22,16 @@ export function validateStudyConfig(
   questionConfig: SharedQuestionConfig,
   counterbalanceConfig: CounterbalanceConfig,
 ): void {
-  if (settings.totalVignettes !== 24 || vignettes.length !== 24) {
-    throw new Error("Study configuration must contain exactly 24 vignettes.");
+  if (settings.totalVignettes !== 32 || vignettes.length !== 32) {
+    throw new Error("Study configuration must contain exactly 32 vignettes.");
   }
 
-  if (settings.questionsPerVignette !== 5) {
-    throw new Error("questionsPerVignette must equal 5.");
+  if (settings.questionsPerVignette !== 6) {
+    throw new Error("questionsPerVignette must equal 6.");
   }
 
-  if (
-    !Number.isInteger(settings.vignettesPerParticipant) ||
-    settings.vignettesPerParticipant < 1 ||
-    settings.vignettesPerParticipant > vignettes.length
-  ) {
-    throw new Error(
-      "vignettesPerParticipant must be a valid number of conditions.",
-    );
-  }
-
-  if (
-    settings.assignmentMode === "all" &&
-    settings.vignettesPerParticipant !== vignettes.length
-  ) {
-    throw new Error(
-      "All-condition mode must present every configured vignette.",
-    );
+  if (settings.vignettesPerParticipant !== 8) {
+    throw new Error("vignettesPerParticipant must equal 8.");
   }
 
   const ids = vignettes.map((vignette) => vignette.id);
@@ -55,7 +40,7 @@ export function validateStudyConfig(
   }
 
   if (EXPECTED_IDS.some((id, index) => ids[index] !== id)) {
-    throw new Error("Vignette IDs must run in order from v01 through v24.");
+    throw new Error("Vignette IDs must run in order from v01 through v32.");
   }
 
   if (
@@ -63,16 +48,17 @@ export function validateStudyConfig(
     questionConfig.scale.length < 2
   ) {
     throw new Error(
-      "The shared question configuration must contain five questions and a response scale.",
+      "The shared question configuration must contain six questions and a response scale.",
     );
   }
 
   const expectedColumns = [
-    "q1_seek_input",
-    "q2_incorporate",
-    "q3_future_input_seeking",
-    "q4_future_reliance",
-    "q5_positive_relationship",
+    "q1_value_feedback",
+    "q2_seek_feedback",
+    "q3_incorporate_feedback",
+    "q4_comfortable_feedback",
+    "q5_express_frustrations",
+    "q6_rather_work_without",
   ];
   const responseColumns = questionConfig.questions.map(
     (question) => question.responseColumn,
@@ -97,13 +83,13 @@ export function validateStudyConfig(
 
   if (settings.assignmentMode === "counterbalanced") {
     if (
-      counterbalanceConfig.plannedParticipants !== 300 ||
-      counterbalanceConfig.orders.length !== 300 ||
+      counterbalanceConfig.plannedParticipants !== 500 ||
+      counterbalanceConfig.orders.length !== 500 ||
       counterbalanceConfig.vignettesPerParticipant !==
         settings.vignettesPerParticipant
     ) {
       throw new Error(
-        "Counterbalance configuration must contain 300 six-vignette orders.",
+        "Counterbalance configuration must contain 500 eight-vignette orders.",
       );
     }
 
@@ -143,7 +129,7 @@ export function validateStudyConfig(
         taskCounts.set(taskType, (taskCounts.get(taskType) ?? 0) + 1);
       }
       if (
-        taskCounts.size !== 3 ||
+        taskCounts.size !== 4 ||
         [...taskCounts.values()].some((count) => count !== 2)
       ) {
         throw new Error(
@@ -151,7 +137,7 @@ export function validateStudyConfig(
         );
       }
 
-      for (const factor of ["leadership", "knowledge_type", "impact_level"]) {
+      for (const factor of ["ai_role", "knowledge_type", "impact_level"]) {
         const factorCounts = new Map<string, number>();
         for (const vignette of assignedVignettes) {
           const value = String(vignette.metadata?.[factor]);
@@ -159,7 +145,7 @@ export function validateStudyConfig(
         }
         if (
           factorCounts.size !== 2 ||
-          [...factorCounts.values()].some((count) => count !== 3)
+          [...factorCounts.values()].some((count) => count !== 4)
         ) {
           throw new Error(
             `Counterbalance slot ${order.slot} does not balance ${factor}.`,

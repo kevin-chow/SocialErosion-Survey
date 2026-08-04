@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { query } from "@/lib/db";
 import {
   buildResponseRow,
   PID_PATTERN,
   SubmissionValidationError,
 } from "@/lib/submission";
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
+
+type ParticipantAssignment = {
+  vignette_order: string[];
+  introduction_completed_at: string | null;
+};
 
 export async function POST(request: Request) {
   let requestBody: unknown;
@@ -28,23 +33,27 @@ export async function POST(request: Request) {
     );
   }
 
-  const supabase = createSupabaseServerClient();
-  const { data: participant, error: participantLookupError } = await supabase
-    .from("participants")
-    .select("vignette_order, introduction_completed_at")
-    .eq("pid", submittedPid)
-    .maybeSingle();
-  if (participantLookupError) {
-    console.error("Unable to load participant assignment", participantLookupError);
+  let participant: ParticipantAssignment | undefined;
+  try {
+    const result = await query<ParticipantAssignment>(
+      `select vignette_order, introduction_completed_at
+       from public.participants
+       where pid = $1`,
+      [submittedPid],
+    );
+    participant = result.rows[0];
+  } catch (error) {
+    console.error("Unable to load participant assignment", error);
     return NextResponse.json(
       { error: "The response could not be saved. Please try again." },
       { status: 503 },
     );
   }
+
   if (
     !participant ||
     !Array.isArray(participant.vignette_order) ||
-    participant.vignette_order.length !== 6
+    participant.vignette_order.length !== 8
   ) {
     return NextResponse.json(
       { error: "Participant assignment was not found." },
@@ -69,31 +78,92 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { error } = await supabase
-      .from("vignette_responses")
-      .upsert(row, { onConflict: "pid,vignette_number" });
+    await query(
+      `insert into public.vignette_responses (
+         pid, vignette_id, vignette_number,
+         task_type, task_type_jitter_v,
+         directedness, directedness_jitter_v,
+         data_access, data_access_jitter_v,
+         visibility, visibility_jitter_v,
+         full_vignette_text,
+         q1_value_feedback, q2_seek_feedback, q3_incorporate_feedback,
+         q4_comfortable_feedback, q5_express_frustrations, q6_rather_work_without,
+         time_spent_ms, started_at, submitted_at
+       ) values (
+         $1, $2, $3,
+         $4, $5,
+         $6, $7,
+         $8, $9,
+         $10, $11,
+         $12,
+         $13, $14, $15,
+         $16, $17, $18,
+         $19, $20, $21
+       )
+       on conflict (pid, vignette_number) do update set
+         vignette_id = excluded.vignette_id,
+         task_type = excluded.task_type,
+         task_type_jitter_v = excluded.task_type_jitter_v,
+         directedness = excluded.directedness,
+         directedness_jitter_v = excluded.directedness_jitter_v,
+         data_access = excluded.data_access,
+         data_access_jitter_v = excluded.data_access_jitter_v,
+         visibility = excluded.visibility,
+         visibility_jitter_v = excluded.visibility_jitter_v,
+         full_vignette_text = excluded.full_vignette_text,
+         q1_value_feedback = excluded.q1_value_feedback,
+         q2_seek_feedback = excluded.q2_seek_feedback,
+         q3_incorporate_feedback = excluded.q3_incorporate_feedback,
+         q4_comfortable_feedback = excluded.q4_comfortable_feedback,
+         q5_express_frustrations = excluded.q5_express_frustrations,
+         q6_rather_work_without = excluded.q6_rather_work_without,
+         time_spent_ms = excluded.time_spent_ms,
+         started_at = excluded.started_at,
+         submitted_at = excluded.submitted_at`,
+      [
+        row.pid,
+        row.vignette_id,
+        row.vignette_number,
+        row.task_type,
+        row.task_type_jitter_v,
+        row.directedness,
+        row.directedness_jitter_v,
+        row.data_access,
+        row.data_access_jitter_v,
+        row.visibility,
+        row.visibility_jitter_v,
+        row.full_vignette_text,
+        row.q1_value_feedback,
+        row.q2_seek_feedback,
+        row.q3_incorporate_feedback,
+        row.q4_comfortable_feedback,
+        row.q5_express_frustrations,
+        row.q6_rather_work_without,
+        row.time_spent_ms,
+        row.started_at,
+        row.submitted_at,
+      ],
+    );
 
-    if (error) throw error;
-
-    const { count, error: countError } = await supabase
-      .from("vignette_responses")
-      .select("*", { count: "exact", head: true })
-      .eq("pid", row.pid);
-    if (countError) throw countError;
-
+    const countResult = await query<{ count: string }>(
+      `select count(*)::text as count
+       from public.vignette_responses
+       where pid = $1`,
+      [row.pid],
+    );
+    const count = Number(countResult.rows[0]?.count ?? 0);
     const completed = count === participant.vignette_order.length;
+
     if (completed) {
-      const { error: participantError } = await supabase
-        .from("participants")
-        .update({ completed_at: new Date().toISOString() })
-        .eq("pid", row.pid);
-      if (participantError) throw participantError;
+      await query(
+        `update public.participants
+         set completed_at = now()
+         where pid = $1`,
+        [row.pid],
+      );
     }
 
-    return NextResponse.json(
-      { saved: true, completed },
-      { status: 200 },
-    );
+    return NextResponse.json({ saved: true, completed }, { status: 200 });
   } catch (error) {
     console.error("Unable to save vignette response", error);
     return NextResponse.json(

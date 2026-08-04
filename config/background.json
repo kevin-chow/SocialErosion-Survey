@@ -1,83 +1,124 @@
 {
-  "title": "About Alex and NextGen",
+  "title": "Background",
   "image": "/nextgen-office.png",
   "imageAlt": "Employees working together in a bright, open-plan office",
-  
-  "blocks": [
+  "pages": [
     {
-      "type": "paragraph",
-      "segments": [
-        { "text": "Alex", "bold": true, "underline": true },
-        { "text": " works at " },
-        { "text": "NextGen, a large, fast-paced, tech-forward company", "bold": true },
-        { "text": " as a client-facing " },
-        { "text": "consultant.", "bold": true },
-        { "text": " Alex’s role often involves tasks like data analysis, conducting research, drafting up reports, and delivering presentations to key stakeholders." }
+      "id": "team",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segments": [
+            { "text": "Imagine that you are an employee at " },
+            {
+              "text": "NextGen, a large, fast-paced, tech-forward company",
+              "bold": true
+            },
+            {
+              "text": ". Your role involves researching industry developments and contributing to important internal reports and presentations."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segments": [
+            { "text": "You are part of a " },
+            { "text": "six-person team", "bold": true },
+            { "text": " whose members work together in a " },
+            { "text": "hybrid environment", "bold": true },
+            {
+              "text": ", both in-person and remotely. The team collaborates with tools such as Slack, Teams, email, and video calls."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segments": [
+            { "text": "One of your " },
+            { "text": "peer teammates is Sam", "bold": true },
+            {
+              "text": ", who holds a similar role and has been part of the team "
+            },
+            { "text": "for about as long as you have", "bold": true },
+            {
+              "text": ". You and Sam have worked together regularly and have a "
+            },
+            { "text": "professional working relationship", "bold": true },
+            { "text": "." }
+          ]
+        }
       ]
     },
     {
-      "type": "paragraph",
-      "segments": [
-        { "text": "Alex is part of a " },
-        { "text": "six-person, cross-functional team", "bold": true },
-        { "text": " that collaborates with one another on shared projects and day-to-day work tasks. Alex’s team is " },
-        { "text": "hybrid", "bold": true },
-        { "text": ", and so they have the option to work with one another either in-person or remotely, through work messaging apps like Slack or Teams, email, or video calls." }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "segments": [
-        { "text": "One of Alex’s peer teammates is " },
-        { "text": "Sam", "bold": true, "underline": true },
-        { "text": ", who is a fellow consultant. Alex and Sam have a " },
-        { "text": "professional working relationship", "bold": true },
-        { "text": " where they collaborate and seek one another’s input or feedback." }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "segments": [
-        { "text": "Like many companies, NextGen provides its employees access to " },
-        { "text": "an in-house AI chatbot agent, named ", "bold": true },
-        { "text": "Aidee", "bold": true, "underline": true },
-        { "text": ",", "bold": true },
-        { "text": " to support their work. Employees can use two versions of Aidee:" }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "segments": [
-        { "text": "1. " },
-        { "text": "GenAidee:", "bold": true, "underline": true },
-        { "text": " A " },
-        { "text": "general-purpose", "bold": true },
-        { "text": " version that works as well as the leading " },
-        { "text": "AI chatbots", "bold": true },
-        { "text": " (e.g., ChatGPT, Claude, or Gemini)." }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "segments": [
-        { "text": "2. " },
-        { "text": "IntAidee:", "bold": true, "underline": true },
-        { "text": " A " },
-        { "text": "NextGen-specific", "bold": true },
-        { "text": " version that works similarly well, but has been trained on and has access to " },
-        { "text": "internal organizational data", "bold": true },
-        { "text": ", such as past reports and presentations." }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "segments": [
-        { "text": "Aidee is fully compliant with NextGen’s privacy and security requirements. Alex can access Aidee " },
-        { "text": "privately", "bold": true },
-        { "text": " on their own computer, or through a " },
-        { "text": "shared team workspace", "bold": true },
-        { "text": ", where teammates such as Sam can view Alex’s interactions with Aidee and join the conversation at any time." }
+      "id": "assist",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segments": [
+            { "text": "NextGen provides employees with access to an " },
+            { "text": "AI chatbot called Assist", "bold": true },
+            {
+              "text": ". Both versions of Assist are approved by NextGen and comply with the company's privacy and security requirements:"
+            }
+          ]
+        },
+        {
+          "type": "ordered-list",
+          "items": [
+            [
+              { "text": "OpenAssist", "bold": true },
+              { "text": ": A " },
+              { "text": "general-purpose", "bold": true },
+              {
+                "text": " version comparable to leading AI chatbots (e.g., ChatGPT, Claude, or Gemini)."
+              }
+            ],
+            [
+              { "text": "CorpAssist", "bold": true },
+              {
+                "text": ": A company-specific version with the same general capabilities as OpenAssist. It can also "
+              },
+              { "text": "access internal organizational data", "bold": true },
+              {
+                "text": ", such as past reports, presentations, and company documents."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segments": [
+            { "text": "Either version of Assist can be used " },
+            { "text": "individually", "bold": true },
+            {
+              "text": " and on your own computer (not visible to your teammates) or through a "
+            },
+            { "text": "shared team workspace", "bold": true },
+            {
+              "text": ". In the shared workspace, teammates such as Sam can view your interactions with Assist and participate in the conversation."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segments": [
+            {
+              "text": "The following scenarios concern an upcoming presentation that your team is preparing for NextGen's senior leadership team."
+            }
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "attentionCheck": {
+    "prompt": "According to the background information, which version of Assist can access NextGen's internal organizational data?",
+    "options": [
+      { "value": "openassist", "label": "OpenAssist" },
+      { "value": "corpassist", "label": "CorpAssist" },
+      { "value": "chatgpt", "label": "ChatGPT" },
+      { "value": "slack", "label": "Slack" }
+    ],
+    "correctValue": "corpassist",
+    "incorrectMessage": "That is not correct. Please review the background information and try again."
+  }
 }

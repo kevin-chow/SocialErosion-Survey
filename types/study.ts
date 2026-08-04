@@ -9,21 +9,31 @@ export interface QuestionOption {
   label: string;
 }
 
+export interface VignetteTag {
+  factor: string;
+  value: string;
+  label: string;
+  icon: string;
+}
+
 export interface VignetteCondition {
   id: string;
   slug: string;
   title: string;
   body: string;
   conditionLabel: string;
+  assist?: "OpenAssist" | "CorpAssist";
+  tags?: VignetteTag[];
   metadata?: Record<string, string | number | boolean>;
 }
 
 export type ResponseColumn =
-  | "q1_seek_input"
-  | "q2_incorporate"
-  | "q3_future_input_seeking"
-  | "q4_future_reliance"
-  | "q5_positive_relationship";
+  | "q1_value_feedback"
+  | "q2_seek_feedback"
+  | "q3_incorporate_feedback"
+  | "q4_comfortable_feedback"
+  | "q5_express_frustrations"
+  | "q6_rather_work_without";
 
 export interface SharedQuestion {
   id: string;
@@ -33,6 +43,7 @@ export interface SharedQuestion {
 }
 
 export interface SharedQuestionConfig {
+  instruction?: string;
   scale: QuestionOption[];
   questions: SharedQuestion[];
 }

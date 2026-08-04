@@ -1,0 +1,13 @@
+{
+  "title": "What to expect",
+  "eyebrow": "Before you begin",
+  "lead": "You are about to read a set of workplace scenarios and answer the same questions after each one.",
+  "bullets": [
+    "You will see eight short scenarios about working with Assist at NextGen.",
+    "Please read each scenario carefully before answering the questions.",
+    "Each vignette is unique and should be considered independently of the others—do not try to make your answers consistent across scenarios.",
+    "After each scenario, you will rate how you would interact with Sam on that task.",
+    "You will not be able to go back to a previous scenario once you continue."
+  ],
+  "continueLabel": "Begin scenarios"
+}

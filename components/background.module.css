@@ -48,13 +48,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  padding: 0;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px 0 12px;
   border: 1px solid #cbd5e1;
   border-radius: 999px;
   background: #ffffff;
   color: #1f2937;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
   cursor: pointer;
   box-shadow: 0 2px 8px rgb(15 23 42 / 12%);
 }
@@ -63,10 +66,40 @@
   background: #f8fafc;
 }
 
-.trigger svg {
-  width: 21px;
-  height: 21px;
-  fill: currentColor;
+.triggerOnDark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 12px 0 10px;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 14%);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.triggerOnDark:hover {
+  background: rgb(255 255 255 / 24%);
+}
+
+.triggerIcon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.triggerLabel {
+  line-height: 1;
+}
+
+.pageSection + .pageSection {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e7eb;
 }
 
 .backdrop {

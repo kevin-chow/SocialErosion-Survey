@@ -5,7 +5,13 @@ import { createPortal } from "react-dom";
 import { BackgroundContent } from "./BackgroundContent";
 import styles from "./background.module.css";
 
-export function BackgroundDialog() {
+interface BackgroundDialogProps {
+  variant?: "default" | "onDark";
+}
+
+export function BackgroundDialog({
+  variant = "default",
+}: BackgroundDialogProps) {
   const [open, setOpen] = useState(false);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -35,15 +41,18 @@ export function BackgroundDialog() {
     <>
       <button
         ref={triggerButtonRef}
-        className={styles.trigger}
+        className={
+          variant === "onDark" ? styles.triggerOnDark : styles.trigger
+        }
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Review background information"
         title="Review background information"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3 3 10.5V21h7v-6h4v6h7V10.5L12 3Zm0 2.6 7 5.8V19h-3v-6H8v6H5v-7.6l7-5.8Z" />
-        </svg>
+        <span className={styles.triggerIcon} aria-hidden="true">
+          🏠
+        </span>
+        <span className={styles.triggerLabel}>Background</span>
       </button>
 
       {open &&

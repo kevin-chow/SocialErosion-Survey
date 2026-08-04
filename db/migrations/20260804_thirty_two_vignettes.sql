@@ -1,10 +1,33 @@
+-- Update constraints for the 32-vignette / 8-per-participant / 500-slot design.
+-- Existing rows from the earlier 6-vignette design violate the new order-size
+-- check, so clear study data before tightening constraints.
+
+begin;
+
+-- Dependent responses first (FK to participants).
+delete from public.vignette_responses;
+delete from public.participants;
+
 alter table public.participants
-  add column assignment_slot integer unique,
-  add column vignette_order text[],
-  add constraint participants_assignment_slot_range
-    check (assignment_slot is null or assignment_slot between 1 and 300),
+  drop constraint if exists participants_vignette_order_size;
+
+alter table public.participants
   add constraint participants_vignette_order_size
-    check (vignette_order is null or cardinality(vignette_order) = 6);
+    check (vignette_order is null or cardinality(vignette_order) = 8);
+
+alter table public.participants
+  drop constraint if exists participants_assignment_slot_range;
+
+alter table public.participants
+  add constraint participants_assignment_slot_range
+    check (assignment_slot is null or assignment_slot between 1 and 500);
+
+alter table public.vignette_responses
+  drop constraint if exists vignette_responses_vignette_number_check;
+
+alter table public.vignette_responses
+  add constraint vignette_responses_vignette_number_check
+    check (vignette_number between 1 and 32);
 
 create or replace function public.register_participant(
   participant_pid text,
@@ -29,11 +52,10 @@ begin
   end if;
 
   if jsonb_typeof(counterbalance_orders) <> 'array'
-     or jsonb_array_length(counterbalance_orders) <> 300 then
+     or jsonb_array_length(counterbalance_orders) < 1 then
     raise check_violation using message = 'Invalid counterbalance table.';
   end if;
 
-  -- Serialize assignment so concurrent starts cannot receive the same slot.
   perform pg_advisory_xact_lock(20260715135000);
 
   select exists (
@@ -65,7 +87,7 @@ begin
     counterbalance_orders -> (next_slot - 1)
   ) with ordinality as item(value, ordinality);
 
-  if cardinality(selected_order) <> 6 then
+  if cardinality(selected_order) <> 8 then
     raise check_violation using message = 'Invalid assigned vignette order.';
   end if;
 
@@ -94,7 +116,4 @@ begin
 end;
 $$;
 
-revoke all on function public.register_participant(text, jsonb)
-from public, anon, authenticated;
-grant execute on function public.register_participant(text, jsonb)
-to service_role;
+commit;

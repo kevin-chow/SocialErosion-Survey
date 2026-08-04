@@ -1,4 +1,5 @@
 {
+  "instruction": "As you consider working on this task, please indicate how much you agree or disagree with each statement below:",
   "scale": [
     { "value": "Strongly disagree", "label": "Strongly disagree" },
     { "value": "Disagree", "label": "Disagree" },
@@ -9,32 +10,38 @@
   "questions": [
     {
       "id": "q1",
-      "responseColumn": "q1_seek_input",
-      "text": "Alex would seek Sam’s input before moving forward.",
+      "responseColumn": "q1_value_feedback",
+      "text": "You would value Sam’s feedback on this task.",
       "required": true
     },
     {
       "id": "q2",
-      "responseColumn": "q2_incorporate",
-      "text": "Alex would actively incorporate Sam’s input before moving forward.",
+      "responseColumn": "q2_seek_feedback",
+      "text": "You would seek Sam’s feedback on this task.",
       "required": true
     },
     {
       "id": "q3",
-      "responseColumn": "q3_future_input_seeking",
-      "text": "Alex would be more likely to seek Sam’s input for future work tasks.",
+      "responseColumn": "q3_incorporate_feedback",
+      "text": "You would actively incorporate Sam’s feedback on this task.",
       "required": true
     },
     {
       "id": "q4",
-      "responseColumn": "q4_future_reliance",
-      "text": "Alex would be more willing to rely on Sam for future work tasks.",
+      "responseColumn": "q4_comfortable_feedback",
+      "text": "You would feel comfortable having Sam give feedback on this task.",
       "required": true
     },
     {
       "id": "q5",
-      "responseColumn": "q5_positive_relationship",
-      "text": "Alex and Sam would be more likely to develop a positive working relationship.",
+      "responseColumn": "q5_express_frustrations",
+      "text": "You would express frustrations with the task to Sam.",
+      "required": true
+    },
+    {
+      "id": "q6",
+      "responseColumn": "q6_rather_work_without",
+      "text": "You would rather work on this task without Sam.",
       "required": true
     }
   ]

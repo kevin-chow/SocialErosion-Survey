@@ -1,312 +1,1280 @@
 [
   {
     "id": "v01",
-    "slug": "information-seeking-human-led-generic-personal",
+    "slug": "information-seeking-supporting-generic-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | Human-led | Generic | Personal",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex privately used a general-purpose AI assistant that had no access to company files, then reviewed the suggestions and decided how to apply them before moving forward.",
+    "conditionLabel": "Information Seeking | Supporting | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "human-led",
+      "ai_role": "supporting",
       "knowledge_type": "generic",
       "impact_level": "personal"
     }
   },
   {
     "id": "v02",
-    "slug": "information-seeking-human-led-generic-team-level",
+    "slug": "information-seeking-supporting-generic-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | Human-led | Generic | Team-level",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex used a general-purpose AI assistant in the team's shared workspace, where Sam and other teammates could see the exchange, then reviewed the suggestions and decided how to apply them before moving forward.",
+    "conditionLabel": "Information Seeking | Supporting | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "human-led",
+      "ai_role": "supporting",
       "knowledge_type": "generic",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v03",
-    "slug": "information-seeking-human-led-org-specific-personal",
+    "slug": "information-seeking-supporting-org-specific-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | Human-led | Org-specific | Personal",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex privately used an AI assistant connected to company files and past projects, then reviewed the tailored suggestions and decided how to apply them before moving forward.",
+    "conditionLabel": "Information Seeking | Supporting | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "human-led",
+      "ai_role": "supporting",
       "knowledge_type": "org-specific",
       "impact_level": "personal"
     }
   },
   {
     "id": "v04",
-    "slug": "information-seeking-human-led-org-specific-team-level",
+    "slug": "information-seeking-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | Human-led | Org-specific | Team-level",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex used an AI assistant connected to company files and past projects in the team's shared workspace, where Sam and other teammates could see the exchange, then reviewed the tailored suggestions and decided how to apply them before moving forward.",
+    "conditionLabel": "Information Seeking | Supporting | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "human-led",
+      "ai_role": "supporting",
       "knowledge_type": "org-specific",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v05",
-    "slug": "information-seeking-ai-led-generic-personal",
+    "slug": "information-seeking-executing-generic-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | AI-led | Generic | Personal",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex privately asked a general-purpose AI assistant with no access to company files to recommend the approach, then used the AI's answer largely as-is.",
+    "conditionLabel": "Information Seeking | Executing | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "ai-led",
+      "ai_role": "executing",
       "knowledge_type": "generic",
       "impact_level": "personal"
     }
   },
   {
     "id": "v06",
-    "slug": "information-seeking-ai-led-generic-team-level",
+    "slug": "information-seeking-executing-generic-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | AI-led | Generic | Team-level",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex asked a general-purpose AI assistant in the team's shared workspace, where Sam and other teammates could see the exchange, to recommend the approach, then used the AI's answer largely as-is.",
+    "conditionLabel": "Information Seeking | Executing | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "ai-led",
+      "ai_role": "executing",
       "knowledge_type": "generic",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v07",
-    "slug": "information-seeking-ai-led-org-specific-personal",
+    "slug": "information-seeking-executing-org-specific-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | AI-led | Org-specific | Personal",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex privately asked an AI assistant connected to company files and past projects to recommend the approach, then used the AI's tailored answer largely as-is.",
+    "conditionLabel": "Information Seeking | Executing | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "ai-led",
+      "ai_role": "executing",
       "knowledge_type": "org-specific",
       "impact_level": "personal"
     }
   },
   {
     "id": "v08",
-    "slug": "information-seeking-ai-led-org-specific-team-level",
+    "slug": "information-seeking-executing-org-specific-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Information Seeking | AI-led | Org-specific | Team-level",
-    "body": "Alex needed to figure out the right approach for analyzing a dataset. Alex asked an AI assistant connected to company files and past projects in the team's shared workspace, where Sam and other teammates could see the exchange, to recommend the approach, then used the AI's tailored answer largely as-is.",
+    "conditionLabel": "Information Seeking | Executing | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "information-seeking",
+        "label": "Information Seeking",
+        "icon": "/tags/information-seeking.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
       "task_type": "information-seeking",
-      "leadership": "ai-led",
+      "ai_role": "executing",
       "knowledge_type": "org-specific",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v09",
-    "slug": "brainstorming-ideation-human-led-generic-personal",
+    "slug": "brainstorming-supporting-generic-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | Human-led | Generic | Personal",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex privately used a general-purpose AI assistant that had no access to company files to generate initial ideas, then selected, revised, and built on them using their own judgment.",
+    "conditionLabel": "Brainstorming | Supporting | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "human-led",
+      "task_type": "brainstorming",
+      "ai_role": "supporting",
       "knowledge_type": "generic",
       "impact_level": "personal"
     }
   },
   {
     "id": "v10",
-    "slug": "brainstorming-ideation-human-led-generic-team-level",
+    "slug": "brainstorming-supporting-generic-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | Human-led | Generic | Team-level",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex used a general-purpose AI assistant in the team's shared workspace, where Sam and other teammates could see the exchange, to generate initial ideas, then selected, revised, and built on them using their own judgment.",
+    "conditionLabel": "Brainstorming | Supporting | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "human-led",
+      "task_type": "brainstorming",
+      "ai_role": "supporting",
       "knowledge_type": "generic",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v11",
-    "slug": "brainstorming-ideation-human-led-org-specific-personal",
+    "slug": "brainstorming-supporting-org-specific-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | Human-led | Org-specific | Personal",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex privately used an AI assistant connected to company files and past projects to generate tailored initial ideas, then selected, revised, and built on them using their own judgment.",
+    "conditionLabel": "Brainstorming | Supporting | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "human-led",
+      "task_type": "brainstorming",
+      "ai_role": "supporting",
       "knowledge_type": "org-specific",
       "impact_level": "personal"
     }
   },
   {
     "id": "v12",
-    "slug": "brainstorming-ideation-human-led-org-specific-team-level",
+    "slug": "brainstorming-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | Human-led | Org-specific | Team-level",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex used an AI assistant connected to company files and past projects in the team's shared workspace, where Sam and other teammates could see the exchange, to generate tailored initial ideas, then selected, revised, and built on them using their own judgment.",
+    "conditionLabel": "Brainstorming | Supporting | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "human-led",
+      "task_type": "brainstorming",
+      "ai_role": "supporting",
       "knowledge_type": "org-specific",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v13",
-    "slug": "brainstorming-ideation-ai-led-generic-personal",
+    "slug": "brainstorming-executing-generic-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | AI-led | Generic | Personal",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex privately asked a general-purpose AI assistant with no access to company files to generate the pitch angles, then used the AI's options largely as-is.",
+    "conditionLabel": "Brainstorming | Executing | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "ai-led",
+      "task_type": "brainstorming",
+      "ai_role": "executing",
       "knowledge_type": "generic",
       "impact_level": "personal"
     }
   },
   {
     "id": "v14",
-    "slug": "brainstorming-ideation-ai-led-generic-team-level",
+    "slug": "brainstorming-executing-generic-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | AI-led | Generic | Team-level",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex asked a general-purpose AI assistant in the team's shared workspace, where Sam and other teammates could see the exchange, to generate the pitch angles, then used the AI's options largely as-is.",
+    "conditionLabel": "Brainstorming | Executing | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "ai-led",
+      "task_type": "brainstorming",
+      "ai_role": "executing",
       "knowledge_type": "generic",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v15",
-    "slug": "brainstorming-ideation-ai-led-org-specific-personal",
+    "slug": "brainstorming-executing-org-specific-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | AI-led | Org-specific | Personal",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex privately asked an AI assistant connected to company files and past projects to generate tailored pitch angles, then used the AI's options largely as-is.",
+    "conditionLabel": "Brainstorming | Executing | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "ai-led",
+      "task_type": "brainstorming",
+      "ai_role": "executing",
       "knowledge_type": "org-specific",
       "impact_level": "personal"
     }
   },
   {
     "id": "v16",
-    "slug": "brainstorming-ideation-ai-led-org-specific-team-level",
+    "slug": "brainstorming-executing-org-specific-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Brainstorming / Ideation | AI-led | Org-specific | Team-level",
-    "body": "Alex needed to come up with possible angles for an upcoming client pitch. Alex asked an AI assistant connected to company files and past projects in the team's shared workspace, where Sam and other teammates could see the exchange, to generate tailored pitch angles, then used the AI's options largely as-is.",
+    "conditionLabel": "Brainstorming | Executing | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "brainstorming",
+        "label": "Brainstorming",
+        "icon": "/tags/brainstorming.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "brainstorming-ideation",
-      "leadership": "ai-led",
+      "task_type": "brainstorming",
+      "ai_role": "executing",
       "knowledge_type": "org-specific",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v17",
-    "slug": "feedback-validation-human-led-generic-personal",
+    "slug": "feedback-supporting-generic-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | Human-led | Generic | Personal",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex privately used a general-purpose AI assistant that had no access to company files for feedback, then revised the message using their own judgment before sending it.",
+    "conditionLabel": "Feedback | Supporting | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "human-led",
+      "task_type": "feedback",
+      "ai_role": "supporting",
       "knowledge_type": "generic",
       "impact_level": "personal"
     }
   },
   {
     "id": "v18",
-    "slug": "feedback-validation-human-led-generic-team-level",
+    "slug": "feedback-supporting-generic-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | Human-led | Generic | Team-level",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex used a general-purpose AI assistant in the team's shared workspace, where Sam and other teammates could see the exchange, for feedback, then revised the message using their own judgment before sending it.",
+    "conditionLabel": "Feedback | Supporting | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "human-led",
+      "task_type": "feedback",
+      "ai_role": "supporting",
       "knowledge_type": "generic",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v19",
-    "slug": "feedback-validation-human-led-org-specific-personal",
+    "slug": "feedback-supporting-org-specific-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | Human-led | Org-specific | Personal",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex privately used an AI assistant connected to company files and past client materials for tailored feedback, then revised the message using their own judgment before sending it.",
+    "conditionLabel": "Feedback | Supporting | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "human-led",
+      "task_type": "feedback",
+      "ai_role": "supporting",
       "knowledge_type": "org-specific",
       "impact_level": "personal"
     }
   },
   {
     "id": "v20",
-    "slug": "feedback-validation-human-led-org-specific-team-level",
+    "slug": "feedback-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | Human-led | Org-specific | Team-level",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex used an AI assistant connected to company files and past client materials in the team's shared workspace, where Sam and other teammates could see the exchange, for tailored feedback, then revised the message using their own judgment before sending it.",
+    "conditionLabel": "Feedback | Supporting | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "human-led",
+      "task_type": "feedback",
+      "ai_role": "supporting",
       "knowledge_type": "org-specific",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v21",
-    "slug": "feedback-validation-ai-led-generic-personal",
+    "slug": "feedback-executing-generic-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | AI-led | Generic | Personal",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex privately asked a general-purpose AI assistant with no access to company files to review and revise the message, then used the AI's version largely as-is.",
+    "conditionLabel": "Feedback | Executing | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "ai-led",
+      "task_type": "feedback",
+      "ai_role": "executing",
       "knowledge_type": "generic",
       "impact_level": "personal"
     }
   },
   {
     "id": "v22",
-    "slug": "feedback-validation-ai-led-generic-team-level",
+    "slug": "feedback-executing-generic-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | AI-led | Generic | Team-level",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex asked a general-purpose AI assistant in the team's shared workspace, where Sam and other teammates could see the exchange, to review and revise the message, then used the AI's version largely as-is.",
+    "conditionLabel": "Feedback | Executing | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "ai-led",
+      "task_type": "feedback",
+      "ai_role": "executing",
       "knowledge_type": "generic",
       "impact_level": "team-level"
     }
   },
   {
     "id": "v23",
-    "slug": "feedback-validation-ai-led-org-specific-personal",
+    "slug": "feedback-executing-org-specific-personal",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | AI-led | Org-specific | Personal",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex privately asked an AI assistant connected to company files and past client materials to review and revise the message, then used the AI's tailored version largely as-is.",
+    "conditionLabel": "Feedback | Executing | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "ai-led",
+      "task_type": "feedback",
+      "ai_role": "executing",
       "knowledge_type": "org-specific",
       "impact_level": "personal"
     }
   },
   {
     "id": "v24",
-    "slug": "feedback-validation-ai-led-org-specific-team-level",
+    "slug": "feedback-executing-org-specific-team-level",
     "title": "Workplace Scenario",
-    "conditionLabel": "Feedback / Validation | AI-led | Org-specific | Team-level",
-    "body": "Alex had drafted a message to a client and wanted to check whether the tone and content were appropriate. Alex asked an AI assistant connected to company files and past client materials in the team's shared workspace, where Sam and other teammates could see the exchange, to review and revise the message, then used the AI's tailored version largely as-is.",
+    "conditionLabel": "Feedback | Executing | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "feedback",
+        "label": "Feedback",
+        "icon": "/tags/feedback.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
     "metadata": {
-      "task_type": "feedback-validation",
-      "leadership": "ai-led",
+      "task_type": "feedback",
+      "ai_role": "executing",
+      "knowledge_type": "org-specific",
+      "impact_level": "team-level"
+    }
+  },
+  {
+    "id": "v25",
+    "slug": "validation-supporting-generic-personal",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Supporting | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "supporting",
+      "knowledge_type": "generic",
+      "impact_level": "personal"
+    }
+  },
+  {
+    "id": "v26",
+    "slug": "validation-supporting-generic-team-level",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Supporting | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "supporting",
+      "knowledge_type": "generic",
+      "impact_level": "team-level"
+    }
+  },
+  {
+    "id": "v27",
+    "slug": "validation-supporting-org-specific-personal",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Supporting | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "supporting",
+      "knowledge_type": "org-specific",
+      "impact_level": "personal"
+    }
+  },
+  {
+    "id": "v28",
+    "slug": "validation-supporting-org-specific-team-level",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Supporting | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "supporting",
+        "label": "Supporting",
+        "icon": "/tags/supporting.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "supporting",
+      "knowledge_type": "org-specific",
+      "impact_level": "team-level"
+    }
+  },
+  {
+    "id": "v29",
+    "slug": "validation-executing-generic-personal",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Executing | Generic | Personal",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "executing",
+      "knowledge_type": "generic",
+      "impact_level": "personal"
+    }
+  },
+  {
+    "id": "v30",
+    "slug": "validation-executing-generic-team-level",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Executing | Generic | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "OpenAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "generic",
+        "label": "Generic",
+        "icon": "/tags/generic.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "executing",
+      "knowledge_type": "generic",
+      "impact_level": "team-level"
+    }
+  },
+  {
+    "id": "v31",
+    "slug": "validation-executing-org-specific-personal",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Executing | Org-specific | Personal",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "personal",
+        "label": "Personal",
+        "icon": "/tags/personal.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "executing",
+      "knowledge_type": "org-specific",
+      "impact_level": "personal"
+    }
+  },
+  {
+    "id": "v32",
+    "slug": "validation-executing-org-specific-team-level",
+    "title": "Workplace Scenario",
+    "conditionLabel": "Validation | Executing | Org-specific | Team-level",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "assist": "CorpAssist",
+    "tags": [
+      {
+        "factor": "task_type",
+        "value": "validation",
+        "label": "Validation",
+        "icon": "/tags/validation.png"
+      },
+      {
+        "factor": "ai_role",
+        "value": "executing",
+        "label": "Executing",
+        "icon": "/tags/executing.png"
+      },
+      {
+        "factor": "knowledge_type",
+        "value": "org-specific",
+        "label": "Org-specific",
+        "icon": "/tags/org-specific.png"
+      },
+      {
+        "factor": "impact_level",
+        "value": "team-level",
+        "label": "Team-level",
+        "icon": "/tags/team-level.png"
+      }
+    ],
+    "metadata": {
+      "task_type": "validation",
+      "ai_role": "executing",
       "knowledge_type": "org-specific",
       "impact_level": "team-level"
     }

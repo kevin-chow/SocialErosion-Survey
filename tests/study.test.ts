@@ -18,6 +18,7 @@ const completeAnswers = {
   q3: "Neither agree nor disagree",
   q4: "Disagree",
   q5: "Strongly disagree",
+  q6: "Agree",
 };
 
 describe("study configuration", () => {
@@ -32,21 +33,21 @@ describe("study configuration", () => {
     ).not.toThrow();
   });
 
-  it("contains v01 through v24 and five shared questions", () => {
-    expect(vignettes).toHaveLength(24);
+  it("contains v01 through v32 and six shared questions", () => {
+    expect(vignettes).toHaveLength(32);
     expect(vignettes.map((vignette) => vignette.id)).toEqual(
       Array.from(
-        { length: 24 },
+        { length: 32 },
         (_, index) => `v${String(index + 1).padStart(2, "0")}`,
       ),
     );
-    expect(questionConfig.questions).toHaveLength(5);
+    expect(questionConfig.questions).toHaveLength(6);
   });
 
   it("looks up valid IDs and rejects invalid IDs", () => {
     expect(getVignetteById("v01")?.id).toBe("v01");
-    expect(getVignetteById("v24")?.id).toBe("v24");
-    expect(getVignetteById("v25")).toBeUndefined();
+    expect(getVignetteById("v32")?.id).toBe("v32");
+    expect(getVignetteById("v33")).toBeUndefined();
   });
 });
 
@@ -67,11 +68,12 @@ describe("response rows", () => {
       pid: "P1",
       vignette_id: "v01",
       vignette_number: 1,
-      task_type: "Information",
-      directedness: "Human",
+      task_type: "Information Seeking",
+      directedness: "Supporting",
       data_access: "Generic",
       visibility: "Personal",
-      q1_seek_input: "Agree",
+      q1_value_feedback: "Agree",
+      q6_rather_work_without: "Agree",
       time_spent_ms: 1000,
     });
   });
@@ -96,7 +98,7 @@ describe("response rows", () => {
           pid: "P1",
           vignetteId: "v01",
           position: 1,
-          answers: { ...completeAnswers, q5: "" },
+          answers: { ...completeAnswers, q6: "" },
           timeSpentMs: 1000,
         },
         ["v01"],

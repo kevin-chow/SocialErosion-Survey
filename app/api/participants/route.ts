@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server";
+import { isPostgresError, query } from "@/lib/db";
 import { counterbalanceConfig } from "@/lib/studyConfig";
 import { PID_PATTERN } from "@/lib/submission";
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
+
+type AssignmentRow = {
+  pid: string;
+  assignment_slot: number;
+  vignette_order: string[];
+};
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -30,29 +36,17 @@ export async function POST(request: Request) {
   }
 
   try {
-    const supabase = createSupabaseServerClient();
-    const { data, error } = await supabase.rpc("register_participant", {
-      participant_pid: pid,
-      counterbalance_orders: counterbalanceConfig.orders.map(
-        (order) => order.vignetteIds,
-      ),
-    });
+    const result = await query<AssignmentRow>(
+      `select * from public.register_participant($1::text, $2::jsonb)`,
+      [
+        pid,
+        JSON.stringify(
+          counterbalanceConfig.orders.map((order) => order.vignetteIds),
+        ),
+      ],
+    );
 
-    if (error?.code === "23505") {
-      return NextResponse.json(
-        { error: "This participant ID has already been used." },
-        { status: 409 },
-      );
-    }
-    if (error?.code === "23514") {
-      return NextResponse.json(
-        { error: "No participant assignment slots remain." },
-        { status: 409 },
-      );
-    }
-    if (error) throw error;
-
-    const assignment = Array.isArray(data) ? data[0] : undefined;
+    const assignment = result.rows[0];
     if (
       !assignment ||
       !Array.isArray(assignment.vignette_order) ||
@@ -71,6 +65,18 @@ export async function POST(request: Request) {
       { status: 201 },
     );
   } catch (error) {
+    if (isPostgresError(error) && error.code === "23505") {
+      return NextResponse.json(
+        { error: "This participant ID has already been used." },
+        { status: 409 },
+      );
+    }
+    if (isPostgresError(error) && error.code === "23514") {
+      return NextResponse.json(
+        { error: "No participant assignment slots remain." },
+        { status: 409 },
+      );
+    }
     console.error("Unable to create participant", error);
     return NextResponse.json(
       { error: "The study database is unavailable." },

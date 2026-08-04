@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
+import { query } from "@/lib/db";
 import { PID_PATTERN } from "@/lib/submission";
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -31,19 +31,16 @@ export async function POST(request: Request) {
   }
 
   try {
-    const supabase = createSupabaseServerClient();
-    const { data, error } = await supabase
-      .from("participants")
-      .update({
-        introduction_reading_time_ms: readingTimeMs,
-        introduction_completed_at: new Date().toISOString(),
-      })
-      .eq("pid", pid)
-      .select("pid")
-      .maybeSingle();
+    const result = await query<{ pid: string }>(
+      `update public.participants
+       set introduction_reading_time_ms = $1,
+           introduction_completed_at = now()
+       where pid = $2
+       returning pid`,
+      [readingTimeMs, pid],
+    );
 
-    if (error) throw error;
-    if (!data) {
+    if (result.rowCount === 0) {
       return NextResponse.json(
         { error: "Participant assignment was not found." },
         { status: 404 },
