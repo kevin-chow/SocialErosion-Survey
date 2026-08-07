@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { isPostgresError, query } from "@/lib/db";
+import { normalizeProlificValue } from "@/lib/prolific";
 import { counterbalanceConfig } from "@/lib/studyConfig";
 import { PID_PATTERN } from "@/lib/submission";
 
@@ -8,6 +9,12 @@ type AssignmentRow = {
   assignment_slot: number;
   vignette_order: string[];
 };
+
+function readOptionalString(body: object, key: string): string | null {
+  if (!(key in body)) return null;
+  const value = (body as Record<string, unknown>)[key];
+  return typeof value === "string" ? normalizeProlificValue(value) : null;
+}
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -35,6 +42,15 @@ export async function POST(request: Request) {
     );
   }
 
+  const prolificStudyId =
+    typeof body === "object" && body !== null
+      ? readOptionalString(body, "prolificStudyId")
+      : null;
+  const prolificSessionId =
+    typeof body === "object" && body !== null
+      ? readOptionalString(body, "prolificSessionId")
+      : null;
+
   try {
     const result = await query<AssignmentRow>(
       `select * from public.register_participant($1::text, $2::jsonb)`,
@@ -55,6 +71,14 @@ export async function POST(request: Request) {
     ) {
       throw new Error("Counterbalance assignment was not returned.");
     }
+
+    await query(
+      `update public.participants
+       set prolific_study_id = coalesce($2, prolific_study_id),
+           prolific_session_id = coalesce($3, prolific_session_id)
+       where pid = $1`,
+      [pid, prolificStudyId, prolificSessionId],
+    );
 
     return NextResponse.json(
       {

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { BackgroundContent } from "@/components/BackgroundContent";
 import background from "@/config/background.json";
 import instructions from "@/config/instructions.json";
+import redirects from "@/config/redirects.json";
 import styles from "@/app/start.module.css";
 
 type IntroStep = "team" | "assist" | "attention" | "instructions";
@@ -93,7 +94,11 @@ export function IntroductionExperience() {
     setError("");
 
     if (attentionAnswer !== background.attentionCheck.correctValue) {
-      setError(background.attentionCheck.incorrectMessage);
+      sessionStorage.setItem(
+        `vignette-study:attention-check:${pid}`,
+        "failed",
+      );
+      window.location.assign(redirects.attentionFailProlificUrl);
       return;
     }
 

@@ -3,6 +3,8 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { VignettePanel } from "@/components/VignettePanel";
+import redirects from "@/config/redirects.json";
+import { buildCompletionQualtricsUrl } from "@/lib/prolific";
 import type {
   SharedQuestionConfig,
   VignetteCondition,
@@ -189,6 +191,9 @@ export function StudyExperience({
     setShowSavedNotice(false);
     if (pendingComplete) {
       setCompleted(true);
+      window.location.assign(
+        buildCompletionQualtricsUrl(redirects.completionQualtricsUrl, pid),
+      );
       return;
     }
 
@@ -218,8 +223,8 @@ export function StudyExperience({
     return (
       <main className={styles.statePage}>
         <section className={styles.stateCard}>
-          <h1>Study complete</h1>
-          <p>Your responses have been saved. You may now close this window.</p>
+          <h1>Redirecting…</h1>
+          <p>Taking you to the post-study questionnaire.</p>
         </section>
       </main>
     );
@@ -339,7 +344,7 @@ export function StudyExperience({
             </h2>
             <p>
               {pendingComplete
-                ? "Thank you. All of your responses have been recorded."
+                ? "Thank you. All of your responses have been recorded. Continue to the post-study questionnaire."
                 : `Scenario ${activeIndex + 1} of ${assignedVignettes.length} is complete. Continue to the next scenario.`}
             </p>
             <button
@@ -347,7 +352,9 @@ export function StudyExperience({
               type="button"
               onClick={acknowledgeSavedNotice}
             >
-              {pendingComplete ? "Finish" : "Continue to next scenario"}
+              {pendingComplete
+                ? "Continue to questionnaire"
+                : "Continue to next scenario"}
             </button>
           </section>
         </div>

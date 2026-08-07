@@ -3,11 +3,99 @@
   "paragraphs": [
     "You are invited to participate in a research study examining how workplace AI use influences interactions among colleagues.",
     "The study will take approximately 20 minutes. You will read short, hypothetical workplace scenarios, answer questions about them, and complete a brief questionnaire. Participation is voluntary, and you may stop at any time without penalty. Your responses will be kept confidential.",
-    "Please review the attached consent form for full information about the study, including its procedures, risks, compensation, privacy practices, and researcher contact information."
+    "Please scroll through the full consent form below for complete information about the study, including its procedures, risks, compensation, privacy practices, and researcher contact information."
   ],
   "durationEmphasis": "20 minutes",
+  "documentTitle": "Research Informed Consent Form",
+  "documentMeta": [
+    "Study title: AI at Work and Social Interactions (IRB-FY2026-11570)",
+    "Investigator(s): Prof. Vedant Das Swain (PI), Dr. Kevin Chow, and Sophia Deng"
+  ],
+  "sections": [
+    {
+      "heading": "Invitation to Be a Part of a Research Study",
+      "paragraphs": [
+        "You are invited to participate in a research study. This form has information to help you decide whether or not you wish to participate — please review it carefully. Your participation is voluntary. Please ask any questions you have about the study or about this form before deciding to participate."
+      ]
+    },
+    {
+      "heading": "Purpose of the Study",
+      "paragraphs": [
+        "The purpose of this study is to understand how the use of AI at work influences social interactions among colleagues."
+      ]
+    },
+    {
+      "heading": "Description of Study Procedures",
+      "paragraphs": [
+        "If you agree to participate, you will be asked to:"
+      ],
+      "list": [
+        "You will read a series of short, hypothetical workplace scenarios describing an employee's use of AI tools at work. You will be randomly assigned to a set of scenarios to read. After reading each scenario, you will answer questions based on your response to the scenario.",
+        "After reading the scenarios, you will complete a post-study questionnaire that will ask questions about demographics (e.g., age, gender, work-related information), personality traits, and your work organizations' attitudes towards AI.",
+        "The study will take place in a single session and is expected to take 20 minutes in total. Upon completing the study and post-study questionnaire, you will receive a brief explanation of the purpose of the research."
+      ]
+    },
+    {
+      "heading": "Risks or Discomforts",
+      "paragraphs": [
+        "This study involves the following risks or discomforts: There are no reasonably foreseeable physical, psychological, or emotional risks to participants, as the study only involves reading everyday, non-distressing workplace scenarios and answering questions about them. While there are measures put in place by the researcher to secure data, there is always a risk of a potential breach of confidentiality. Please tell the researchers if you believe you are harmed from your participation in the study."
+      ]
+    },
+    {
+      "heading": "Benefits",
+      "paragraphs": [
+        "It is hoped that the knowledge from this study will benefit organizations and individual workers better understand how to use AI tools in a manner that supports their social relationships with colleagues at work.",
+        "You are not expected to directly benefit from participation in the study."
+      ]
+    },
+    {
+      "heading": "Compensation",
+      "paragraphs": [
+        "You will receive $5.00 USD for completing the study. Participants may withdraw from the study at any time without penalty. Compensation for the study will be provided only to participants who complete the study. No prorated compensation will be provided for participants who withdraw before completing the study. Compensation will be paid through the Prolific platform after your participation is verified. The survey includes questions to ensure participants are answering questions accurately. If you do not answer these questions correctly then you may not receive payment."
+      ]
+    },
+    {
+      "heading": "Voluntary Participation",
+      "paragraphs": [
+        "Participating in this study is completely voluntary. You may choose not to take part in the study or to stop participating at any time, for any reason, without penalty or negative consequences. If you withdraw or are withdrawn from the study early, then we will keep information about you that is already collected."
+      ]
+    },
+    {
+      "heading": "Privacy & Data Confidentiality",
+      "paragraphs": [
+        "In this study, you may be asked to provide information that could be used to identify you personally. This information will be kept confidential. Only researchers and others that will keep the information confidential (e.g., regulatory agencies or oversight groups) may access information that could personally identify you. The only identifier linked to study data is each participant’s Prolific ID, which is a pseudonymous identifier used solely to verify study completion, administer compensation, prevent duplicate participation in future related studies, and, if applicable, support approved follow-up analyses. Researchers will not have access to participants’ names, email addresses, or other direct personal identifiers. Study data will be transmitted using encrypted (HTTPS) connections and stored securely in a password-protected, cloud-hosted, NYU-approved database. Downloaded research data will be stored on encrypted, password-protected devices and NYU Box. Access to identifiable study data will be limited to authorized members of the research team."
+      ]
+    },
+    {
+      "heading": "Future Use of Data",
+      "paragraphs": [
+        "Information about you collected for this study may be shared with other researchers, used for other research studies, or placed in a data repository. These studies may be similar to this study or completely different. All information that could identify you will be removed before sharing the data or using it for other research studies. We will not ask you for additional permission before sharing the information."
+      ]
+    },
+    {
+      "heading": "Access to Your Study Information",
+      "paragraphs": [
+        "We will not give you access to the information that is collected about you in this study."
+      ]
+    },
+    {
+      "heading": "Contact Information",
+      "paragraphs": [
+        "You are encouraged to ask questions at any time during this study. For information about the study, contact Kevin Chow at (604) 366-5207, k.chow@nyu.edu. If you have questions about your rights as a research participant or if you believe you have been harmed from the research, please contact the NYU Human Research Protection Program at (212) 998-4808 or ask.humansubjects@nyu.edu."
+      ]
+    },
+    {
+      "heading": "Agreement to Participate",
+      "paragraphs": [
+        "By checking below, you are agreeing to participate in this study. Make sure you understand what the study involves before you agree. If you have questions about the study after you agree to participate, you can contact the research team using the information provided above. You may keep a copy of this form by printing or saving this page."
+      ]
+    }
+  ],
+  "scrollHint": "Please scroll to the bottom of the consent form to continue.",
+  "scrollCompleteHint": "You have reached the end of the consent form.",
   "consentFormHref": "/aise_consent_form.pdf",
-  "consentFormLabel": "Download the full consent form (PDF)",
-  "checkboxLabel": "By checking the box below, you confirm that you have read and understood the information provided above, voluntarily agree to participate in this research study, and understand that you may withdraw from the study at any time without penalty.",
+  "consentFormLabel": "Download the consent form (PDF)",
+  "checkboxLabel": "I agree to participate in this research study. By checking this box, I confirm that I have read and understood the information provided above, voluntarily agree to participate, and understand that I may withdraw from the study at any time without penalty.",
+  "checkboxLockedHint": "Scroll through the entire consent form above before you can check this box.",
   "continueLabel": "Continue"
 }

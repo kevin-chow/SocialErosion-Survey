@@ -12,8 +12,9 @@ Consent → Participant ID → timed background reading → 6 counterbalanced
 vignettes → 5 required questions per vignette → completion
 ```
 
-The consent page requires agreement and provides the full consent form
-PDF. Background is shown across two pages plus an attention check. The
+The consent page embeds the full informed consent form in a scrollable
+panel; participants must scroll to the end and check agreement before
+continuing. Background is shown across two pages plus an attention check. The
 background timer starts only after PID registration and counts time while
 introduction pages are visible. Each Save and continue click validates
 all six answers, confirms the save, and advances only after Postgres
@@ -22,12 +23,12 @@ confirms the write.
 ## Editable configuration
 
 - `config/study.json` — study size and assignment mode
-- `config/consent.json` — consent-page copy and PDF link
+- `config/consent.json` — consent-page copy and full embedded consent form
 - `config/background.json` — background-page and dialog content
 - `config/vignettes.json` — vignette text and factor metadata
 - `config/questions.json` — the five shared questions and response scale
 - `config/counterbalance.json` — all 500 eight-vignette assignment orders
-- `public/aise_consent_form.pdf` — downloadable consent form
+- `public/aise_consent_form.pdf` — archived PDF copy of the consent form
 
 All five shared questions have confirmed wording. See
 [`docs/ADDING_OR_EDITING_VIGNETTES.md`](docs/ADDING_OR_EDITING_VIGNETTES.md).
@@ -63,10 +64,25 @@ npm run dev
 
 Open `http://localhost:3000`. Schema init (`db/schema.sql`) creates:
 
-- `participants` — one row per PID
+- `participants` — one row per PID (Prolific ID when recruited via Prolific), plus optional `prolific_study_id` / `prolific_session_id`
 - `vignette_responses` — one row per PID and vignette
 - `analysis_responses` — a view with analyst-friendly column labels
 - `register_participant` — concurrent-safe counterbalance slot assignment
+
+### Prolific study URL
+
+Use this study link format in Prolific so IDs are captured automatically:
+
+```text
+https://YOUR-CLOUD-RUN-URL/?PROLIFIC_PID={{%PROLIFIC_PID%}}&STUDY_ID={{%STUDY_ID%}}&SESSION_ID={{%SESSION_ID%}}
+```
+
+`PROLIFIC_PID` is captured from the study link and used as `participants.pid` (no confirmation screen). `STUDY_ID` and `SESSION_ID` are stored on the same row. The `/participant` page remains only as a manual fallback when the link has no Prolific params.
+
+Redirects after the vignette portal (`config/redirects.json`):
+
+- **Completed all vignettes** → Qualtrics post-study survey, with `PROLIFIC_PID`, `STUDY_ID`, and `SESSION_ID` appended
+- **Failed attention check** → Prolific completion/rejection code URL
 
 Reset the local database:
 

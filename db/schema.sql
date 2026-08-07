@@ -10,8 +10,20 @@ create table if not exists public.participants (
   vignette_order text[],
   introduction_reading_time_ms integer,
   introduction_completed_at timestamptz,
+  prolific_study_id text,
+  prolific_session_id text,
   constraint participants_pid_format
     check (pid ~ '^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$'),
+  constraint participants_prolific_study_id_format
+    check (
+      prolific_study_id is null
+      or prolific_study_id ~ '^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$'
+    ),
+  constraint participants_prolific_session_id_format
+    check (
+      prolific_session_id is null
+      or prolific_session_id ~ '^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$'
+    ),
   constraint participants_assignment_slot_range
     check (assignment_slot is null or assignment_slot between 1 and 500),
   constraint participants_vignette_order_size
@@ -141,6 +153,8 @@ $$;
 create or replace view public.analysis_responses as
 select
   r.pid as "Participant ID",
+  p.prolific_study_id as "Prolific Study ID",
+  p.prolific_session_id as "Prolific Session ID",
   p.assignment_slot as "Counterbalance Assignment Slot",
   p.introduction_reading_time_ms as "Introduction Reading Time (ms)",
   r.vignette_number as "Vignette Position",

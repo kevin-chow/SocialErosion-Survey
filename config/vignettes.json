@@ -11,25 +11,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -51,25 +51,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -91,25 +91,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -131,25 +131,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -171,25 +171,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -211,25 +211,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -251,25 +251,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -291,25 +291,25 @@
         "factor": "task_type",
         "value": "information-seeking",
         "label": "Information Seeking",
-        "icon": "/tags/information-seeking.png"
+        "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -331,25 +331,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -371,25 +371,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -411,25 +411,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -451,25 +451,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -491,25 +491,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -531,25 +531,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -571,25 +571,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -611,25 +611,25 @@
         "factor": "task_type",
         "value": "brainstorming",
         "label": "Brainstorming",
-        "icon": "/tags/brainstorming.png"
+        "icon": "/tags/brainstorming.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -651,25 +651,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -691,25 +691,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -731,25 +731,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -771,25 +771,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -811,25 +811,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -851,25 +851,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -891,25 +891,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -931,25 +931,25 @@
         "factor": "task_type",
         "value": "feedback",
         "label": "Feedback",
-        "icon": "/tags/feedback.png"
+        "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -971,25 +971,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -1011,25 +1011,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -1051,25 +1051,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -1091,25 +1091,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
         "label": "Supporting",
-        "icon": "/tags/supporting.png"
+        "icon": "/tags/supporting.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -1131,25 +1131,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -1171,25 +1171,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "generic",
         "label": "Generic",
-        "icon": "/tags/generic.png"
+        "icon": "/tags/generic.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
@@ -1211,25 +1211,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "personal",
         "label": "Personal",
-        "icon": "/tags/personal.png"
+        "icon": "/tags/personal.svg"
       }
     ],
     "metadata": {
@@ -1251,25 +1251,25 @@
         "factor": "task_type",
         "value": "validation",
         "label": "Validation",
-        "icon": "/tags/validation.png"
+        "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
         "label": "Executing",
-        "icon": "/tags/executing.png"
+        "icon": "/tags/executing.svg"
       },
       {
         "factor": "knowledge_type",
         "value": "org-specific",
         "label": "Org-specific",
-        "icon": "/tags/org-specific.png"
+        "icon": "/tags/org-specific.svg"
       },
       {
         "factor": "impact_level",
         "value": "team-level",
         "label": "Team-level",
-        "icon": "/tags/team-level.png"
+        "icon": "/tags/team-level.svg"
       }
     ],
     "metadata": {
