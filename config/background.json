@@ -55,8 +55,7 @@
     {
       "id": "assist-versions",
       "title": "Two versions of Assist",
-      "image": "/openassist-vs-corpassist.png",
-      "imageAlt": "Comparison of OpenAssist using general information and CorpAssist using NextGen-specific information",
+      "diagram": "assist-versions",
       "blocks": [
         {
           "type": "paragraph",
@@ -104,8 +103,7 @@
     {
       "id": "workspace",
       "title": "Where you use Assist",
-      "image": "/individual-vs-shared.png",
-      "imageAlt": "Comparison of Assist in a shared team channel versus a private individual chat",
+      "diagram": "workspace",
       "blocks": [
         {
           "type": "paragraph",

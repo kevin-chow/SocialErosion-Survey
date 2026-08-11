@@ -1,5 +1,10 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import background from "@/config/background.json";
+import {
+  AssistVersionsDiagram,
+  WorkspaceDiagram,
+} from "@/components/BackgroundDiagrams";
 import styles from "./background.module.css";
 
 interface BackgroundContentProps {
@@ -24,12 +29,13 @@ interface BackgroundPage {
   title?: string;
   image?: string;
   imageAlt?: string;
+  diagram?: "assist-versions" | "workspace";
   blocks: BackgroundBlock[];
 }
 
 function renderSegments(segments: RichSegment[]) {
   return segments.map((segment, index) => {
-    let content: React.ReactNode = segment.text;
+    let content: ReactNode = segment.text;
     if (segment.bold) content = <strong>{content}</strong>;
     if (segment.underline) content = <u>{content}</u>;
     return <span key={`${index}-${segment.text}`}>{content}</span>;
@@ -52,6 +58,12 @@ function renderBlocks(blocks: BackgroundBlock[], keyPrefix: string) {
   );
 }
 
+function renderDiagram(diagram?: BackgroundPage["diagram"]) {
+  if (diagram === "assist-versions") return <AssistVersionsDiagram />;
+  if (diagram === "workspace") return <WorkspaceDiagram />;
+  return null;
+}
+
 export function BackgroundContent({
   showImage = true,
   headingId,
@@ -65,9 +77,10 @@ export function BackgroundContent({
   return (
     <div className={styles.content}>
       {selectedPages.map((page) => {
-        const imageSrc = showImage
-          ? page.image ?? (pageId ? undefined : background.image)
-          : undefined;
+        const imageSrc =
+          showImage && !page.diagram
+            ? page.image ?? (pageId ? undefined : background.image)
+            : undefined;
         const imageAlt =
           page.imageAlt ?? background.imageAlt ?? "Background illustration";
 
@@ -75,15 +88,11 @@ export function BackgroundContent({
           <div key={page.id} className={styles.pageSection}>
             {imageSrc ? (
               <Image
-                className={
-                  page.image && page.image !== background.image
-                    ? styles.diagramImage
-                    : styles.image
-                }
+                className={styles.image}
                 src={imageSrc}
                 alt={imageAlt}
                 width={1024}
-                height={page.image && page.image !== background.image ? 700 : 443}
+                height={443}
                 priority={page.id === selectedPages[0]?.id}
               />
             ) : null}
@@ -92,6 +101,7 @@ export function BackgroundContent({
                 {page.title ?? background.title}
               </h1>
               {renderBlocks(page.blocks, page.id)}
+              {renderDiagram(page.diagram)}
             </div>
           </div>
         );
