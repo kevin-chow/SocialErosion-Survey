@@ -12,16 +12,16 @@ export default function ConsentPage() {
   return (
     <main className={styles.page}>
       <section className={styles.card}>
-        <div className={styles.brandBar}>
+        <header className={styles.consentHeader}>
           <Image
-            className={styles.brandLogo}
-            src="/nyu-tandon-logo.png"
-            alt="NYU Tandon School of Engineering"
-            width={320}
-            height={72}
+            className={styles.consentHeaderLogo}
+            src="/nyu-header-logo.png"
+            alt="New York University"
+            width={420}
+            height={108}
             priority
           />
-        </div>
+        </header>
         <div className={styles.entryIntro}>
           <p className={styles.eyebrow}>Research study</p>
           <h1>{consent.title}</h1>
