@@ -17,9 +17,10 @@ export default function ConsentPage() {
             className={styles.consentHeaderLogo}
             src="/nyu-header-logo.png"
             alt="New York University"
-            width={420}
-            height={108}
+            width={1024}
+            height={56}
             priority
+            unoptimized
           />
         </header>
         <div className={styles.entryIntro}>

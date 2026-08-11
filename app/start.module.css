@@ -42,14 +42,14 @@
   width: 100%;
   background: #57068c;
   line-height: 0;
+  overflow: hidden;
 }
 
 .consentHeaderLogo {
   display: block;
   width: 100%;
-  height: 56px;
-  object-fit: cover;
-  object-position: left center;
+  height: auto;
+  object-fit: fill;
 }
 
 .entryIntro {
