@@ -14,7 +14,8 @@ vignettes → 5 required questions per vignette → completion
 
 The consent page embeds the full informed consent form in a scrollable
 panel; participants must scroll to the end and check agreement before
-continuing. Background is shown across two pages plus an attention check. The
+continuing. Background is shown across multiple illustrated pages with
+brief comprehension questions between sections. The
 background timer starts only after PID registration and counts time while
 introduction pages are visible. Each Save and continue click validates
 all six answers, confirms the save, and advances only after Postgres
@@ -34,9 +35,11 @@ All five shared questions have confirmed wording. See
 [`docs/ADDING_OR_EDITING_VIGNETTES.md`](docs/ADDING_OR_EDITING_VIGNETTES.md).
 
 The assignment table gives every vignette exactly 125 exposures. Every
-participant receives two vignettes from each task type and a 4/4 split on
-each binary factor. Vignette positions differ by at most one exposure.
-Regenerate and validate the table with `npm run generate:counterbalance`.
+participant receives two vignettes from each task type, all eight binary
+factor combinations (one complementary pair per task type), and a 4/4
+split on each binary factor. Vignette positions differ by at most one
+exposure. Regenerate and validate the table with
+`npm run generate:counterbalance`.
 
 ## Local setup
 
@@ -82,7 +85,7 @@ https://YOUR-CLOUD-RUN-URL/?PROLIFIC_PID={{%PROLIFIC_PID%}}&STUDY_ID={{%STUDY_ID
 Redirects after the vignette portal (`config/redirects.json`):
 
 - **Completed all vignettes** → Qualtrics post-study survey, with `PROLIFIC_PID`, `STUDY_ID`, and `SESSION_ID` appended
-- **Failed attention check** → Prolific completion/rejection code URL
+- **Incorrect comprehension question** → review the prior background page and retry (up to 3 total incorrect attempts, then the Prolific session ends)
 
 Reset the local database:
 

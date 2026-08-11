@@ -38,9 +38,11 @@ const byTaskAndCode = new Map(
 );
 
 function selectedVignettes(slotIndex) {
+  // Each participant gets all four complementary pairs (all 8 binary
+  // factor cells), rotated by slot so task-type × pair pairings vary.
   return taskTypes.flatMap((taskType, taskIndex) => {
     const pair =
-      complementaryPairs[(slotIndex + taskIndex * 2) % complementaryPairs.length];
+      complementaryPairs[(slotIndex + taskIndex) % complementaryPairs.length];
     return pair.map((code) => {
       const id = byTaskAndCode.get(`${taskType}:${code}`);
       if (!id) throw new Error(`Missing ${taskType}:${code}.`);

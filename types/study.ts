@@ -35,10 +35,16 @@ export type ResponseColumn =
   | "q5_express_frustrations"
   | "q6_rather_work_without";
 
+export interface QuestionSegment {
+  text: string;
+  bold?: boolean;
+}
+
 export interface SharedQuestion {
   id: string;
   responseColumn: ResponseColumn;
-  text: string;
+  text?: string;
+  segments?: QuestionSegment[];
   required: boolean;
 }
 

@@ -103,13 +103,13 @@ export function buildResponseRow(
       "directedness_jitter_v",
     ),
     data_access: displayFactor(metadata?.knowledge_type, {
-      generic: "Generic",
-      "org-specific": "Org-Specific",
+      generic: "OpenAssist",
+      "org-specific": "CorpAssist",
     }),
     data_access_jitter_v: optionalMetadata(metadata, "data_access_jitter_v"),
     visibility: displayFactor(metadata?.impact_level, {
-      personal: "Personal",
-      "team-level": "Team",
+      personal: "Individual",
+      "team-level": "Shared workspace",
     }),
     visibility_jitter_v: optionalMetadata(metadata, "visibility_jitter_v"),
     full_vignette_text: vignette.body,

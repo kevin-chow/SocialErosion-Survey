@@ -63,15 +63,17 @@ export function ConsentForm() {
       return;
     }
 
-    sessionStorage.setItem("vignette-study:consent", "true");
-
     // Re-capture from the current URL in case sessionStorage was cleared.
     persistProlificParams(readProlificParamsFromSearch(window.location.search));
     const prolific = loadStoredProlificParams();
     if (!prolific.prolificPid) {
-      router.push("/participant");
+      setError(
+        "Please open this study from your Prolific link so your participant ID can be recorded automatically.",
+      );
       return;
     }
+
+    sessionStorage.setItem("vignette-study:consent", "true");
 
     setLoading(true);
     try {

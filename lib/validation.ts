@@ -74,7 +74,11 @@ export function validateStudyConfig(
 
   for (const question of questionConfig.questions) {
     requireText(question.id, "Question ID");
-    requireText(question.text, `${question.id} text`);
+    const questionText =
+      question.segments?.map((segment) => segment.text).join("") ??
+      question.text ??
+      "";
+    requireText(questionText, `${question.id} text`);
   }
   for (const option of questionConfig.scale) {
     requireText(String(option.value), "Scale value");
@@ -151,6 +155,24 @@ export function validateStudyConfig(
             `Counterbalance slot ${order.slot} does not balance ${factor}.`,
           );
         }
+      }
+
+      const binaryCodes = new Set(
+        assignedVignettes.map((vignette) =>
+          ["ai_role", "knowledge_type", "impact_level"]
+            .map((factor, index) => {
+              const lowLevels = ["supporting", "generic", "personal"];
+              return vignette.metadata?.[factor] === lowLevels[index]
+                ? "0"
+                : "1";
+            })
+            .join(""),
+        ),
+      );
+      if (binaryCodes.size !== 8) {
+        throw new Error(
+          `Counterbalance slot ${order.slot} must include all eight binary factor combinations.`,
+        );
       }
     });
 

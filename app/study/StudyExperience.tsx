@@ -274,8 +274,20 @@ export function StudyExperience({
             <div className={styles.questionList}>
               {questionConfig.questions.map((question, index) => (
                 <fieldset className={styles.question} key={question.id}>
-                  <legend>
-                    {index + 1}. {question.text}
+                  <legend className={styles.questionLegend}>
+                    <span className={styles.questionNumber}>{index + 1}.</span>{" "}
+                    {(question.segments ?? [{ text: question.text ?? "" }]).map(
+                      (segment, segmentIndex) =>
+                        segment.bold ? (
+                          <strong key={`${question.id}-${segmentIndex}`}>
+                            {segment.text}
+                          </strong>
+                        ) : (
+                          <span key={`${question.id}-${segmentIndex}`}>
+                            {segment.text}
+                          </span>
+                        ),
+                    )}
                   </legend>
                   <div className={styles.options}>
                     {questionConfig.scale.map((option) => {

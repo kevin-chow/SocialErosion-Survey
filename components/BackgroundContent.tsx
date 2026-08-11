@@ -21,6 +21,9 @@ type BackgroundBlock =
 
 interface BackgroundPage {
   id: string;
+  title?: string;
+  image?: string;
+  imageAlt?: string;
   blocks: BackgroundBlock[];
 }
 
@@ -61,24 +64,38 @@ export function BackgroundContent({
 
   return (
     <div className={styles.content}>
-      {showImage && (
-        <Image
-          className={styles.image}
-          src={background.image}
-          alt={background.imageAlt}
-          width={1024}
-          height={443}
-          priority
-        />
-      )}
-      <div className={styles.text}>
-        <h1 id={headingId}>{background.title}</h1>
-        {selectedPages.map((page) => (
+      {selectedPages.map((page) => {
+        const imageSrc = showImage
+          ? page.image ?? (pageId ? undefined : background.image)
+          : undefined;
+        const imageAlt =
+          page.imageAlt ?? background.imageAlt ?? "Background illustration";
+
+        return (
           <div key={page.id} className={styles.pageSection}>
-            {renderBlocks(page.blocks, page.id)}
+            {imageSrc ? (
+              <Image
+                className={
+                  page.image && page.image !== background.image
+                    ? styles.diagramImage
+                    : styles.image
+                }
+                src={imageSrc}
+                alt={imageAlt}
+                width={1024}
+                height={page.image && page.image !== background.image ? 700 : 443}
+                priority={page.id === selectedPages[0]?.id}
+              />
+            ) : null}
+            <div className={styles.text}>
+              <h1 id={page.id === selectedPages[0]?.id ? headingId : undefined}>
+                {page.title ?? background.title}
+              </h1>
+              {renderBlocks(page.blocks, page.id)}
+            </div>
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }

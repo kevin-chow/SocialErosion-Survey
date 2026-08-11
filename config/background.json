@@ -5,6 +5,9 @@
   "pages": [
     {
       "id": "team",
+      "title": "Your workplace",
+      "image": "/nextgen-office.png",
+      "imageAlt": "Employees working together in a bright, open-plan office",
       "blocks": [
         {
           "type": "paragraph",
@@ -50,7 +53,10 @@
       ]
     },
     {
-      "id": "assist",
+      "id": "assist-versions",
+      "title": "Two versions of Assist",
+      "image": "/openassist-vs-corpassist.png",
+      "imageAlt": "Comparison of OpenAssist using general information and CorpAssist using NextGen-specific information",
       "blocks": [
         {
           "type": "paragraph",
@@ -70,7 +76,7 @@
               { "text": ": A " },
               { "text": "general-purpose", "bold": true },
               {
-                "text": " version comparable to leading AI chatbots (e.g., ChatGPT, Claude, or Gemini)."
+                "text": " version comparable to leading AI chatbots (e.g., ChatGPT, Claude, or Gemini). It uses general information."
               }
             ],
             [
@@ -88,14 +94,36 @@
         {
           "type": "paragraph",
           "segments": [
+            {
+              "text": "The diagram below shows how the same question can produce different answers depending on which version you use."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "workspace",
+      "title": "Where you use Assist",
+      "image": "/individual-vs-shared.png",
+      "imageAlt": "Comparison of Assist in a shared team channel versus a private individual chat",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segments": [
             { "text": "Either version of Assist can be used " },
-            { "text": "individually", "bold": true },
+            { "text": "individually on your own computer", "bold": true },
             {
-              "text": " and on your own computer (not visible to your teammates) or through a "
+              "text": " (not visible to your teammates) or "
             },
-            { "text": "shared team workspace", "bold": true },
+            { "text": "in the team's shared workspace", "bold": true },
+            { "text": "." }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segments": [
             {
-              "text": ". In the shared workspace, teammates such as Sam can view your interactions with Assist and participate in the conversation."
+              "text": "In the shared workspace, teammates such as Sam can view your interactions with Assist and participate in the conversation. In an individual workspace, AI conversations are only visible to you."
             }
           ]
         },
@@ -103,22 +131,77 @@
           "type": "paragraph",
           "segments": [
             {
+              "text": "The diagram below compares these two ways of using Assist."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "presentation",
+      "title": "What comes next",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "segments": [
+            {
               "text": "The following scenarios concern an upcoming presentation that your team is preparing for NextGen's senior leadership team."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "segments": [
+            {
+              "text": "In each scenario, you will read about how you use Assist on a task while Sam works on another section of the same presentation. After each scenario, you will answer the same set of questions."
             }
           ]
         }
       ]
     }
   ],
-  "attentionCheck": {
-    "prompt": "According to the background information, which version of Assist can access NextGen's internal organizational data?",
-    "options": [
-      { "value": "openassist", "label": "OpenAssist" },
-      { "value": "corpassist", "label": "CorpAssist" },
-      { "value": "chatgpt", "label": "ChatGPT" },
-      { "value": "slack", "label": "Slack" }
-    ],
-    "correctValue": "corpassist",
-    "incorrectMessage": "That is not correct. Please review the background information and try again."
-  }
+  "checks": [
+    {
+      "id": "check-sam",
+      "afterPageId": "team",
+      "title": "Quick question",
+      "lead": "Please answer based on what you just read.",
+      "prompt": "According to the information you just read, who is Sam?",
+      "options": [
+        { "value": "manager", "label": "Your manager at NextGen" },
+        { "value": "peer", "label": "A peer teammate with a similar role" },
+        { "value": "client", "label": "An external client" },
+        { "value": "assistant", "label": "An AI assistant" }
+      ],
+      "correctValue": "peer"
+    },
+    {
+      "id": "check-assist",
+      "afterPageId": "assist-versions",
+      "title": "Quick question",
+      "lead": "Please answer based on what you just read.",
+      "prompt": "Which version of Assist can access NextGen's internal organizational data?",
+      "options": [
+        { "value": "openassist", "label": "OpenAssist" },
+        { "value": "corpassist", "label": "CorpAssist" },
+        { "value": "chatgpt", "label": "ChatGPT" },
+        { "value": "slack", "label": "Slack" }
+      ],
+      "correctValue": "corpassist"
+    },
+    {
+      "id": "check-workspace",
+      "afterPageId": "workspace",
+      "title": "Quick question",
+      "lead": "Please answer based on what you just read.",
+      "prompt": "When Assist is used in the team's shared workspace, who can see the AI conversation?",
+      "options": [
+        { "value": "only-you", "label": "Only you" },
+        { "value": "team", "label": "Teammates such as Sam" },
+        { "value": "clients", "label": "Only external clients" },
+        { "value": "public", "label": "Anyone on the internet" }
+      ],
+      "correctValue": "team"
+    }
+  ]
 }

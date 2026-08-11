@@ -10,6 +10,16 @@
   object-fit: cover;
 }
 
+.diagramImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  padding: 20px clamp(16px, 4vw, 40px) 0;
+  object-fit: contain;
+  background: #f8fafc;
+}
+
 .text {
   padding: clamp(24px, 4vw, 44px);
 }
