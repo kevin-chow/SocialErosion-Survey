@@ -1,5 +1,5 @@
 {
-  "instruction": "As you consider working on this task, please indicate how much you agree or disagree with each statement below:",
+  "instruction": "As you consider working on the task, please indicate how much you agree or disagree with each statement below:",
   "scale": [
     { "value": "Strongly agree", "label": "Strongly agree" },
     { "value": "Agree", "label": "Agree" },
@@ -43,8 +43,8 @@
       "responseColumn": "q4_comfortable_feedback",
       "segments": [
         { "text": "You would " },
-        { "text": "feel comfortable", "bold": true },
-        { "text": " having Sam give feedback on this task." }
+        { "text": "feel comfortable with involving Sam", "bold": true },
+        { "text": " in this task." }
       ],
       "required": true
     },
@@ -65,6 +65,28 @@
         { "text": "You would rather " },
         { "text": "work on this task without", "bold": true },
         { "text": " Sam." }
+      ],
+      "required": true
+    }
+  ],
+  "attentionChecks": [
+    {
+      "id": "ac1",
+      "correctValue": "Agree",
+      "segments": [
+        { "text": "Please select " },
+        { "text": "Agree", "bold": true },
+        { "text": " for this item." }
+      ],
+      "required": true
+    },
+    {
+      "id": "ac2",
+      "correctValue": "Disagree",
+      "segments": [
+        { "text": "To show you are reading carefully, please choose " },
+        { "text": "Disagree", "bold": true },
+        { "text": "." }
       ],
       "required": true
     }

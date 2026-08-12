@@ -48,10 +48,19 @@ export interface SharedQuestion {
   required: boolean;
 }
 
+export interface AttentionCheckQuestion {
+  id: string;
+  correctValue: string;
+  text?: string;
+  segments?: QuestionSegment[];
+  required: boolean;
+}
+
 export interface SharedQuestionConfig {
   instruction?: string;
   scale: QuestionOption[];
   questions: SharedQuestion[];
+  attentionChecks?: AttentionCheckQuestion[];
 }
 
 export interface CounterbalanceOrder {

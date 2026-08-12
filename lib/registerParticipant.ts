@@ -58,7 +58,7 @@ export async function registerParticipantSession(
     throw new Error(result.error || "Unable to begin the study.");
   }
   if (!result.vignetteOrder || result.vignetteOrder.length !== 8) {
-    throw new Error("The vignette assignment could not be loaded.");
+    throw new Error("The scenario assignment could not be loaded.");
   }
 
   sessionStorage.setItem("vignette-study:pid", normalizedPid);

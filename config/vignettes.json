@@ -4,7 +4,7 @@
     "slug": "information-seeking-supporting-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Supporting | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You ask OpenAssist to identify recent products launched by competing companies and other relevant competitors of NextGen's to examine. You prepare your section of the presentation yourself, using its output to support your preparation.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -44,7 +44,7 @@
     "slug": "information-seeking-supporting-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Supporting | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You ask OpenAssist to identify recent products launched by competing companies and other relevant competitors of NextGen's to examine. You prepare your section of the presentation yourself, using its output to support your preparation.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -84,7 +84,7 @@
     "slug": "information-seeking-supporting-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Supporting | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You ask CorpAssist to identify recent products launched by competing companies and other relevant competitors of NextGen's to examine. You prepare your section of the presentation yourself, using its output to support your preparation.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -124,7 +124,7 @@
     "slug": "information-seeking-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Supporting | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to identify recent products launched by competing companies and other relevant competitors to examine. You review the information it provides and use it to prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You ask CorpAssist to identify recent products launched by competing companies and other relevant competitors of NextGen's to examine. You prepare your section of the presentation yourself, using its output to support your preparation.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -164,7 +164,7 @@
     "slug": "information-seeking-executing-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Executing | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You ask OpenAssist to prepare your section of the presentation for you by identifying and synthesizing recent products by NextGen's competitors.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -204,7 +204,7 @@
     "slug": "information-seeking-executing-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Executing | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You ask OpenAssist to prepare your section of the presentation for you by identifying and synthesizing recent products by NextGen's competitors.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -244,7 +244,7 @@
     "slug": "information-seeking-executing-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Executing | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You ask CorpAssist to prepare your section of the presentation for you by identifying and synthesizing recent products by NextGen's competitors.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -284,7 +284,7 @@
     "slug": "information-seeking-executing-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | Executing | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation that summarizes recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to identify recent products launched by competing companies, other relevant competitors to examine, and to use that information to prepare your section of the presentation for you. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You ask CorpAssist to prepare your section of the presentation for you by identifying and synthesizing recent products by NextGen's competitors.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -324,7 +324,7 @@
     "slug": "brainstorming-supporting-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Supporting | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You ask OpenAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation yourself.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -364,7 +364,7 @@
     "slug": "brainstorming-supporting-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Supporting | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You ask OpenAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation yourself.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -404,7 +404,7 @@
     "slug": "brainstorming-supporting-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Supporting | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You ask CorpAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation yourself.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -444,7 +444,7 @@
     "slug": "brainstorming-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Supporting | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You ask CorpAssist to generate possible ideas for new products or features that NextGen could develop. You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation yourself.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -484,7 +484,7 @@
     "slug": "brainstorming-executing-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Executing | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You ask OpenAssist to prepare your section of the presentation for you by researching recent industry trends, generating ideas, and developing them into proposals for new products or features for NextGen.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -524,7 +524,7 @@
     "slug": "brainstorming-executing-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Executing | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You ask OpenAssist to prepare your section of the presentation for you by researching recent industry trends, generating ideas, and developing them into proposals for new products or features for NextGen.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -564,7 +564,7 @@
     "slug": "brainstorming-executing-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Executing | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You ask CorpAssist to prepare your section of the presentation for you by researching recent industry trends, generating ideas, and developing them into proposals for new products or features for NextGen.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -604,7 +604,7 @@
     "slug": "brainstorming-executing-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | Executing | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to generate possible ideas for new products or features, determine which ideas are most promising, develop them, and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You ask CorpAssist to prepare your section of the presentation for you by researching recent industry trends, generating ideas, and developing them into proposals for new products or features for NextGen.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -644,7 +644,7 @@
     "slug": "feedback-supporting-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Supporting | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You ask OpenAssist to help review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation yourself accordingly.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -684,7 +684,7 @@
     "slug": "feedback-supporting-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Supporting | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You ask OpenAssist to help review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation yourself accordingly.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -724,7 +724,7 @@
     "slug": "feedback-supporting-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Supporting | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You ask CorpAssist to help review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation yourself accordingly.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -764,7 +764,7 @@
     "slug": "feedback-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Supporting | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation accordingly.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You ask CorpAssist to help review your draft and provide feedback on its clarity, organization, and completeness. You review its feedback, decide which changes to make, and revise your section of the presentation yourself accordingly.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -804,7 +804,7 @@
     "slug": "feedback-executing-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Executing | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You ask OpenAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You ask OpenAssist to revise your draft for you to improve its clarity, organization, and completeness.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -844,7 +844,7 @@
     "slug": "feedback-executing-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Executing | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You ask OpenAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You ask OpenAssist to revise your draft for you to improve its clarity, organization, and completeness.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -884,7 +884,7 @@
     "slug": "feedback-executing-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Executing | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You ask CorpAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You ask CorpAssist to revise your draft for you to improve its clarity, organization, and completeness.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -924,7 +924,7 @@
     "slug": "feedback-executing-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | Executing | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You ask CorpAssist to revise your draft for you to improve its clarity, organization, and completeness. You review the revised section before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You ask CorpAssist to revise your draft for you to improve its clarity, organization, and completeness.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -964,7 +964,7 @@
     "slug": "validation-supporting-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Supporting | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You tell OpenAssist that you are second-guessing your own perspective and ask it for help to work through your uncertainty. It offers considerations and alternative perspectives to help you think it through. You reflect on its response and decide for yourself whether your interpretation is reasonable.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -1004,7 +1004,7 @@
     "slug": "validation-supporting-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Supporting | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You tell OpenAssist that you are second-guessing your own perspective and ask it for help to work through your uncertainty. It offers considerations and alternative perspectives to help you think it through. You reflect on its response and decide for yourself whether your interpretation is reasonable.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -1044,7 +1044,7 @@
     "slug": "validation-supporting-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Supporting | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You tell CorpAssist that you are second-guessing your own perspective and ask it for help to work through your uncertainty. It offers considerations and alternative perspectives to help you think it through. You reflect on its response and decide for yourself whether your interpretation is reasonable.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -1084,7 +1084,7 @@
     "slug": "validation-supporting-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Supporting | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You consider its response and continue preparing your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You tell CorpAssist that you are second-guessing your own perspective and ask it for help to work through your uncertainty. It offers considerations and alternative perspectives to help you think it through. You reflect on its response and decide for yourself whether your interpretation is reasonable.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -1124,7 +1124,7 @@
     "slug": "validation-executing-generic-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Executing | OpenAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist individually on your own computer. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, individually on your own computer. You tell OpenAssist that you are second-guessing your own perspective and ask it to assess your interpretation and determine whether your perspective is reasonable. You rely on its assessment as you continue preparing your section.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -1164,7 +1164,7 @@
     "slug": "validation-executing-generic-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Executing | OpenAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use OpenAssist in the team's shared workspace. You tell OpenAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use OpenAssist, the general-purpose version of Assist, in the team's shared workspace. You tell OpenAssist that you are second-guessing your own perspective and ask it to assess your interpretation and determine whether your perspective is reasonable. You rely on its assessment as you continue preparing your section.",
     "assist": "OpenAssist",
     "tags": [
       {
@@ -1204,7 +1204,7 @@
     "slug": "validation-executing-org-specific-personal",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Executing | CorpAssist | Individual",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist individually on your own computer. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, individually on your own computer. You tell CorpAssist that you are second-guessing your own perspective and ask it to assess your interpretation and determine whether your perspective is reasonable. You rely on its assessment as you continue preparing your section.",
     "assist": "CorpAssist",
     "tags": [
       {
@@ -1244,7 +1244,7 @@
     "slug": "validation-executing-org-specific-team-level",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | Executing | CorpAssist | Shared workspace",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to feel uncertain about whether you have captured the most important takeaways. Sam is working on another section of the same presentation.\n\nFor this task, you use CorpAssist in the team's shared workspace. You tell CorpAssist that you feel uncertain about how you are approaching the task and ask it for reassurance and perspective. You also ask it to determine how the task should be approached and prepare your section of the presentation. You review the section it prepares before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you use CorpAssist, the company-specific version of Assist, in the team's shared workspace. You tell CorpAssist that you are second-guessing your own perspective and ask it to assess your interpretation and determine whether your perspective is reasonable. You rely on its assessment as you continue preparing your section.",
     "assist": "CorpAssist",
     "tags": [
       {

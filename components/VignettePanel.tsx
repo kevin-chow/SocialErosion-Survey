@@ -11,6 +11,7 @@ interface VignettePanelProps {
   tags?: VignetteTag[];
   currentPosition: number;
   total: number;
+  isPractice?: boolean;
   panelRef?: Ref<HTMLElement>;
 }
 
@@ -21,15 +22,16 @@ const FACTOR_TONE: Record<string, string> = {
   impact_level: styles.tagToneVisibility,
 };
 
-/** Bolded phrases from the vignette text, colored by factor category. */
+/** Bolded phrases from the scenario text, colored by factor category. */
 const HIGHLIGHT_PATTERNS: { regex: RegExp; className: string }[] = [
   {
     regex:
-      /summarizes recent products launched by NextGen's competitors|proposing ideas for new products or features that NextGen could develop in response to recent industry trends|explaining the implications of recent industry trends for NextGen|You have already prepared an initial draft of your section|you begin to feel uncertain about whether you have captured the most important takeaways/g,
+      /where you need to search for recent products launched by NextGen's competitors|proposing ideas for new products or features that NextGen could develop in response to recent industry trends|explaining the implications of recent industry trends for NextGen|but think there may be ways to improve it|you begin to second-guess whether your perspective on what happened during the project is reasonable|who was also part of that prior project/g,
     className: styles.markTask,
   },
   {
-    regex: /OpenAssist|CorpAssist/g,
+    regex:
+      /OpenAssist, the general-purpose version of Assist|CorpAssist, the company-specific version of Assist|OpenAssist|CorpAssist/g,
     className: styles.markKnowledge,
   },
   {
@@ -39,7 +41,7 @@ const HIGHLIGHT_PATTERNS: { regex: RegExp; className: string }[] = [
   },
   {
     regex:
-      /You review the information it provides and use it to prepare your section of the presentation|You use its suggestions as a starting point, decide which ideas to develop, and prepare your section of the presentation|You review its feedback, decide which changes to make, and revise your section of the presentation accordingly|You consider its response and continue preparing your section of the presentation|to use that information to prepare your section of the presentation for you|You review the section it prepares before adding it to the presentation|determine which ideas are most promising, develop them, and prepare your section of the presentation|revise your draft for you to improve its clarity, organization, and completeness|You review the revised section before adding it to the presentation|You also ask it to determine how the task should be approached and prepare your section of the presentation/g,
+      /You prepare your section of the presentation yourself, using its output to support your preparation|prepare your section of the presentation yourself|revise your section of the presentation yourself accordingly|decide for yourself whether your interpretation is reasonable|prepare your section of the presentation for you by identifying and synthesizing recent products by NextGen's competitors|prepare your section of the presentation for you by researching recent industry trends, generating ideas, and developing them into proposals for new products or features for NextGen|revise your draft for you to improve its clarity, organization, and completeness|You rely on its assessment as you continue preparing your section|you search company websites and other publicly available sources|you brainstorm possible ideas for new products or features that NextGen could develop|you review your initial draft, considering its clarity, organization, and completeness|you revisit the project materials and think through which takeaways are most important/g,
     className: styles.markRole,
   },
 ];
@@ -97,23 +99,26 @@ export function VignettePanel({
   tags = [],
   currentPosition,
   total,
+  isPractice = false,
   panelRef,
 }: VignettePanelProps) {
   return (
     <section
       ref={panelRef}
       className={styles.vignettePanel}
-      aria-labelledby="vignette-heading"
+      aria-labelledby="scenario-heading"
     >
       <div className={styles.scenarioBar}>
         <p className={styles.scenarioBarLabel}>
-          Scenario {currentPosition}/{total}
+          {isPractice
+            ? "Practice scenario"
+            : `Scenario ${currentPosition}/${total}`}
         </p>
         <BackgroundDialog variant="onDark" />
       </div>
 
       <div className={styles.vignetteMain}>
-        <h1 id="vignette-heading" className={styles.srOnly}>
+        <h1 id="scenario-heading" className={styles.srOnly}>
           {title}
         </h1>
 
@@ -122,7 +127,12 @@ export function VignettePanel({
         </div>
 
         {tags.length > 0 && (
-          <ul className={styles.tagGrid} aria-label="Scenario factors">
+          <ul
+            className={`${styles.tagGrid} ${
+              tags.length === 1 ? styles.tagGridSingle : ""
+            }`}
+            aria-label="Scenario factors"
+          >
             {tags.map((tag) => (
               <li
                 className={styles.tagCard}

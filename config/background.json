@@ -44,7 +44,7 @@
             },
             { "text": "for about as long as you have", "bold": true },
             {
-              "text": ". You and Sam have worked together regularly and have a "
+              "text": ". Through their work at NextGen, Sam has developed an understanding of the company, its work, and the kinds of projects your team handles. You and Sam have worked together regularly and have a "
             },
             { "text": "professional working relationship", "bold": true },
             { "text": "." }
@@ -55,7 +55,8 @@
     {
       "id": "assist-versions",
       "title": "Two versions of Assist",
-      "diagram": "assist-versions",
+      "image": "/openassist-vs-corpassist.png",
+      "imageAlt": "Comparison of OpenAssist using general information and CorpAssist using NextGen-specific information",
       "blocks": [
         {
           "type": "paragraph",
@@ -63,7 +64,7 @@
             { "text": "NextGen provides employees with access to an " },
             { "text": "AI chatbot called Assist", "bold": true },
             {
-              "text": ". Both versions of Assist are approved by NextGen and comply with the company's privacy and security requirements:"
+              "text": ". Assist fully complies with the company's privacy and security requirements. In each scenario, you will use one of these two versions:"
             }
           ]
         },
@@ -75,7 +76,7 @@
               { "text": ": A " },
               { "text": "general-purpose", "bold": true },
               {
-                "text": " version comparable to leading AI chatbots (e.g., ChatGPT, Claude, or Gemini). It uses general information."
+                "text": " version comparable to leading AI chatbots (e.g., ChatGPT, Claude, or Gemini)."
               }
             ],
             [
@@ -94,7 +95,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The diagram below shows how the same question can produce different answers depending on which version you use."
+              "text": "The diagram above shows how the same question can produce different answers depending on which version you use."
             }
           ]
         }
@@ -103,12 +104,15 @@
     {
       "id": "workspace",
       "title": "Where you use Assist",
-      "diagram": "workspace",
+      "image": "/individual-vs-shared.png",
+      "imageAlt": "Comparison of Assist in a shared team channel versus a private individual chat",
       "blocks": [
         {
           "type": "paragraph",
           "segments": [
-            { "text": "Either version of Assist can be used " },
+            {
+              "text": "In each scenario, you will use Assist either "
+            },
             { "text": "individually on your own computer", "bold": true },
             {
               "text": " (not visible to your teammates) or "
@@ -129,7 +133,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The diagram below compares these two ways of using Assist."
+              "text": "The diagram above compares these two ways of using Assist."
             }
           ]
         }
@@ -143,7 +147,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The following scenarios concern an upcoming presentation that your team is preparing for NextGen's senior leadership team."
+              "text": "The following scenarios concern an upcoming presentation that your team, including Sam, is preparing for NextGen's senior leadership team."
             }
           ]
         },
@@ -151,7 +155,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "In each scenario, you will read about how you use Assist on a task while Sam works on another section of the same presentation. After each scenario, you will answer the same set of questions."
+              "text": "In each scenario, you will read about a task you work on while Sam works on another section of the same presentation. After each scenario, you will answer the same set of questions."
             }
           ]
         }
