@@ -76,13 +76,13 @@ export function BackgroundContent({
 
         return (
           <div key={page.id} className={styles.pageSection}>
-            {imageSrc ? (
+            {!isDiagram && imageSrc ? (
               <Image
-                className={isDiagram ? styles.diagramImage : styles.image}
+                className={styles.image}
                 src={imageSrc}
                 alt={imageAlt}
                 width={1024}
-                height={isDiagram ? 700 : 443}
+                height={443}
                 priority={page.id === selectedPages[0]?.id}
               />
             ) : null}
@@ -92,6 +92,16 @@ export function BackgroundContent({
               </h1>
               {renderBlocks(page.blocks, page.id)}
             </div>
+            {isDiagram && imageSrc ? (
+              <Image
+                className={styles.diagramImage}
+                src={imageSrc}
+                alt={imageAlt}
+                width={1024}
+                height={700}
+                priority={page.id === selectedPages[0]?.id}
+              />
+            ) : null}
           </div>
         );
       })}

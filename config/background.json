@@ -95,7 +95,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The diagram above shows how the same question can produce different answers depending on which version you use."
+              "text": "The diagram below shows how the same question can produce different answers depending on which version you use."
             }
           ]
         }
@@ -133,7 +133,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The diagram above compares these two ways of using Assist."
+              "text": "The diagram below compares these two ways of using Assist."
             }
           ]
         }
