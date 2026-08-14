@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   counterbalanceConfig,
+  getPracticeVignetteById,
   getVignetteById,
+  practiceVignettes,
   questionConfig,
   studySettings,
   vignettes,
@@ -10,7 +12,14 @@ import {
   buildResponseRow,
   SubmissionValidationError,
 } from "@/lib/submission";
+import {
+  applyTeammateName,
+  buildShuffledQuestionOrder,
+  buildTeammateCycle,
+} from "@/lib/studyRandomization";
 import { validateStudyConfig } from "@/lib/validation";
+
+const defaultQuestionOrder = ["q1", "q2", "q3", "q4", "q5", "q6"];
 
 const completeAnswers = {
   q1: "Agree",
@@ -48,6 +57,9 @@ describe("study configuration", () => {
     expect(getVignetteById("v01")?.id).toBe("v01");
     expect(getVignetteById("v32")?.id).toBe("v32");
     expect(getVignetteById("v33")).toBeUndefined();
+    expect(practiceVignettes).toHaveLength(4);
+    expect(getPracticeVignetteById("p01")?.id).toBe("p01");
+    expect(getPracticeVignetteById("v01")).toBeUndefined();
   });
 });
 
@@ -59,6 +71,8 @@ describe("response rows", () => {
         vignetteId: "v01",
         position: 1,
         answers: completeAnswers,
+        teammateName: "Taylor",
+        questionOrder: defaultQuestionOrder,
         timeSpentMs: 1000,
       },
       ["v01"],
@@ -72,10 +86,14 @@ describe("response rows", () => {
       directedness: "Supporting",
       data_access: "OpenAssist",
       visibility: "Individual",
+      teammate_name: "Taylor",
+      question_order: defaultQuestionOrder,
       q1_value_feedback: "Agree",
       q6_rather_work_without: "Agree",
       time_spent_ms: 1000,
     });
+    expect(row.full_vignette_text).toContain("Taylor is working");
+    expect(row.full_vignette_text).not.toContain("Sam is working");
   });
 
   it("rejects missing answers and mismatched vignette positions", () => {
@@ -86,6 +104,8 @@ describe("response rows", () => {
           vignetteId: "v02",
           position: 1,
           answers: completeAnswers,
+          teammateName: "Taylor",
+          questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
         ["v01"],
@@ -99,10 +119,79 @@ describe("response rows", () => {
           vignetteId: "v01",
           position: 1,
           answers: { ...completeAnswers, q6: "" },
+          teammateName: "Taylor",
+          questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
         ["v01"],
       ),
     ).toThrow("Every question requires a valid response.");
+  });
+
+  it("saves practice scenarios with a clear practice flag", () => {
+    const row = buildResponseRow(
+      {
+        pid: "P1",
+        vignetteId: "p01",
+        position: 0,
+        isPractice: true,
+        answers: completeAnswers,
+        teammateName: "Riley",
+        questionOrder: ["q3", "q1", "q2", "q6", "q4", "q5"],
+        timeSpentMs: 800,
+      },
+      ["v01"],
+    );
+
+    expect(row).toMatchObject({
+      pid: "P1",
+      vignette_id: "p01",
+      vignette_number: 0,
+      is_practice: true,
+      task_type: "Information Seeking",
+      directedness: "N/A",
+      data_access: "N/A",
+      visibility: "N/A",
+      teammate_name: "Riley",
+      question_order: ["q3", "q1", "q2", "q6", "q4", "q5"],
+      q1_value_feedback: "Agree",
+      time_spent_ms: 800,
+    });
+  });
+});
+
+describe("within-participant randomization", () => {
+  it("shuffles questions within blocks and may swap block order", () => {
+    const order = buildShuffledQuestionOrder("pid-order-a", [
+      "q1",
+      "q2",
+      "q3",
+      "q4",
+      "q5",
+      "q6",
+    ]);
+    const firstBlock = new Set(order.slice(0, 3));
+    const secondBlock = new Set(order.slice(3, 6));
+    const isBlock1First = ["q1", "q2", "q3"].every((id) => firstBlock.has(id));
+    const isBlock2First = ["q4", "q5", "q6"].every((id) => firstBlock.has(id));
+
+    expect(order).toHaveLength(6);
+    expect(new Set(order).size).toBe(6);
+    expect(isBlock1First || isBlock2First).toBe(true);
+    if (isBlock1First) {
+      expect(["q4", "q5", "q6"].every((id) => secondBlock.has(id))).toBe(true);
+    } else {
+      expect(["q1", "q2", "q3"].every((id) => secondBlock.has(id))).toBe(true);
+    }
+  });
+
+  it("cycles a shuffled gender-neutral teammate list", () => {
+    const cycle = buildTeammateCycle("pid-names-a");
+    expect(cycle).toHaveLength(4);
+    expect(new Set(cycle)).toEqual(new Set(["Taylor", "Jordan", "Riley", "Sam"]));
+    expect(applyTeammateName("Sam is working", "Taylor")).toBe("Taylor is working");
+    expect(
+      applyTeammateName("You would value {teammatePossessive} feedback.", "Jordan"),
+    ).toBe("You would value Jordan’s feedback.");
   });
 });

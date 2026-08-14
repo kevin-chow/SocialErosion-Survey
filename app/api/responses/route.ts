@@ -80,28 +80,31 @@ export async function POST(request: Request) {
   try {
     await query(
       `insert into public.vignette_responses (
-         pid, vignette_id, vignette_number,
+         pid, vignette_id, vignette_number, is_practice,
          task_type, task_type_jitter_v,
          directedness, directedness_jitter_v,
          data_access, data_access_jitter_v,
          visibility, visibility_jitter_v,
+         teammate_name, question_order,
          full_vignette_text,
          q1_value_feedback, q2_seek_feedback, q3_incorporate_feedback,
          q4_comfortable_feedback, q5_express_frustrations, q6_rather_work_without,
          time_spent_ms, started_at, submitted_at
        ) values (
-         $1, $2, $3,
-         $4, $5,
-         $6, $7,
-         $8, $9,
-         $10, $11,
-         $12,
-         $13, $14, $15,
+         $1, $2, $3, $4,
+         $5, $6,
+         $7, $8,
+         $9, $10,
+         $11, $12,
+         $13, $14,
+         $15,
          $16, $17, $18,
-         $19, $20, $21
+         $19, $20, $21,
+         $22, $23, $24
        )
        on conflict (pid, vignette_number) do update set
          vignette_id = excluded.vignette_id,
+         is_practice = excluded.is_practice,
          task_type = excluded.task_type,
          task_type_jitter_v = excluded.task_type_jitter_v,
          directedness = excluded.directedness,
@@ -110,6 +113,8 @@ export async function POST(request: Request) {
          data_access_jitter_v = excluded.data_access_jitter_v,
          visibility = excluded.visibility,
          visibility_jitter_v = excluded.visibility_jitter_v,
+         teammate_name = excluded.teammate_name,
+         question_order = excluded.question_order,
          full_vignette_text = excluded.full_vignette_text,
          q1_value_feedback = excluded.q1_value_feedback,
          q2_seek_feedback = excluded.q2_seek_feedback,
@@ -124,6 +129,7 @@ export async function POST(request: Request) {
         row.pid,
         row.vignette_id,
         row.vignette_number,
+        row.is_practice,
         row.task_type,
         row.task_type_jitter_v,
         row.directedness,
@@ -132,6 +138,8 @@ export async function POST(request: Request) {
         row.data_access_jitter_v,
         row.visibility,
         row.visibility_jitter_v,
+        row.teammate_name,
+        row.question_order,
         row.full_vignette_text,
         row.q1_value_feedback,
         row.q2_seek_feedback,
@@ -148,7 +156,7 @@ export async function POST(request: Request) {
     const countResult = await query<{ count: string }>(
       `select count(*)::text as count
        from public.vignette_responses
-       where pid = $1`,
+       where pid = $1 and is_practice = false`,
       [row.pid],
     );
     const count = Number(countResult.rows[0]?.count ?? 0);

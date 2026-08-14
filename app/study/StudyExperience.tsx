@@ -5,8 +5,18 @@ import { useRouter } from "next/navigation";
 import { VignettePanel } from "@/components/VignettePanel";
 import redirects from "@/config/redirects.json";
 import { buildCompletionQualtricsUrl } from "@/lib/prolific";
+import {
+  applyTeammateName,
+  buildShuffledQuestionOrder,
+  buildTeammateCycle,
+  createRng,
+  hashSeed,
+  teammateConfig,
+  teammateForStep,
+} from "@/lib/studyRandomization";
 import type {
   AttentionCheckQuestion,
+  QuestionSegment,
   SharedQuestion,
   SharedQuestionConfig,
   VignetteCondition,
@@ -22,8 +32,9 @@ interface StudyExperienceProps {
 interface StudyStep {
   kind: "practice" | "main";
   vignette: VignetteCondition;
-  /** 1–8 for main scenarios; omitted for practice. */
-  apiPosition?: number;
+  /** 0 for practice; 1–8 for main scenarios. */
+  apiPosition: number;
+  teammateName: string;
   attentionCheck?: AttentionCheckQuestion;
   attentionInsertAt?: number;
 }
@@ -32,24 +43,19 @@ type DisplayQuestion =
   | { kind: "survey"; question: SharedQuestion }
   | { kind: "attention"; question: AttentionCheckQuestion };
 
-function hashSeed(input: string): number {
-  let hash = 2166136261;
-  for (let index = 0; index < input.length; index += 1) {
-    hash ^= input.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return hash >>> 0;
+function withTeammateText(text: string, teammateName: string): string {
+  return applyTeammateName(text, teammateName);
 }
 
-function createRng(seed: number) {
-  let state = seed || 1;
-  return () => {
-    state |= 0;
-    state = (state + 0x6d2b79f5) | 0;
-    let next = Math.imul(state ^ (state >>> 15), 1 | state);
-    next ^= next + Math.imul(next ^ (next >>> 7), 61 | next);
-    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
-  };
+function withTeammateSegments(
+  segments: QuestionSegment[] | undefined,
+  fallbackText: string | undefined,
+  teammateName: string,
+): QuestionSegment[] {
+  return (segments ?? [{ text: fallbackText ?? "" }]).map((segment) => ({
+    ...segment,
+    text: applyTeammateName(segment.text, teammateName),
+  }));
 }
 
 function pickPracticeVignette(
@@ -68,12 +74,19 @@ function buildStudySteps(
   questionCount: number,
 ): StudyStep[] {
   const practice = pickPracticeVignette(pid, practiceOptions);
+  const teammateCycle = buildTeammateCycle(pid);
   const steps: StudyStep[] = [
-    { kind: "practice", vignette: practice },
+    {
+      kind: "practice",
+      vignette: practice,
+      apiPosition: 0,
+      teammateName: teammateForStep(teammateCycle, 0),
+    },
     ...assigned.map((vignette, index) => ({
       kind: "main" as const,
       vignette,
       apiPosition: index + 1,
+      teammateName: teammateForStep(teammateCycle, index + 1),
     })),
   ];
 
@@ -147,6 +160,8 @@ export function StudyExperience({
   const [showSavedNotice, setShowSavedNotice] = useState(false);
   const [pendingComplete, setPendingComplete] = useState(false);
   const [sessionEnded, setSessionEnded] = useState(false);
+  const [questionOrder, setQuestionOrder] = useState<string[]>([]);
+  const [showConstraintsNotice, setShowConstraintsNotice] = useState(false);
   const startedAtRef = useRef(Date.now());
   const questionsPanelRef = useRef<HTMLElement>(null);
   const vignettePanelRef = useRef<HTMLElement>(null);
@@ -209,16 +224,28 @@ export function StudyExperience({
     const storedPosition = Number(
       sessionStorage.getItem(`vignette-study:position:${storedPid}`),
     );
-    if (
+    const startingIndex =
       Number.isInteger(storedPosition) &&
       storedPosition >= 0 &&
       storedPosition < builtSteps.length
-    ) {
-      setActiveIndex(storedPosition);
-    }
+        ? storedPosition
+        : 0;
+    setActiveIndex(startingIndex);
 
     setPid(storedPid);
     setSteps(builtSteps);
+    setQuestionOrder(
+      buildShuffledQuestionOrder(
+        storedPid,
+        questionConfig.questions.map((question) => question.id),
+      ),
+    );
+    setShowConstraintsNotice(
+      startingIndex === 0 &&
+        sessionStorage.getItem(
+          `vignette-study:constraints-ack:${storedPid}`,
+        ) !== "true",
+    );
     startedAtRef.current = Date.now();
     setReady(true);
   }, [practiceVignettes, questionConfig, router, vignettes]);
@@ -249,15 +276,24 @@ export function StudyExperience({
   }, [activeIndex, completed, ready, sessionEnded, showSavedNotice]);
 
   const activeStep = steps[activeIndex];
+  const orderedSurveyQuestions = useMemo(() => {
+    const byId = new Map(
+      questionConfig.questions.map((question) => [question.id, question]),
+    );
+    const ordered = questionOrder
+      .map((id) => byId.get(id))
+      .filter((question): question is SharedQuestion => Boolean(question));
+    return ordered.length === questionConfig.questions.length
+      ? ordered
+      : questionConfig.questions;
+  }, [questionConfig.questions, questionOrder]);
   const displayQuestions = useMemo(
     () =>
       activeStep
-        ? buildDisplayQuestions(activeStep, questionConfig.questions)
+        ? buildDisplayQuestions(activeStep, orderedSurveyQuestions)
         : [],
-    [activeStep, questionConfig.questions],
+    [activeStep, orderedSurveyQuestions],
   );
-
-  const mainScenarioCount = steps.filter((step) => step.kind === "main").length;
 
   function endFailedSession() {
     sessionStorage.setItem(`vignette-study:attention-check:${pid}`, "failed");
@@ -283,21 +319,6 @@ export function StudyExperience({
         }
       }
 
-      if (activeStep.kind === "practice") {
-        const nextIndex = activeIndex + 1;
-        sessionStorage.setItem(
-          `vignette-study:position:${pid}`,
-          String(nextIndex),
-        );
-        setPendingComplete(false);
-        setShowSavedNotice(true);
-        sessionStorage.setItem(
-          "vignette-study:pending-next",
-          String(nextIndex),
-        );
-        return;
-      }
-
       const surveyAnswers = Object.fromEntries(
         Object.entries(answers).filter(([questionId]) =>
           questionConfig.questions.some((question) => question.id === questionId),
@@ -311,6 +332,9 @@ export function StudyExperience({
           pid,
           vignetteId: activeStep.vignette.id,
           position: activeStep.apiPosition,
+          isPractice: activeStep.kind === "practice",
+          teammateName: activeStep.teammateName,
+          questionOrder,
           answers: surveyAnswers,
           timeSpentMs: Math.min(
             Date.now() - startedAtRef.current,
@@ -356,6 +380,12 @@ export function StudyExperience({
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function acknowledgeConstraintsNotice() {
+    sessionStorage.setItem(`vignette-study:constraints-ack:${pid}`, "true");
+    setShowConstraintsNotice(false);
+    startedAtRef.current = Date.now();
   }
 
   function acknowledgeSavedNotice() {
@@ -424,7 +454,6 @@ export function StudyExperience({
     );
   }
 
-  const isPractice = activeStep.kind === "practice";
   const progressPercent = ((activeIndex + 1) / steps.length) * 100;
 
   return (
@@ -440,12 +469,14 @@ export function StudyExperience({
         <VignettePanel
           panelRef={vignettePanelRef}
           title={activeStep.vignette.title}
-          body={activeStep.vignette.body}
+          body={withTeammateText(
+            activeStep.vignette.body,
+            activeStep.teammateName,
+          )}
           assist={activeStep.vignette.assist}
           tags={activeStep.vignette.tags}
-          currentPosition={activeStep.apiPosition ?? 1}
-          total={mainScenarioCount}
-          isPractice={isPractice}
+          currentPosition={activeIndex + 1}
+          total={steps.length}
         />
         <section
           ref={questionsPanelRef}
@@ -455,6 +486,9 @@ export function StudyExperience({
           <h2 id="survey-questions-heading" className={styles.srOnly}>
             Questions about this scenario
           </h2>
+          <p className={styles.constraintsReminder}>
+            {teammateConfig.constraintsReminder}
+          </p>
           {questionConfig.instruction && (
             <p className={styles.questionInstruction}>
               <strong>
@@ -474,8 +508,10 @@ export function StudyExperience({
                       <span className={styles.questionNumber}>
                         {index + 1}.
                       </span>{" "}
-                      {(
-                        question.segments ?? [{ text: question.text ?? "" }]
+                      {withTeammateSegments(
+                        question.segments,
+                        question.text,
+                        activeStep.teammateName,
                       ).map((segment, segmentIndex) =>
                         segment.bold ? (
                           <strong key={`${question.id}-${segmentIndex}`}>
@@ -504,8 +540,12 @@ export function StudyExperience({
                                   [question.id]: optionValue,
                                 }))
                               }
-                              required={question.required}
-                              disabled={submitting || showSavedNotice}
+                            required={question.required}
+                            disabled={
+                              submitting ||
+                              showSavedNotice ||
+                              showConstraintsNotice
+                            }
                             />
                             <span>{option.label}</span>
                           </label>
@@ -525,27 +565,46 @@ export function StudyExperience({
 
             <div className={styles.submitRow}>
               <p aria-live="polite">
-                {isPractice
-                  ? "Practice responses are not saved to the study data."
-                  : "Responses are saved when you continue."}
+                Responses are saved when you continue.
               </p>
               <button
                 className={styles.nextButton}
                 type="submit"
-                disabled={submitting || showSavedNotice}
+                disabled={
+                  submitting || showSavedNotice || showConstraintsNotice
+                }
               >
                 {submitting
                   ? "Saving…"
-                  : isPractice
-                    ? "Continue to scenarios"
-                    : activeIndex === steps.length - 1
-                      ? "Submit final responses"
-                      : "Save and continue"}
+                  : activeIndex === steps.length - 1
+                    ? "Submit final responses"
+                    : "Save and continue"}
               </button>
             </div>
           </form>
         </section>
       </div>
+
+      {showConstraintsNotice && (
+        <div className={styles.noticeBackdrop} role="presentation">
+          <section
+            className={`${styles.noticeDialog} ${styles.noticeDialogWide}`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="constraints-title"
+          >
+            <h2 id="constraints-title">{teammateConfig.constraintsTitle}</h2>
+            <p>{teammateConfig.constraintsBody}</p>
+            <button
+              className={styles.nextButton}
+              type="button"
+              onClick={acknowledgeConstraintsNotice}
+            >
+              {teammateConfig.constraintsAcknowledgeLabel}
+            </button>
+          </section>
+        </div>
+      )}
 
       {showSavedNotice && (
         <div className={styles.noticeBackdrop} role="presentation">
@@ -556,18 +615,12 @@ export function StudyExperience({
             aria-labelledby="response-saved-title"
           >
             <h2 id="response-saved-title">
-              {pendingComplete
-                ? "Study submitted"
-                : isPractice
-                  ? "Practice complete"
-                  : "Response saved"}
+              {pendingComplete ? "Study submitted" : "Response saved"}
             </h2>
             <p>
               {pendingComplete
                 ? "Thank you. All of your responses have been recorded. Continue to the post-study questionnaire."
-                : isPractice
-                  ? "You can now begin the main scenarios. Continue when you are ready."
-                  : `Scenario ${activeStep.apiPosition} of ${mainScenarioCount} is complete. Continue to the next scenario.`}
+                : `Scenario ${activeIndex + 1} of ${steps.length} is complete. Continue to the next scenario.`}
             </p>
             <button
               className={styles.nextButton}
@@ -576,9 +629,7 @@ export function StudyExperience({
             >
               {pendingComplete
                 ? "Continue to questionnaire"
-                : isPractice
-                  ? "Begin scenarios"
-                  : "Continue to next scenario"}
+                : "Continue to next scenario"}
             </button>
           </section>
         </div>

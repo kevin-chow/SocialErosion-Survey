@@ -37,14 +37,14 @@
         {
           "type": "paragraph",
           "segments": [
-            { "text": "One of your " },
-            { "text": "peer teammates is Sam", "bold": true },
+            { "text": "Four of your " },
+            { "text": "peer teammates are Taylor, Jordan, Riley, and Sam", "bold": true },
             {
-              "text": ", who holds a similar role and has been part of the team "
+              "text": ", who hold similar roles and have been part of the team "
             },
             { "text": "for about as long as you have", "bold": true },
             {
-              "text": ". Through their work at NextGen, Sam has developed an understanding of the company, its work, and the kinds of projects your team handles. You and Sam have worked together regularly and have a "
+              "text": ". Through their work at NextGen, they have developed an understanding of the company, its work, and the kinds of projects your team handles. You have worked together regularly and have a "
             },
             { "text": "professional working relationship", "bold": true },
             { "text": "." }
@@ -125,7 +125,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "In the shared workspace, teammates such as Sam can view your interactions with Assist and participate in the conversation. In an individual workspace, AI conversations are only visible to you."
+              "text": "In the shared workspace, teammates such as Taylor, Jordan, Riley, or Sam can view your interactions with Assist and participate in the conversation. In an individual workspace, AI conversations are only visible to you."
             }
           ]
         },
@@ -147,7 +147,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The following scenarios concern an upcoming presentation that your team, including Sam, is preparing for NextGen's senior leadership team."
+              "text": "The following scenarios concern an upcoming presentation that your team, including your peer teammates, is preparing for NextGen's senior leadership team."
             }
           ]
         },
@@ -155,7 +155,7 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "In each scenario, you will read about a task you work on while Sam works on another section of the same presentation. After each scenario, you will answer the same set of questions."
+              "text": "In each scenario, you will read about a task you work on while one of your peer teammates works on another section of the same presentation. After each scenario, you will answer the same set of questions."
             }
           ]
         }
@@ -168,12 +168,12 @@
       "afterPageId": "team",
       "title": "Quick question",
       "lead": "Please answer based on what you just read.",
-      "prompt": "According to the information you just read, who is Sam?",
+      "prompt": "According to the information you just read, who are Taylor, Jordan, Riley, and Sam?",
       "options": [
-        { "value": "manager", "label": "Your manager at NextGen" },
-        { "value": "peer", "label": "A peer teammate with a similar role" },
-        { "value": "client", "label": "An external client" },
-        { "value": "assistant", "label": "An AI assistant" }
+        { "value": "manager", "label": "Your managers at NextGen" },
+        { "value": "peer", "label": "Peer teammates with similar roles" },
+        { "value": "client", "label": "External clients" },
+        { "value": "assistant", "label": "AI assistants" }
       ],
       "correctValue": "peer"
     },
@@ -199,7 +199,7 @@
       "prompt": "When Assist is used in the team's shared workspace, who can see the AI conversation?",
       "options": [
         { "value": "only-you", "label": "Only you" },
-        { "value": "team", "label": "Teammates such as Sam" },
+        { "value": "team", "label": "Your peer teammates" },
         { "value": "clients", "label": "Only external clients" },
         { "value": "public", "label": "Anyone on the internet" }
       ],

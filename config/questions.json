@@ -14,7 +14,7 @@
       "segments": [
         { "text": "You would " },
         { "text": "value", "bold": true },
-        { "text": " Sam’s feedback on this task." }
+        { "text": " {teammatePossessive} feedback on this task." }
       ],
       "required": true
     },
@@ -24,7 +24,7 @@
       "segments": [
         { "text": "You would " },
         { "text": "seek", "bold": true },
-        { "text": " Sam’s feedback on this task." }
+        { "text": " {teammatePossessive} feedback on this task." }
       ],
       "required": true
     },
@@ -34,7 +34,7 @@
       "segments": [
         { "text": "You would " },
         { "text": "actively incorporate", "bold": true },
-        { "text": " Sam’s feedback on this task." }
+        { "text": " {teammatePossessive} feedback on this task." }
       ],
       "required": true
     },
@@ -43,7 +43,7 @@
       "responseColumn": "q4_comfortable_feedback",
       "segments": [
         { "text": "You would " },
-        { "text": "feel comfortable with involving Sam", "bold": true },
+        { "text": "feel comfortable with involving {teammate}", "bold": true },
         { "text": " in this task." }
       ],
       "required": true
@@ -54,7 +54,7 @@
       "segments": [
         { "text": "You would " },
         { "text": "express frustrations", "bold": true },
-        { "text": " with the task to Sam." }
+        { "text": " with the task to {teammate}." }
       ],
       "required": true
     },
@@ -64,7 +64,7 @@
       "segments": [
         { "text": "You would rather " },
         { "text": "work on this task without", "bold": true },
-        { "text": " Sam." }
+        { "text": " {teammate}." }
       ],
       "required": true
     }

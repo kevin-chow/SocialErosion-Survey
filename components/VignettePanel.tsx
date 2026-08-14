@@ -11,7 +11,6 @@ interface VignettePanelProps {
   tags?: VignetteTag[];
   currentPosition: number;
   total: number;
-  isPractice?: boolean;
   panelRef?: Ref<HTMLElement>;
 }
 
@@ -99,7 +98,6 @@ export function VignettePanel({
   tags = [],
   currentPosition,
   total,
-  isPractice = false,
   panelRef,
 }: VignettePanelProps) {
   return (
@@ -110,9 +108,7 @@ export function VignettePanel({
     >
       <div className={styles.scenarioBar}>
         <p className={styles.scenarioBarLabel}>
-          {isPractice
-            ? "Practice scenario"
-            : `Scenario ${currentPosition}/${total}`}
+          Scenario {currentPosition}/{total}
         </p>
         <BackgroundDialog variant="onDark" />
       </div>

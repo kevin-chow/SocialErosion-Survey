@@ -250,6 +250,13 @@
   background: #ffffff;
 }
 
+.constraintsReminder {
+  margin: 0 0 16px;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 .questionInstruction {
   margin: 0 0 20px;
   color: #111827;
@@ -408,6 +415,10 @@
   border-radius: 14px;
   background: #ffffff;
   box-shadow: 0 24px 80px rgb(0 0 0 / 28%);
+}
+
+.noticeDialogWide {
+  width: min(560px, 100%);
 }
 
 .noticeDialog h2 {
