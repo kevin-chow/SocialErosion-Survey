@@ -15,7 +15,7 @@ export default function ConsentPage() {
         <header className={styles.consentHeader}>
           <Image
             className={styles.consentHeaderLogo}
-            src="/nyu-header-logo.png"
+            src="/nyu-banner-4x.png"
             alt="New York University"
             width={1024}
             height={56}

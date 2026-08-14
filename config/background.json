@@ -17,9 +17,9 @@
               "text": "NextGen, a large, fast-paced, tech-forward company",
               "bold": true
             },
-            {
-              "text": ". Your role involves researching industry developments and contributing to important internal reports and presentations."
-            }
+            { "text": ". Your role involves researching industry developments and contributing to " },
+            { "text": "important", "bold": true },
+            { "text": " internal reports and presentations." }
           ]
         },
         {
@@ -44,9 +44,9 @@
             },
             { "text": "for about as long as you have", "bold": true },
             {
-              "text": ". Through their work at NextGen, they have developed an understanding of the company, its work, and the kinds of projects your team handles. You have worked together regularly and have a "
+              "text": ". Through their work at NextGen, they have developed an understanding of the company, its work, and the kinds of projects your team handles. You have all worked together regularly and have "
             },
-            { "text": "professional working relationship", "bold": true },
+            { "text": "professional working relationships", "bold": true },
             { "text": "." }
           ]
         }
@@ -55,7 +55,7 @@
     {
       "id": "assist-versions",
       "title": "Two versions of Assist",
-      "image": "/openassist-vs-corpassist.png",
+      "image": "/open-vs-corp-assist-v2-4x.png",
       "imageAlt": "Comparison of OpenAssist using general information and CorpAssist using NextGen-specific information",
       "blocks": [
         {
@@ -104,7 +104,7 @@
     {
       "id": "workspace",
       "title": "Where you use Assist",
-      "image": "/individual-vs-shared.png",
+      "image": "/personal-vs-team-assist-4x.png",
       "imageAlt": "Comparison of Assist in a shared team channel versus a private individual chat",
       "blocks": [
         {
