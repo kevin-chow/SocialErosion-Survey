@@ -147,8 +147,10 @@
           "type": "paragraph",
           "segments": [
             {
-              "text": "The following scenarios concern an upcoming presentation that your team, including your peer teammates, is preparing for NextGen's senior leadership team."
-            }
+              "text": "The following scenarios concern a presentation that your team, including your peer teammates, is preparing for NextGen's senior leadership team. The presentation is "
+            },
+            { "text": "due today", "bold": true },
+            { "text": "." }
           ]
         },
         {
@@ -204,6 +206,20 @@
         { "value": "public", "label": "Anyone on the internet" }
       ],
       "correctValue": "team"
+    },
+    {
+      "id": "check-deadline",
+      "afterPageId": "presentation",
+      "title": "Quick question",
+      "lead": "Please answer based on what you just read.",
+      "prompt": "When is the presentation due?",
+      "options": [
+        { "value": "today", "label": "Today" },
+        { "value": "tomorrow", "label": "Tomorrow" },
+        { "value": "next-week", "label": "Next week" },
+        { "value": "no-deadline", "label": "There is no deadline" }
+      ],
+      "correctValue": "today"
     }
   ]
 }
