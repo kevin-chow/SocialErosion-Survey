@@ -594,7 +594,20 @@ export function StudyExperience({
             aria-labelledby="constraints-title"
           >
             <h2 id="constraints-title">{teammateConfig.constraintsTitle}</h2>
-            <p>{teammateConfig.constraintsBody}</p>
+            <p className={styles.constraintsIntro}>
+              {teammateConfig.constraintsBody.intro}
+            </p>
+            <ul className={styles.constraintsList}>
+              {teammateConfig.constraintsBody.items.map((item) => (
+                <li key={item.label}>
+                  <strong>{item.label}</strong>
+                  {item.detail && ` (${item.detail})`}
+                </li>
+              ))}
+            </ul>
+            <p className={styles.constraintsOutro}>
+              {teammateConfig.constraintsBody.outro}
+            </p>
             <button
               className={styles.nextButton}
               type="button"

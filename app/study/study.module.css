@@ -433,6 +433,25 @@
   line-height: 1.6;
 }
 
+.noticeDialog .constraintsIntro {
+  margin-bottom: 12px;
+}
+
+.constraintsList {
+  margin: 0 0 12px;
+  padding-left: 24px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.constraintsList li + li {
+  margin-top: 6px;
+}
+
+.noticeDialog .constraintsOutro {
+  margin-bottom: 22px;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;

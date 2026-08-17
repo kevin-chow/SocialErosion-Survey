@@ -4,12 +4,12 @@
     "slug": "practice-information-seeking",
     "title": "Workplace Scenario",
     "conditionLabel": "Information Seeking | N/A | N/A | N/A",
-    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you search company websites and other publicly available sources to identify recent products launched by competing companies and other relevant competitors to examine. You review the information you find and use it to prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation where you need to search for recent products launched by NextGen's competitors. Sam is working on another section of the same presentation.\n\nFor this task, you search company websites and other publicly available sources to identify recent products launched by competing companies and other relevant competitors to examine. You review the information you find and use it to continue preparing your section of the presentation.",
     "tags": [
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       }
     ],
@@ -23,7 +23,7 @@
     "slug": "practice-brainstorming",
     "title": "Workplace Scenario",
     "conditionLabel": "Brainstorming | N/A | N/A | N/A",
-    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you brainstorm possible ideas for new products or features that NextGen could develop. You consider the ideas you generate, decide which ones to develop, and use them to prepare your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation proposing ideas for new products or features that NextGen could develop in response to recent industry trends. Sam is working on another section of the same presentation.\n\nFor this task, you brainstorm possible ideas for new products or features that NextGen could develop. You consider the ideas you generate, consider which ones to develop, and continue preparing your section of the presentation.",
     "tags": [
       {
         "factor": "task_type",
@@ -42,12 +42,12 @@
     "slug": "practice-feedback",
     "title": "Workplace Scenario",
     "conditionLabel": "Feedback | N/A | N/A | N/A",
-    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you review your initial draft, considering its clarity, organization, and completeness. You decide which changes to make and revise your section before adding it to the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation explaining the implications of recent industry trends for NextGen. You have already prepared an initial draft of your section, but think there may be ways to improve it. Sam is working on another section of the same presentation.\n\nFor this task, you review your initial draft, considering its clarity, organization, and completeness. You identify potential revisions based on your review and continue preparing your section of the presentation.",
     "tags": [
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       }
     ],
@@ -66,7 +66,7 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       }
     ],
