@@ -16,6 +16,7 @@ import {
   applyTeammateName,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
+  selectSeededSubset,
 } from "@/lib/studyRandomization";
 import { validateStudyConfig } from "@/lib/validation";
 
@@ -128,7 +129,7 @@ describe("response rows", () => {
     ).toThrow("Every question requires a valid response.");
   });
 
-  it("saves practice scenarios with a clear practice flag", () => {
+  it("saves initial non-AI scenarios at either reserved position", () => {
     const row = buildResponseRow(
       {
         pid: "P1",
@@ -157,10 +158,49 @@ describe("response rows", () => {
       q1_value_feedback: "Agree",
       time_spent_ms: 800,
     });
+
+    const firstNonAiRow = buildResponseRow(
+      {
+        pid: "P1",
+        vignetteId: "p02",
+        position: -1,
+        isPractice: true,
+        answers: completeAnswers,
+        teammateName: "Jordan",
+        questionOrder: defaultQuestionOrder,
+        timeSpentMs: 900,
+      },
+      ["v01"],
+    );
+    expect(firstNonAiRow).toMatchObject({
+      vignette_id: "p02",
+      vignette_number: -1,
+      is_practice: true,
+      task_type: "Brainstorming",
+    });
   });
 });
 
 describe("within-participant randomization", () => {
+  it("selects two distinct, deterministic non-AI scenarios", () => {
+    const firstSelection = selectSeededSubset(
+      "pid-practice-a:practice",
+      practiceVignettes,
+      2,
+    );
+    const repeatedSelection = selectSeededSubset(
+      "pid-practice-a:practice",
+      practiceVignettes,
+      2,
+    );
+
+    expect(firstSelection).toHaveLength(2);
+    expect(new Set(firstSelection.map((vignette) => vignette.id)).size).toBe(2);
+    expect(repeatedSelection.map((vignette) => vignette.id)).toEqual(
+      firstSelection.map((vignette) => vignette.id),
+    );
+  });
+
   it("shuffles questions within blocks and may swap block order", () => {
     const order = buildShuffledQuestionOrder("pid-order-a", [
       "q1",

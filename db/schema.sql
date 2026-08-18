@@ -65,7 +65,7 @@ create table if not exists public.vignette_responses (
   unique (pid, vignette_id),
   constraint vignette_responses_vignette_number_check
     check (
-      (is_practice = true and vignette_number = 0)
+      (is_practice = true and vignette_number in (-1, 0))
       or (is_practice = false and vignette_number between 1 and 32)
     )
 );

@@ -31,6 +31,23 @@ export function shuffleInPlace<T>(items: T[], rng: () => number): T[] {
   return items;
 }
 
+export function selectSeededSubset<T>(
+  seedInput: string,
+  options: readonly T[],
+  count: number,
+): T[] {
+  const rng = createRng(hashSeed(seedInput));
+  const remaining = [...options];
+  const selected: T[] = [];
+
+  while (selected.length < count && remaining.length > 0) {
+    const selectedIndex = Math.floor(rng() * remaining.length);
+    selected.push(remaining.splice(selectedIndex, 1)[0]);
+  }
+
+  return selected;
+}
+
 export function buildShuffledQuestionOrder(
   pid: string,
   questionIds: readonly string[],

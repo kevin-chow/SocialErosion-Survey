@@ -6,11 +6,16 @@ import { VignettePanel } from "@/components/VignettePanel";
 import redirects from "@/config/redirects.json";
 import { buildCompletionQualtricsUrl } from "@/lib/prolific";
 import {
+  NON_AI_SCENARIO_COUNT,
+  NON_AI_VIGNETTE_NUMBERS,
+} from "@/lib/studyConstants";
+import {
   applyTeammateName,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
   createRng,
   hashSeed,
+  selectSeededSubset,
   teammateConfig,
   teammateForStep,
 } from "@/lib/studyRandomization";
@@ -32,7 +37,7 @@ interface StudyExperienceProps {
 interface StudyStep {
   kind: "practice" | "main";
   vignette: VignetteCondition;
-  /** 0 for practice; 1–8 for main scenarios. */
+  /** -1 and 0 for initial non-AI scenarios; 1–8 for main scenarios. */
   apiPosition: number;
   teammateName: string;
   attentionCheck?: AttentionCheckQuestion;
@@ -58,13 +63,6 @@ function withTeammateSegments(
   }));
 }
 
-function pickPracticeVignette(
-  pid: string,
-  options: VignetteCondition[],
-): VignetteCondition {
-  const rng = createRng(hashSeed(`${pid}:practice`));
-  return options[Math.floor(rng() * options.length)] ?? options[0];
-}
 
 function buildStudySteps(
   pid: string,
@@ -73,20 +71,27 @@ function buildStudySteps(
   attentionChecks: AttentionCheckQuestion[],
   questionCount: number,
 ): StudyStep[] {
-  const practice = pickPracticeVignette(pid, practiceOptions);
+  const initialNonAiVignettes = selectSeededSubset(
+    `${pid}:practice`,
+    practiceOptions,
+    NON_AI_SCENARIO_COUNT,
+  );
   const teammateCycle = buildTeammateCycle(pid);
   const steps: StudyStep[] = [
-    {
-      kind: "practice",
-      vignette: practice,
-      apiPosition: 0,
-      teammateName: teammateForStep(teammateCycle, 0),
-    },
+    ...initialNonAiVignettes.map((vignette, index) => ({
+      kind: "practice" as const,
+      vignette,
+      apiPosition: NON_AI_VIGNETTE_NUMBERS[index],
+      teammateName: teammateForStep(teammateCycle, index),
+    })),
     ...assigned.map((vignette, index) => ({
       kind: "main" as const,
       vignette,
       apiPosition: index + 1,
-      teammateName: teammateForStep(teammateCycle, index + 1),
+      teammateName: teammateForStep(
+        teammateCycle,
+        initialNonAiVignettes.length + index,
+      ),
     })),
   ];
 
@@ -109,7 +114,7 @@ function buildStudySteps(
     .sort((left, right) => left - right);
 
   chosenSlots.forEach((assignedIndex, checkIndex) => {
-    const step = steps[assignedIndex + 1];
+    const step = steps[assignedIndex + initialNonAiVignettes.length];
     if (!step || step.kind !== "main") return;
     step.attentionCheck =
       attentionChecks[checkIndex % attentionChecks.length];

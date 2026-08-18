@@ -1,15 +1,16 @@
 # Workplace Vignette Study
 
 A Next.js survey for a 32-condition workplace AI vignette study with 500
-planned participants. Each participant receives eight counterbalanced
-vignettes, answers the same six questions in a fixed order, and saves one
-long-format row per vignette to Cloud SQL (Postgres).
+planned participants. Each participant receives two randomly selected non-AI
+scenarios followed by eight counterbalanced AI vignettes, answers the same six
+questions after each, and saves one long-format row per scenario to Cloud SQL
+(Postgres).
 
 ## Study flow
 
 ```text
-Consent → Participant ID → timed background reading → 6 counterbalanced
-vignettes → 5 required questions per vignette → completion
+Consent → Participant ID → timed background reading → 2 random non-AI scenarios
+→ 8 counterbalanced AI vignettes → 6 required questions per scenario → completion
 ```
 
 The consent page embeds the full informed consent form in a scrollable
@@ -26,12 +27,13 @@ confirms the write.
 - `config/study.json` — study size and assignment mode
 - `config/consent.json` — consent-page copy and full embedded consent form
 - `config/background.json` — background-page and dialog content
-- `config/vignettes.json` — vignette text and factor metadata
-- `config/questions.json` — the five shared questions and response scale
+- `config/vignettes.json` — AI vignette text and factor metadata
+- `config/practiceVignettes.json` — the four non-AI scenarios sampled at the start
+- `config/questions.json` — the six shared questions and response scale
 - `config/counterbalance.json` — all 500 eight-vignette assignment orders
 - `public/aise_consent_form.pdf` — archived PDF copy of the consent form
 
-All five shared questions have confirmed wording. See
+All six shared questions have confirmed wording. See
 [`docs/ADDING_OR_EDITING_VIGNETTES.md`](docs/ADDING_OR_EDITING_VIGNETTES.md).
 
 The assignment table gives every vignette exactly 125 exposures. Every

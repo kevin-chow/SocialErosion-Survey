@@ -5,9 +5,9 @@ import {
   teammateConfig,
 } from "@/lib/studyConfig";
 import { applyTeammateName } from "@/lib/studyRandomization";
+import { NON_AI_VIGNETTE_NUMBERS } from "@/lib/studyConstants";
 
 export const PID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
-export const PRACTICE_VIGNETTE_NUMBER = 0;
 
 export class SubmissionValidationError extends Error {}
 
@@ -112,14 +112,17 @@ export function buildResponseRow(
     if (!practiceVignette) {
       throw new SubmissionValidationError("Unknown practice scenario.");
     }
-    if (position !== PRACTICE_VIGNETTE_NUMBER) {
-      throw new SubmissionValidationError("Invalid practice scenario position.");
+    if (
+      typeof position !== "number" ||
+      !NON_AI_VIGNETTE_NUMBERS.some((number) => number === position)
+    ) {
+      throw new SubmissionValidationError("Invalid non-AI scenario position.");
     }
 
     return {
       pid,
       vignette_id: practiceVignette.id,
-      vignette_number: PRACTICE_VIGNETTE_NUMBER,
+      vignette_number: position,
       is_practice: true,
       task_type: displayFactor(practiceVignette.metadata?.task_type, {
         "information-seeking": "Information Seeking",
