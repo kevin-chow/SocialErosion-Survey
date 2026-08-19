@@ -11,11 +11,12 @@ import {
 } from "@/lib/studyConfig";
 import {
   applyTeammateName,
-  buildExpandedScenarioOrder,
+  buildScenarioAssignments,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
   createRng,
   hashSeed,
+  type ScenarioAssignment,
   teammateConfig,
   teammateForStep,
 } from "@/lib/studyRandomization";
@@ -34,7 +35,7 @@ interface StudyExperienceProps {
 
 interface StudyStep {
   vignette: VignetteCondition;
-  /** 0–9 for the ten main scenarios. */
+  /** -1 and 0 for non-AI; 1–8 for AI scenarios. */
   apiPosition: number;
   isPractice: boolean;
   teammateName: string;
@@ -63,26 +64,27 @@ function withTeammateSegments(
 
 function buildStudySteps(
   pid: string,
-  scenarioOrder: VignetteCondition[],
+  assignments: ScenarioAssignment[],
+  scenarios: VignetteCondition[],
   attentionChecks: AttentionCheckQuestion[],
   questionCount: number,
 ): StudyStep[] {
   const teammateCycle = buildTeammateCycle(pid);
-  const steps: StudyStep[] = scenarioOrder.map((vignette, index) => ({
+  const steps: StudyStep[] = scenarios.map((vignette, index) => ({
     vignette,
-    apiPosition: index,
-    isPractice: index === 0,
+    apiPosition: assignments[index]?.apiPosition ?? index,
+    isPractice: assignments[index]?.isPractice ?? false,
     teammateName: teammateForStep(teammateCycle, index),
   }));
 
-  if (attentionChecks.length === 0 || scenarioOrder.length <= 1) {
+  if (attentionChecks.length === 0 || scenarios.length <= 1) {
     return steps;
   }
 
   const rng = createRng(hashSeed(`${pid}:attention`));
-  const slotIndexes = scenarioOrder
+  const slotIndexes = steps
     .map((_, index) => index)
-    .filter((index) => index > 0);
+    .filter((index) => !steps[index]?.isPractice);
   for (let index = slotIndexes.length - 1; index > 0; index -= 1) {
     const swapWith = Math.floor(rng() * (index + 1));
     [slotIndexes[index], slotIndexes[swapWith]] = [
@@ -92,10 +94,7 @@ function buildStudySteps(
   }
 
   const chosenSlots = slotIndexes
-    .slice(
-      0,
-      Math.min(2, attentionChecks.length, Math.max(scenarioOrder.length - 1, 0)),
-    )
+    .slice(0, Math.min(2, attentionChecks.length, slotIndexes.length))
     .sort((left, right) => left - right);
 
   chosenSlots.forEach((scenarioIndex, checkIndex) => {
@@ -192,16 +191,18 @@ export function StudyExperience({
       return;
     }
 
-    let expandedOrder: string[];
+    let assignments: ScenarioAssignment[];
     try {
-      expandedOrder = buildExpandedScenarioOrder(storedPid, vignetteOrder);
+      assignments = buildScenarioAssignments(storedPid, vignetteOrder);
     } catch {
       sessionStorage.removeItem("vignette-study:pid");
       router.replace("/participant");
       return;
     }
 
-    const assigned = expandedOrder.map((id) => getScenarioById(id));
+    const assigned = assignments.map(({ vignetteId }) =>
+      getScenarioById(vignetteId),
+    );
     if (assigned.some((vignette) => !vignette)) {
       sessionStorage.removeItem("vignette-study:pid");
       router.replace("/participant");
@@ -210,6 +211,7 @@ export function StudyExperience({
 
     const builtSteps = buildStudySteps(
       storedPid,
+      assignments,
       assigned as VignetteCondition[],
       questionConfig.attentionChecks ?? [],
       questionConfig.questions.length,
@@ -588,7 +590,20 @@ export function StudyExperience({
             aria-labelledby="constraints-title"
           >
             <h2 id="constraints-title">{teammateConfig.constraintsTitle}</h2>
-            <p>{teammateConfig.constraintsBody}</p>
+            <p className={styles.constraintsIntro}>
+              {teammateConfig.constraintsBody.intro}
+            </p>
+            <ul className={styles.constraintsList}>
+              {teammateConfig.constraintsBody.items.map((item) => (
+                <li key={item.label}>
+                  <strong>{item.label}</strong>
+                  {item.detail && ` (${item.detail})`}
+                </li>
+              ))}
+            </ul>
+            <p className={styles.constraintsOutro}>
+              {teammateConfig.constraintsBody.outro}
+            </p>
             <button
               className={styles.nextButton}
               type="button"

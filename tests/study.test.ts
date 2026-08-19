@@ -8,6 +8,7 @@ import {
   studySettings,
   vignettes,
 } from "@/lib/studyConfig";
+import { NON_AI_SCENARIO_COUNT } from "@/lib/studyConstants";
 import {
   buildResponseRow,
   SubmissionValidationError,
@@ -15,9 +16,11 @@ import {
 import {
   applyTeammateName,
   buildExpandedScenarioOrder,
+  buildScenarioAssignments,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
   isNonAiVignetteId,
+  selectSeededSubset,
 } from "@/lib/studyRandomization";
 import { validateStudyConfig } from "@/lib/validation";
 
@@ -66,6 +69,7 @@ describe("study configuration", () => {
     expect(questionConfig.questions).toHaveLength(6);
     expect(studySettings.vignettesPerParticipant).toBe(10);
     expect(studySettings.aiVignettesPerParticipant).toBe(8);
+    expect(NON_AI_SCENARIO_COUNT).toBe(2);
   });
 
   it("looks up valid IDs and rejects invalid IDs", () => {
@@ -95,27 +99,48 @@ describe("expanded scenario order", () => {
     expect(secondNonAiIndex).toBeLessThanOrEqual(9);
   });
 
-  it("is deterministic for the same participant", () => {
-    const first = buildExpandedScenarioOrder("pid-expand-b", sampleAiOrder);
-    const second = buildExpandedScenarioOrder("pid-expand-b", sampleAiOrder);
-    expect(second).toEqual(first);
+  it("maps non-AI rows to -1 and 0 while keeping AI rows at 1–8", () => {
+    const assignments = buildScenarioAssignments("pid-expand-b", sampleAiOrder);
+
+    expect(assignments).toHaveLength(10);
+    expect(assignments[0]).toMatchObject({
+      apiPosition: -1,
+      isPractice: true,
+    });
+    expect(assignments[1]).toMatchObject({
+      vignetteId: "v01",
+      apiPosition: 1,
+      isPractice: false,
+    });
+    expect(
+      assignments.filter((assignment) => assignment.isPractice),
+    ).toEqual([
+      expect.objectContaining({ apiPosition: -1 }),
+      expect.objectContaining({ apiPosition: 0 }),
+    ]);
+    expect(
+      assignments
+        .filter((assignment) => !assignment.isPractice)
+        .map((assignment) => assignment.apiPosition),
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 });
 
 describe("response rows", () => {
   it("derives factor and vignette fields from server configuration", () => {
-    const scenarioOrder = buildExpandedScenarioOrder("pid-row-a", sampleAiOrder);
+    const assignments = buildScenarioAssignments("pid-row-a", sampleAiOrder);
+    const firstAi = assignments.find((assignment) => !assignment.isPractice)!;
     const row = buildResponseRow(
       {
         pid: "P1",
-        vignetteId: scenarioOrder[1],
-        position: 1,
+        vignetteId: firstAi.vignetteId,
+        position: firstAi.apiPosition,
         answers: completeAnswers,
         teammateName: "Taylor",
         questionOrder: defaultQuestionOrder,
         timeSpentMs: 1000,
       },
-      scenarioOrder,
+      sampleAiOrder,
     );
 
     expect(row).toMatchObject({
@@ -137,8 +162,6 @@ describe("response rows", () => {
   });
 
   it("rejects missing answers and mismatched vignette positions", () => {
-    const scenarioOrder = buildExpandedScenarioOrder("pid-row-b", sampleAiOrder);
-
     expect(() =>
       buildResponseRow(
         {
@@ -150,76 +173,75 @@ describe("response rows", () => {
           questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
-        scenarioOrder,
+        sampleAiOrder,
       ),
     ).toThrow(SubmissionValidationError);
+
+    const assignments = buildScenarioAssignments("pid-row-b", sampleAiOrder);
+    const firstAi = assignments.find((assignment) => !assignment.isPractice)!;
 
     expect(() =>
       buildResponseRow(
         {
           pid: "P1",
-          vignetteId: scenarioOrder[1],
-          position: 1,
+          vignetteId: firstAi.vignetteId,
+          position: firstAi.apiPosition,
           answers: { ...completeAnswers, q6: "" },
           teammateName: "Taylor",
           questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
-        scenarioOrder,
+        sampleAiOrder,
       ),
     ).toThrow("Every question requires a valid response.");
   });
 
-  it("saves the first non-AI scenario as practice and later non-AI rows as main", () => {
-    const scenarioOrder = buildExpandedScenarioOrder("pid-row-c", sampleAiOrder);
-    const practiceRow = buildResponseRow(
+  it("saves both non-AI scenarios at -1 and 0", () => {
+    const assignments = buildScenarioAssignments("pid-row-c", sampleAiOrder);
+    const firstNonAi = assignments.find((assignment) => assignment.apiPosition === -1)!;
+    const secondNonAi = assignments.find((assignment) => assignment.apiPosition === 0)!;
+
+    const firstNonAiRow = buildResponseRow(
       {
-        pid: "P1",
-        vignetteId: scenarioOrder[0],
-        position: 0,
+        pid: "pid-row-c",
+        vignetteId: firstNonAi.vignetteId,
+        position: -1,
         isPractice: true,
         answers: completeAnswers,
         teammateName: "Riley",
         questionOrder: ["q3", "q1", "q2", "q6", "q4", "q5"],
         timeSpentMs: 800,
       },
-      scenarioOrder,
+      sampleAiOrder,
     );
 
-    expect(practiceRow).toMatchObject({
-      pid: "P1",
-      vignette_id: scenarioOrder[0],
-      vignette_number: 0,
+    expect(firstNonAiRow).toMatchObject({
+      vignette_id: firstNonAi.vignetteId,
+      vignette_number: -1,
       is_practice: true,
       directedness: "N/A",
       data_access: "N/A",
       visibility: "N/A",
-      teammate_name: "Riley",
-      question_order: ["q3", "q1", "q2", "q6", "q4", "q5"],
-      q1_value_feedback: "Agree",
-      time_spent_ms: 800,
     });
 
-    const secondNonAiIndex = scenarioOrder.findIndex(
-      (id, index) => index > 1 && isNonAiVignetteId(id),
-    );
     const secondNonAiRow = buildResponseRow(
       {
-        pid: "P1",
-        vignetteId: scenarioOrder[secondNonAiIndex],
-        position: secondNonAiIndex,
+        pid: "pid-row-c",
+        vignetteId: secondNonAi.vignetteId,
+        position: 0,
+        isPractice: true,
         answers: completeAnswers,
         teammateName: "Sam",
         questionOrder: defaultQuestionOrder,
         timeSpentMs: 900,
       },
-      scenarioOrder,
+      sampleAiOrder,
     );
 
     expect(secondNonAiRow).toMatchObject({
-      vignette_id: scenarioOrder[secondNonAiIndex],
-      vignette_number: secondNonAiIndex,
-      is_practice: false,
+      vignette_id: secondNonAi.vignetteId,
+      vignette_number: 0,
+      is_practice: true,
       directedness: "N/A",
       data_access: "N/A",
       visibility: "N/A",
@@ -228,6 +250,25 @@ describe("response rows", () => {
 });
 
 describe("within-participant randomization", () => {
+  it("selects two distinct, deterministic non-AI scenarios", () => {
+    const firstSelection = selectSeededSubset(
+      "pid-practice-a:practice",
+      practiceVignettes,
+      2,
+    );
+    const repeatedSelection = selectSeededSubset(
+      "pid-practice-a:practice",
+      practiceVignettes,
+      2,
+    );
+
+    expect(firstSelection).toHaveLength(2);
+    expect(new Set(firstSelection.map((vignette) => vignette.id)).size).toBe(2);
+    expect(repeatedSelection.map((vignette) => vignette.id)).toEqual(
+      firstSelection.map((vignette) => vignette.id),
+    );
+  });
+
   it("shuffles questions within blocks and may swap block order", () => {
     const order = buildShuffledQuestionOrder("pid-order-a", [
       "q1",

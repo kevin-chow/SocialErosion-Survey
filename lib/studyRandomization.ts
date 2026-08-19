@@ -33,6 +33,23 @@ export function shuffleInPlace<T>(items: T[], rng: () => number): T[] {
   return items;
 }
 
+export function selectSeededSubset<T>(
+  seedInput: string,
+  options: readonly T[],
+  count: number,
+): T[] {
+  const rng = createRng(hashSeed(seedInput));
+  const remaining = [...options];
+  const selected: T[] = [];
+
+  while (selected.length < count && remaining.length > 0) {
+    const selectedIndex = Math.floor(rng() * remaining.length);
+    selected.push(remaining.splice(selectedIndex, 1)[0]);
+  }
+
+  return selected;
+}
+
 export function buildShuffledQuestionOrder(
   pid: string,
   questionIds: readonly string[],
@@ -123,4 +140,39 @@ export function buildExpandedScenarioOrder(
 
 export function isNonAiVignetteId(vignetteId: string): boolean {
   return nonAiVignetteIds.includes(vignetteId);
+}
+
+export interface ScenarioAssignment {
+  vignetteId: string;
+  /** -1 or 0 for non-AI; 1–8 for AI scenarios. */
+  apiPosition: number;
+  isPractice: boolean;
+}
+
+/** Maps the ten-scenario display order to database vignette numbers. */
+export function buildScenarioAssignments(
+  pid: string,
+  aiOrder: readonly string[],
+): ScenarioAssignment[] {
+  const displayOrder = buildExpandedScenarioOrder(pid, aiOrder);
+  let aiNumber = 0;
+  let nonAiNumber = 0;
+
+  return displayOrder.map((vignetteId) => {
+    if (isNonAiVignetteId(vignetteId)) {
+      nonAiNumber += 1;
+      return {
+        vignetteId,
+        apiPosition: nonAiNumber === 1 ? -1 : 0,
+        isPractice: true,
+      };
+    }
+
+    aiNumber += 1;
+    return {
+      vignetteId,
+      apiPosition: aiNumber,
+      isPractice: false,
+    };
+  });
 }

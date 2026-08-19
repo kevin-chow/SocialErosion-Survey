@@ -10,13 +10,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -50,13 +50,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -90,13 +90,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -130,13 +130,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -170,13 +170,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -210,13 +210,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -250,13 +250,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -290,13 +290,13 @@
       {
         "factor": "task_type",
         "value": "information-seeking",
-        "label": "Information Seeking",
+        "label": "Search",
         "icon": "/tags/information-seeking.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -336,7 +336,7 @@
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -376,7 +376,7 @@
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -416,7 +416,7 @@
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -456,7 +456,7 @@
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -496,7 +496,7 @@
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -536,7 +536,7 @@
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -576,7 +576,7 @@
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -616,7 +616,7 @@
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -650,13 +650,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -690,13 +690,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -730,13 +730,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -770,13 +770,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -810,13 +810,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -850,13 +850,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -890,13 +890,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -930,13 +930,13 @@
       {
         "factor": "task_type",
         "value": "feedback",
-        "label": "Feedback",
+        "label": "Proofing",
         "icon": "/tags/feedback.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -970,13 +970,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -1010,13 +1010,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -1050,13 +1050,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -1090,13 +1090,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "supporting",
-        "label": "Supporting",
+        "label": "Assistance",
         "icon": "/tags/supporting.svg"
       },
       {
@@ -1130,13 +1130,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -1170,13 +1170,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -1210,13 +1210,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {
@@ -1250,13 +1250,13 @@
       {
         "factor": "task_type",
         "value": "validation",
-        "label": "Validation",
+        "label": "Assurance",
         "icon": "/tags/validation.svg"
       },
       {
         "factor": "ai_role",
         "value": "executing",
-        "label": "Executing",
+        "label": "Delegation",
         "icon": "/tags/executing.svg"
       },
       {

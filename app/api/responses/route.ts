@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { query } from "@/lib/db";
 import { studySettings } from "@/lib/studyConfig";
-import { buildExpandedScenarioOrder } from "@/lib/studyRandomization";
+import { NON_AI_SCENARIO_COUNT } from "@/lib/studyConstants";
 import {
   buildResponseRow,
   PID_PATTERN,
@@ -70,14 +70,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const scenarioOrder = buildExpandedScenarioOrder(
-    submittedPid,
-    participant.vignette_order,
-  );
-
   let row: ReturnType<typeof buildResponseRow>;
   try {
-    row = buildResponseRow(requestBody, scenarioOrder);
+    row = buildResponseRow(requestBody, participant.vignette_order);
   } catch (error) {
     if (error instanceof SubmissionValidationError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -110,8 +105,8 @@ export async function POST(request: Request) {
          $19, $20, $21,
          $22, $23, $24
        )
-       on conflict (pid, vignette_number) do update set
-         vignette_id = excluded.vignette_id,
+       on conflict (pid, vignette_id) do update set
+         vignette_number = excluded.vignette_number,
          is_practice = excluded.is_practice,
          task_type = excluded.task_type,
          task_type_jitter_v = excluded.task_type_jitter_v,
@@ -161,14 +156,21 @@ export async function POST(request: Request) {
       ],
     );
 
-    const countResult = await query<{ count: string }>(
-      `select count(*)::text as count
+    const countResult = await query<{
+      non_ai_count: string;
+      main_count: string;
+    }>(
+      `select
+         count(*) filter (where is_practice = true)::text as non_ai_count,
+         count(*) filter (where is_practice = false)::text as main_count
        from public.vignette_responses
        where pid = $1`,
       [row.pid],
     );
-    const count = Number(countResult.rows[0]?.count ?? 0);
-    const completed = count === studySettings.vignettesPerParticipant;
+    const counts = countResult.rows[0];
+    const completed =
+      Number(counts?.non_ai_count ?? 0) === NON_AI_SCENARIO_COUNT &&
+      Number(counts?.main_count ?? 0) === participant.vignette_order.length;
 
     if (completed) {
       await query(
