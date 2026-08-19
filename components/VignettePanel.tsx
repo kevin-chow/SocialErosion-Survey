@@ -25,7 +25,7 @@ const FACTOR_TONE: Record<string, string> = {
 const HIGHLIGHT_PATTERNS: { regex: RegExp; className: string }[] = [
   {
     regex:
-      /where you need to search for recent products launched by NextGen's competitors|proposing ideas for new products or features that NextGen could develop in response to recent industry trends|explaining the implications of recent industry trends for NextGen|but think there may be ways to improve it|you begin to second-guess whether your perspective on what happened during the project is reasonable|who was also part of that prior project/g,
+      /where you need to search for recent products launched by NextGen's competitors|proposing ideas for new products or features that NextGen could develop in response to recent industry trends|explaining the implications of recent industry trends for NextGen|but think there may be ways to improve it|you begin to second-guess whether your perspective on what happened during the project is reasonable/g,
     className: styles.markTask,
   },
   {

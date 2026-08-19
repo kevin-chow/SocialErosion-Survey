@@ -61,7 +61,7 @@
     "slug": "practice-validation",
     "title": "Workplace Scenario",
     "conditionLabel": "Validation | N/A | N/A | N/A",
-    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a recently completed project at NextGen. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam, who was also part of that prior project, is working on another section of the same presentation.\n\nFor this task, you revisit the project materials and think through which takeaways are most important. You use this review to consider which takeaways to include and continue preparing your section of the presentation.",
+    "body": "You have been assigned to prepare a section of the presentation summarizing lessons learned from a project that your team and peer colleagues at NextGen recently completed. As you work on the section, you begin to second-guess whether your perspective on what happened during the project is reasonable. Sam is working on another section of the same presentation.\n\nFor this task, you revisit the project materials and think through which takeaways are most important. You use this review to consider which takeaways to include and continue preparing your section of the presentation.",
     "tags": [
       {
         "factor": "task_type",
