@@ -1,4 +1,5 @@
--- Ten-scenario flow with non-AI rows stored at -1 and 0 (PR #1 numbering).
+-- Ten displayed scenarios stored as vignette_number 0 (practice non-AI)
+-- and 1–9 (main scenarios, including the second non-AI).
 
 delete from public.vignette_responses legacy
 where legacy.is_practice = true
@@ -11,26 +12,19 @@ where legacy.is_practice = true
       and current.vignette_number = 0
   );
 
-with ranked_non_ai as (
-  select
-    id,
-    row_number() over (
-      partition by pid
-      order by
-        case vignette_number when -1 then 0 when 0 then 1 else 2 end,
-        vignette_number
-    ) as non_ai_rank
-  from public.vignette_responses
-  where is_practice = true
-     or vignette_id ~ '^p[0-9]{2}$'
-)
-update public.vignette_responses target
+update public.vignette_responses
 set
-  is_practice = true,
-  vignette_number = case ranked_non_ai.non_ai_rank when 1 then -1 else 0 end
-from ranked_non_ai
-where target.id = ranked_non_ai.id
-  and ranked_non_ai.non_ai_rank <= 2;
+  is_practice = case
+    when vignette_number = 0 then true
+    when vignette_id ~ '^p[0-9]{2}$' then false
+    else is_practice
+  end,
+  vignette_number = case
+    when vignette_number = -1 then 0
+    else vignette_number
+  end
+where vignette_number = -1
+   or (is_practice = true and vignette_number <> 0);
 
 alter table public.vignette_responses
   drop constraint if exists vignette_responses_vignette_number_check;
@@ -38,6 +32,6 @@ alter table public.vignette_responses
 alter table public.vignette_responses
   add constraint vignette_responses_vignette_number_check
     check (
-      (is_practice = true and vignette_number in (-1, 0))
-      or (is_practice = false and vignette_number between 1 and 32)
+      (is_practice = true and vignette_number = 0)
+      or (is_practice = false and vignette_number between 1 and 9)
     );

@@ -144,35 +144,21 @@ export function isNonAiVignetteId(vignetteId: string): boolean {
 
 export interface ScenarioAssignment {
   vignetteId: string;
-  /** -1 or 0 for non-AI; 1–8 for AI scenarios. */
+  /** 0–9 for the ten displayed scenarios. */
   apiPosition: number;
   isPractice: boolean;
 }
 
-/** Maps the ten-scenario display order to database vignette numbers. */
+/** Maps the ten-scenario display order to submission positions 0–9. */
 export function buildScenarioAssignments(
   pid: string,
   aiOrder: readonly string[],
 ): ScenarioAssignment[] {
   const displayOrder = buildExpandedScenarioOrder(pid, aiOrder);
-  let aiNumber = 0;
-  let nonAiNumber = 0;
 
-  return displayOrder.map((vignetteId) => {
-    if (isNonAiVignetteId(vignetteId)) {
-      nonAiNumber += 1;
-      return {
-        vignetteId,
-        apiPosition: nonAiNumber === 1 ? -1 : 0,
-        isPractice: true,
-      };
-    }
-
-    aiNumber += 1;
-    return {
-      vignetteId,
-      apiPosition: aiNumber,
-      isPractice: false,
-    };
-  });
+  return displayOrder.map((vignetteId, index) => ({
+    vignetteId,
+    apiPosition: index,
+    isPractice: index === 0,
+  }));
 }

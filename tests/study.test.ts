@@ -99,12 +99,12 @@ describe("expanded scenario order", () => {
     expect(secondNonAiIndex).toBeLessThanOrEqual(9);
   });
 
-  it("maps non-AI rows to -1 and 0 while keeping AI rows at 1–8", () => {
+  it("maps display positions 0–9 with practice at 0", () => {
     const assignments = buildScenarioAssignments("pid-expand-b", sampleAiOrder);
 
     expect(assignments).toHaveLength(10);
     expect(assignments[0]).toMatchObject({
-      apiPosition: -1,
+      apiPosition: 0,
       isPractice: true,
     });
     expect(assignments[1]).toMatchObject({
@@ -112,17 +112,10 @@ describe("expanded scenario order", () => {
       apiPosition: 1,
       isPractice: false,
     });
-    expect(
-      assignments.filter((assignment) => assignment.isPractice),
-    ).toEqual([
-      expect.objectContaining({ apiPosition: -1 }),
-      expect.objectContaining({ apiPosition: 0 }),
+    expect(assignments.filter((assignment) => assignment.isPractice)).toHaveLength(1);
+    expect(assignments.map((assignment) => assignment.apiPosition)).toEqual([
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
     ]);
-    expect(
-      assignments
-        .filter((assignment) => !assignment.isPractice)
-        .map((assignment) => assignment.apiPosition),
-    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 });
 
@@ -196,16 +189,19 @@ describe("response rows", () => {
     ).toThrow("Every question requires a valid response.");
   });
 
-  it("saves both non-AI scenarios at -1 and 0", () => {
+  it("saves the first non-AI scenario as practice and the second as main", () => {
     const assignments = buildScenarioAssignments("pid-row-c", sampleAiOrder);
-    const firstNonAi = assignments.find((assignment) => assignment.apiPosition === -1)!;
-    const secondNonAi = assignments.find((assignment) => assignment.apiPosition === 0)!;
+    const firstNonAi = assignments[0];
+    const secondNonAiIndex = assignments.findIndex(
+      (assignment, index) => index > 0 && isNonAiVignetteId(assignment.vignetteId),
+    );
+    const secondNonAi = assignments[secondNonAiIndex];
 
     const firstNonAiRow = buildResponseRow(
       {
         pid: "pid-row-c",
         vignetteId: firstNonAi.vignetteId,
-        position: -1,
+        position: 0,
         isPractice: true,
         answers: completeAnswers,
         teammateName: "Riley",
@@ -217,7 +213,7 @@ describe("response rows", () => {
 
     expect(firstNonAiRow).toMatchObject({
       vignette_id: firstNonAi.vignetteId,
-      vignette_number: -1,
+      vignette_number: 0,
       is_practice: true,
       directedness: "N/A",
       data_access: "N/A",
@@ -227,9 +223,8 @@ describe("response rows", () => {
     const secondNonAiRow = buildResponseRow(
       {
         pid: "pid-row-c",
-        vignetteId: secondNonAi.vignetteId,
-        position: 0,
-        isPractice: true,
+        vignetteId: secondNonAi!.vignetteId,
+        position: secondNonAi!.apiPosition,
         answers: completeAnswers,
         teammateName: "Sam",
         questionOrder: defaultQuestionOrder,
@@ -239,9 +234,9 @@ describe("response rows", () => {
     );
 
     expect(secondNonAiRow).toMatchObject({
-      vignette_id: secondNonAi.vignetteId,
-      vignette_number: 0,
-      is_practice: true,
+      vignette_id: secondNonAi!.vignetteId,
+      vignette_number: secondNonAi!.apiPosition,
+      is_practice: false,
       directedness: "N/A",
       data_access: "N/A",
       visibility: "N/A",

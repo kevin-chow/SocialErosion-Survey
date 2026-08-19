@@ -35,7 +35,7 @@ interface StudyExperienceProps {
 
 interface StudyStep {
   vignette: VignetteCondition;
-  /** -1 and 0 for non-AI; 1–8 for AI scenarios. */
+  /** 0–9 for the ten displayed scenarios. */
   apiPosition: number;
   isPractice: boolean;
   teammateName: string;
