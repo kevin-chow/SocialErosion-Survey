@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { query } from "@/lib/db";
+import { studySettings } from "@/lib/studyConfig";
+import { buildExpandedScenarioOrder } from "@/lib/studyRandomization";
 import {
   buildResponseRow,
   PID_PATTERN,
@@ -53,7 +55,8 @@ export async function POST(request: Request) {
   if (
     !participant ||
     !Array.isArray(participant.vignette_order) ||
-    participant.vignette_order.length !== 8
+    participant.vignette_order.length !==
+      studySettings.aiVignettesPerParticipant
   ) {
     return NextResponse.json(
       { error: "Participant assignment was not found." },
@@ -67,9 +70,14 @@ export async function POST(request: Request) {
     );
   }
 
+  const scenarioOrder = buildExpandedScenarioOrder(
+    submittedPid,
+    participant.vignette_order,
+  );
+
   let row: ReturnType<typeof buildResponseRow>;
   try {
-    row = buildResponseRow(requestBody, participant.vignette_order);
+    row = buildResponseRow(requestBody, scenarioOrder);
   } catch (error) {
     if (error instanceof SubmissionValidationError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -156,11 +164,11 @@ export async function POST(request: Request) {
     const countResult = await query<{ count: string }>(
       `select count(*)::text as count
        from public.vignette_responses
-       where pid = $1 and is_practice = false`,
+       where pid = $1`,
       [row.pid],
     );
     const count = Number(countResult.rows[0]?.count ?? 0);
-    const completed = count === participant.vignette_order.length;
+    const completed = count === studySettings.vignettesPerParticipant;
 
     if (completed) {
       await query(

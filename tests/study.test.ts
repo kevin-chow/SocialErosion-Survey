@@ -14,8 +14,10 @@ import {
 } from "@/lib/submission";
 import {
   applyTeammateName,
+  buildExpandedScenarioOrder,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
+  isNonAiVignetteId,
 } from "@/lib/studyRandomization";
 import { validateStudyConfig } from "@/lib/validation";
 
@@ -29,6 +31,17 @@ const completeAnswers = {
   q5: "Strongly disagree",
   q6: "Agree",
 };
+
+const sampleAiOrder = [
+  "v01",
+  "v02",
+  "v03",
+  "v04",
+  "v05",
+  "v06",
+  "v07",
+  "v08",
+];
 
 describe("study configuration", () => {
   it("passes validation", () => {
@@ -51,6 +64,8 @@ describe("study configuration", () => {
       ),
     );
     expect(questionConfig.questions).toHaveLength(6);
+    expect(studySettings.vignettesPerParticipant).toBe(10);
+    expect(studySettings.aiVignettesPerParticipant).toBe(8);
   });
 
   it("looks up valid IDs and rejects invalid IDs", () => {
@@ -63,19 +78,44 @@ describe("study configuration", () => {
   });
 });
 
+describe("expanded scenario order", () => {
+  it("always places non-AI first, AI second, and a second non-AI in slots 3–10", () => {
+    const order = buildExpandedScenarioOrder("pid-expand-a", sampleAiOrder);
+
+    expect(order).toHaveLength(10);
+    expect(isNonAiVignetteId(order[0])).toBe(true);
+    expect(order[1]).toBe("v01");
+    expect(order.filter((id) => isNonAiVignetteId(id))).toHaveLength(2);
+    expect(order.filter((id) => id.startsWith("v"))).toEqual(sampleAiOrder);
+
+    const secondNonAiIndex = order.findIndex(
+      (id, index) => index > 1 && isNonAiVignetteId(id),
+    );
+    expect(secondNonAiIndex).toBeGreaterThanOrEqual(2);
+    expect(secondNonAiIndex).toBeLessThanOrEqual(9);
+  });
+
+  it("is deterministic for the same participant", () => {
+    const first = buildExpandedScenarioOrder("pid-expand-b", sampleAiOrder);
+    const second = buildExpandedScenarioOrder("pid-expand-b", sampleAiOrder);
+    expect(second).toEqual(first);
+  });
+});
+
 describe("response rows", () => {
   it("derives factor and vignette fields from server configuration", () => {
+    const scenarioOrder = buildExpandedScenarioOrder("pid-row-a", sampleAiOrder);
     const row = buildResponseRow(
       {
         pid: "P1",
-        vignetteId: "v01",
+        vignetteId: scenarioOrder[1],
         position: 1,
         answers: completeAnswers,
         teammateName: "Taylor",
         questionOrder: defaultQuestionOrder,
         timeSpentMs: 1000,
       },
-      ["v01"],
+      scenarioOrder,
     );
 
     expect(row).toMatchObject({
@@ -97,6 +137,8 @@ describe("response rows", () => {
   });
 
   it("rejects missing answers and mismatched vignette positions", () => {
+    const scenarioOrder = buildExpandedScenarioOrder("pid-row-b", sampleAiOrder);
+
     expect(() =>
       buildResponseRow(
         {
@@ -108,7 +150,7 @@ describe("response rows", () => {
           questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
-        ["v01"],
+        scenarioOrder,
       ),
     ).toThrow(SubmissionValidationError);
 
@@ -116,23 +158,24 @@ describe("response rows", () => {
       buildResponseRow(
         {
           pid: "P1",
-          vignetteId: "v01",
+          vignetteId: scenarioOrder[1],
           position: 1,
           answers: { ...completeAnswers, q6: "" },
           teammateName: "Taylor",
           questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
-        ["v01"],
+        scenarioOrder,
       ),
     ).toThrow("Every question requires a valid response.");
   });
 
-  it("saves practice scenarios with a clear practice flag", () => {
-    const row = buildResponseRow(
+  it("saves the first non-AI scenario as practice and later non-AI rows as main", () => {
+    const scenarioOrder = buildExpandedScenarioOrder("pid-row-c", sampleAiOrder);
+    const practiceRow = buildResponseRow(
       {
         pid: "P1",
-        vignetteId: "p01",
+        vignetteId: scenarioOrder[0],
         position: 0,
         isPractice: true,
         answers: completeAnswers,
@@ -140,15 +183,14 @@ describe("response rows", () => {
         questionOrder: ["q3", "q1", "q2", "q6", "q4", "q5"],
         timeSpentMs: 800,
       },
-      ["v01"],
+      scenarioOrder,
     );
 
-    expect(row).toMatchObject({
+    expect(practiceRow).toMatchObject({
       pid: "P1",
-      vignette_id: "p01",
+      vignette_id: scenarioOrder[0],
       vignette_number: 0,
       is_practice: true,
-      task_type: "Information Seeking",
       directedness: "N/A",
       data_access: "N/A",
       visibility: "N/A",
@@ -156,6 +198,31 @@ describe("response rows", () => {
       question_order: ["q3", "q1", "q2", "q6", "q4", "q5"],
       q1_value_feedback: "Agree",
       time_spent_ms: 800,
+    });
+
+    const secondNonAiIndex = scenarioOrder.findIndex(
+      (id, index) => index > 1 && isNonAiVignetteId(id),
+    );
+    const secondNonAiRow = buildResponseRow(
+      {
+        pid: "P1",
+        vignetteId: scenarioOrder[secondNonAiIndex],
+        position: secondNonAiIndex,
+        answers: completeAnswers,
+        teammateName: "Sam",
+        questionOrder: defaultQuestionOrder,
+        timeSpentMs: 900,
+      },
+      scenarioOrder,
+    );
+
+    expect(secondNonAiRow).toMatchObject({
+      vignette_id: scenarioOrder[secondNonAiIndex],
+      vignette_number: secondNonAiIndex,
+      is_practice: false,
+      directedness: "N/A",
+      data_access: "N/A",
+      visibility: "N/A",
     });
   });
 });

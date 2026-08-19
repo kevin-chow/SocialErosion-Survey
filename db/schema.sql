@@ -66,7 +66,7 @@ create table if not exists public.vignette_responses (
   constraint vignette_responses_vignette_number_check
     check (
       (is_practice = true and vignette_number = 0)
-      or (is_practice = false and vignette_number between 1 and 32)
+      or (is_practice = false and vignette_number between 1 and 9)
     )
 );
 

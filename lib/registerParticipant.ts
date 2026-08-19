@@ -1,4 +1,5 @@
 import { loadStoredProlificParams } from "@/lib/prolific";
+import { studySettings } from "@/lib/studyConfig";
 
 export type ParticipantRegistration = {
   pid: string;
@@ -57,7 +58,10 @@ export async function registerParticipantSession(
   if (!response.ok) {
     throw new Error(result.error || "Unable to begin the study.");
   }
-  if (!result.vignetteOrder || result.vignetteOrder.length !== 8) {
+  if (
+    !result.vignetteOrder ||
+    result.vignetteOrder.length !== studySettings.aiVignettesPerParticipant
+  ) {
     throw new Error("The scenario assignment could not be loaded.");
   }
 

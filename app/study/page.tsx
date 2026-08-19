@@ -1,10 +1,5 @@
 import { StudyError } from "@/components/StudyError";
-import {
-  assertValidStudyConfig,
-  practiceVignettes,
-  questionConfig,
-  vignettes,
-} from "@/lib/studyConfig";
+import { assertValidStudyConfig, questionConfig } from "@/lib/studyConfig";
 import { StudyExperience } from "./StudyExperience";
 
 export default function StudyPage() {
@@ -17,11 +12,5 @@ export default function StudyPage() {
     return <StudyError />;
   }
 
-  return (
-    <StudyExperience
-      vignettes={vignettes}
-      practiceVignettes={practiceVignettes}
-      questionConfig={questionConfig}
-    />
-  );
+  return <StudyExperience questionConfig={questionConfig} />;
 }
