@@ -30,8 +30,12 @@ export function validateStudyConfig(
     throw new Error("questionsPerVignette must equal 6.");
   }
 
-  if (settings.vignettesPerParticipant !== 8) {
-    throw new Error("vignettesPerParticipant must equal 8.");
+  if (settings.vignettesPerParticipant !== 10) {
+    throw new Error("vignettesPerParticipant must equal 10.");
+  }
+
+  if (settings.aiVignettesPerParticipant !== 8) {
+    throw new Error("aiVignettesPerParticipant must equal 8.");
   }
 
   const ids = vignettes.map((vignette) => vignette.id);
@@ -90,10 +94,10 @@ export function validateStudyConfig(
       counterbalanceConfig.plannedParticipants !== 500 ||
       counterbalanceConfig.orders.length !== 500 ||
       counterbalanceConfig.vignettesPerParticipant !==
-        settings.vignettesPerParticipant
+        settings.aiVignettesPerParticipant
     ) {
       throw new Error(
-        "Counterbalance configuration must contain 500 eight-vignette orders.",
+        "Counterbalance configuration must contain 500 eight-vignette AI orders.",
       );
     }
 
@@ -104,14 +108,14 @@ export function validateStudyConfig(
     const positionCounts = new Map(
       ids.map((id) => [
         id,
-        Array(settings.vignettesPerParticipant).fill(0) as number[],
+        Array(settings.aiVignettesPerParticipant).fill(0) as number[],
       ]),
     );
 
     counterbalanceConfig.orders.forEach((order, orderIndex) => {
       if (
         order.slot !== orderIndex + 1 ||
-        order.vignetteIds.length !== settings.vignettesPerParticipant ||
+        order.vignetteIds.length !== settings.aiVignettesPerParticipant ||
         new Set(order.vignetteIds).size !== order.vignetteIds.length
       ) {
         throw new Error(`Counterbalance slot ${orderIndex + 1} is invalid.`);

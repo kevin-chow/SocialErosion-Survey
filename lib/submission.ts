@@ -2,10 +2,14 @@ import {
   getPracticeVignetteById,
   getVignetteById,
   questionConfig,
+  studySettings,
   teammateConfig,
 } from "@/lib/studyConfig";
-import { applyTeammateName } from "@/lib/studyRandomization";
-import { NON_AI_VIGNETTE_NUMBERS } from "@/lib/studyConstants";
+import { PRACTICE_VIGNETTE_NUMBER } from "@/lib/studyConstants";
+import {
+  applyTeammateName,
+  buildScenarioAssignments,
+} from "@/lib/studyRandomization";
 
 export const PID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
 
@@ -76,9 +80,57 @@ function parseAnswers(answers: Record<string, unknown>) {
   return responseValues;
 }
 
+function buildNonAiResponseRow(
+  vignette: NonNullable<ReturnType<typeof getPracticeVignetteById>>,
+  input: {
+    pid: string;
+    position: number;
+    isPractice: boolean;
+    teammateName: string;
+    questionOrder: string[];
+    responseValues: Record<string, string>;
+    timeSpentMs: number;
+    now: number;
+  },
+) {
+  return {
+    pid: input.pid,
+    vignette_id: vignette.id,
+    vignette_number: input.isPractice
+      ? PRACTICE_VIGNETTE_NUMBER
+      : input.position,
+    is_practice: input.isPractice,
+    task_type: displayFactor(vignette.metadata?.task_type, {
+      "information-seeking": "Information Seeking",
+      brainstorming: "Brainstorming",
+      feedback: "Feedback",
+      validation: "Validation",
+    }),
+    task_type_jitter_v: null,
+    directedness: "N/A",
+    directedness_jitter_v: null,
+    data_access: "N/A",
+    data_access_jitter_v: null,
+    visibility: "N/A",
+    visibility_jitter_v: null,
+    teammate_name: input.teammateName,
+    question_order: input.questionOrder,
+    full_vignette_text: applyTeammateName(vignette.body, input.teammateName),
+    q1_value_feedback: input.responseValues.q1_value_feedback,
+    q2_seek_feedback: input.responseValues.q2_seek_feedback,
+    q3_incorporate_feedback: input.responseValues.q3_incorporate_feedback,
+    q4_comfortable_feedback: input.responseValues.q4_comfortable_feedback,
+    q5_express_frustrations: input.responseValues.q5_express_frustrations,
+    q6_rather_work_without: input.responseValues.q6_rather_work_without,
+    time_spent_ms: input.timeSpentMs,
+    started_at: new Date(input.now - input.timeSpentMs).toISOString(),
+    submitted_at: new Date(input.now).toISOString(),
+  };
+}
+
 export function buildResponseRow(
   input: unknown,
-  expectedVignetteOrder: readonly string[],
+  aiOrder: readonly string[],
 ) {
   const body = requireObject(input);
   const pid = typeof body.pid === "string" ? body.pid.trim() : "";
@@ -89,7 +141,7 @@ export function buildResponseRow(
   const answers = requireObject(body.answers);
   const requestedPractice = body.isPractice === true;
   const practiceVignette = getPracticeVignetteById(vignetteId);
-  const isPractice = requestedPractice || Boolean(practiceVignette);
+  const maxPosition = studySettings.vignettesPerParticipant - 1;
 
   if (!PID_PATTERN.test(pid)) {
     throw new SubmissionValidationError("Invalid participant ID.");
@@ -107,58 +159,44 @@ export function buildResponseRow(
   const teammateName = parseTeammateName(body.teammateName);
   const questionOrder = parseQuestionOrder(body.questionOrder);
   const now = Date.now();
-
-  if (isPractice) {
-    if (!practiceVignette) {
-      throw new SubmissionValidationError("Unknown practice scenario.");
-    }
-    if (
-      typeof position !== "number" ||
-      !NON_AI_VIGNETTE_NUMBERS.some((number) => number === position)
-    ) {
-      throw new SubmissionValidationError("Invalid non-AI scenario position.");
-    }
-
-    return {
-      pid,
-      vignette_id: practiceVignette.id,
-      vignette_number: position,
-      is_practice: true,
-      task_type: displayFactor(practiceVignette.metadata?.task_type, {
-        "information-seeking": "Information Seeking",
-        brainstorming: "Brainstorming",
-        feedback: "Feedback",
-        validation: "Validation",
-      }),
-      task_type_jitter_v: null,
-      directedness: "N/A",
-      directedness_jitter_v: null,
-      data_access: "N/A",
-      data_access_jitter_v: null,
-      visibility: "N/A",
-      visibility_jitter_v: null,
-      teammate_name: teammateName,
-      question_order: questionOrder,
-      full_vignette_text: applyTeammateName(practiceVignette.body, teammateName),
-      q1_value_feedback: responseValues.q1_value_feedback,
-      q2_seek_feedback: responseValues.q2_seek_feedback,
-      q3_incorporate_feedback: responseValues.q3_incorporate_feedback,
-      q4_comfortable_feedback: responseValues.q4_comfortable_feedback,
-      q5_express_frustrations: responseValues.q5_express_frustrations,
-      q6_rather_work_without: responseValues.q6_rather_work_without,
-      time_spent_ms: timeSpentMs,
-      started_at: new Date(now - timeSpentMs).toISOString(),
-      submitted_at: new Date(now).toISOString(),
-    };
-  }
+  const assignments = buildScenarioAssignments(pid, aiOrder);
+  const assignment = assignments.find((item) => item.apiPosition === position);
 
   if (
     typeof position !== "number" ||
     !Number.isInteger(position) ||
-    position < 1 ||
-    position > expectedVignetteOrder.length ||
-    expectedVignetteOrder[position - 1] !== vignetteId
+    position < 0 ||
+    position > maxPosition ||
+    !assignment ||
+    assignment.vignetteId !== vignetteId
   ) {
+    throw new SubmissionValidationError("Invalid vignette position.");
+  }
+
+  if (practiceVignette) {
+    const isPractice =
+      assignment.isPractice &&
+      (requestedPractice || position === PRACTICE_VIGNETTE_NUMBER);
+    if (isPractice && position !== PRACTICE_VIGNETTE_NUMBER) {
+      throw new SubmissionValidationError("Invalid practice scenario position.");
+    }
+    if (!isPractice && position === PRACTICE_VIGNETTE_NUMBER) {
+      throw new SubmissionValidationError("Invalid vignette position.");
+    }
+
+    return buildNonAiResponseRow(practiceVignette, {
+      pid,
+      position,
+      isPractice,
+      teammateName,
+      questionOrder,
+      responseValues,
+      timeSpentMs,
+      now,
+    });
+  }
+
+  if (requestedPractice || position === PRACTICE_VIGNETTE_NUMBER) {
     throw new SubmissionValidationError("Invalid vignette position.");
   }
 

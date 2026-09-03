@@ -80,5 +80,6 @@ export interface StudySettings {
   assignmentMode: AssignmentMode;
   totalVignettes: number;
   vignettesPerParticipant: number;
+  aiVignettesPerParticipant: number;
   questionsPerVignette: number;
 }

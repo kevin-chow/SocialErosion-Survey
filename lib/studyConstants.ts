@@ -1,2 +1,2 @@
-export const NON_AI_VIGNETTE_NUMBERS = [-1, 0] as const;
-export const NON_AI_SCENARIO_COUNT = NON_AI_VIGNETTE_NUMBERS.length;
+export const PRACTICE_VIGNETTE_NUMBER = 0;
+export const NON_AI_SCENARIO_COUNT = 2;

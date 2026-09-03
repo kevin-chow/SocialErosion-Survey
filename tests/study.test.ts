@@ -8,14 +8,18 @@ import {
   studySettings,
   vignettes,
 } from "@/lib/studyConfig";
+import { NON_AI_SCENARIO_COUNT } from "@/lib/studyConstants";
 import {
   buildResponseRow,
   SubmissionValidationError,
 } from "@/lib/submission";
 import {
   applyTeammateName,
+  buildExpandedScenarioOrder,
+  buildScenarioAssignments,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
+  isNonAiVignetteId,
   selectSeededSubset,
 } from "@/lib/studyRandomization";
 import { validateStudyConfig } from "@/lib/validation";
@@ -30,6 +34,17 @@ const completeAnswers = {
   q5: "Strongly disagree",
   q6: "Agree",
 };
+
+const sampleAiOrder = [
+  "v01",
+  "v02",
+  "v03",
+  "v04",
+  "v05",
+  "v06",
+  "v07",
+  "v08",
+];
 
 describe("study configuration", () => {
   it("passes validation", () => {
@@ -52,6 +67,9 @@ describe("study configuration", () => {
       ),
     );
     expect(questionConfig.questions).toHaveLength(6);
+    expect(studySettings.vignettesPerParticipant).toBe(10);
+    expect(studySettings.aiVignettesPerParticipant).toBe(8);
+    expect(NON_AI_SCENARIO_COUNT).toBe(2);
   });
 
   it("looks up valid IDs and rejects invalid IDs", () => {
@@ -64,19 +82,58 @@ describe("study configuration", () => {
   });
 });
 
+describe("expanded scenario order", () => {
+  it("always places non-AI first, AI second, and a second non-AI in slots 3–10", () => {
+    const order = buildExpandedScenarioOrder("pid-expand-a", sampleAiOrder);
+
+    expect(order).toHaveLength(10);
+    expect(isNonAiVignetteId(order[0])).toBe(true);
+    expect(order[1]).toBe("v01");
+    expect(order.filter((id) => isNonAiVignetteId(id))).toHaveLength(2);
+    expect(order.filter((id) => id.startsWith("v"))).toEqual(sampleAiOrder);
+
+    const secondNonAiIndex = order.findIndex(
+      (id, index) => index > 1 && isNonAiVignetteId(id),
+    );
+    expect(secondNonAiIndex).toBeGreaterThanOrEqual(2);
+    expect(secondNonAiIndex).toBeLessThanOrEqual(9);
+  });
+
+  it("maps display positions 0–9 with practice at 0", () => {
+    const assignments = buildScenarioAssignments("pid-expand-b", sampleAiOrder);
+
+    expect(assignments).toHaveLength(10);
+    expect(assignments[0]).toMatchObject({
+      apiPosition: 0,
+      isPractice: true,
+    });
+    expect(assignments[1]).toMatchObject({
+      vignetteId: "v01",
+      apiPosition: 1,
+      isPractice: false,
+    });
+    expect(assignments.filter((assignment) => assignment.isPractice)).toHaveLength(1);
+    expect(assignments.map((assignment) => assignment.apiPosition)).toEqual([
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    ]);
+  });
+});
+
 describe("response rows", () => {
   it("derives factor and vignette fields from server configuration", () => {
+    const assignments = buildScenarioAssignments("pid-row-a", sampleAiOrder);
+    const firstAi = assignments.find((assignment) => !assignment.isPractice)!;
     const row = buildResponseRow(
       {
         pid: "P1",
-        vignetteId: "v01",
-        position: 1,
+        vignetteId: firstAi.vignetteId,
+        position: firstAi.apiPosition,
         answers: completeAnswers,
         teammateName: "Taylor",
         questionOrder: defaultQuestionOrder,
         timeSpentMs: 1000,
       },
-      ["v01"],
+      sampleAiOrder,
     );
 
     expect(row).toMatchObject({
@@ -109,31 +166,41 @@ describe("response rows", () => {
           questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
-        ["v01"],
+        sampleAiOrder,
       ),
     ).toThrow(SubmissionValidationError);
+
+    const assignments = buildScenarioAssignments("pid-row-b", sampleAiOrder);
+    const firstAi = assignments.find((assignment) => !assignment.isPractice)!;
 
     expect(() =>
       buildResponseRow(
         {
           pid: "P1",
-          vignetteId: "v01",
-          position: 1,
+          vignetteId: firstAi.vignetteId,
+          position: firstAi.apiPosition,
           answers: { ...completeAnswers, q6: "" },
           teammateName: "Taylor",
           questionOrder: defaultQuestionOrder,
           timeSpentMs: 1000,
         },
-        ["v01"],
+        sampleAiOrder,
       ),
     ).toThrow("Every question requires a valid response.");
   });
 
-  it("saves initial non-AI scenarios at either reserved position", () => {
-    const row = buildResponseRow(
+  it("saves the first non-AI scenario as practice and the second as main", () => {
+    const assignments = buildScenarioAssignments("pid-row-c", sampleAiOrder);
+    const firstNonAi = assignments[0];
+    const secondNonAiIndex = assignments.findIndex(
+      (assignment, index) => index > 0 && isNonAiVignetteId(assignment.vignetteId),
+    );
+    const secondNonAi = assignments[secondNonAiIndex];
+
+    const firstNonAiRow = buildResponseRow(
       {
-        pid: "P1",
-        vignetteId: "p01",
+        pid: "pid-row-c",
+        vignetteId: firstNonAi.vignetteId,
         position: 0,
         isPractice: true,
         answers: completeAnswers,
@@ -141,42 +208,38 @@ describe("response rows", () => {
         questionOrder: ["q3", "q1", "q2", "q6", "q4", "q5"],
         timeSpentMs: 800,
       },
-      ["v01"],
+      sampleAiOrder,
     );
 
-    expect(row).toMatchObject({
-      pid: "P1",
-      vignette_id: "p01",
+    expect(firstNonAiRow).toMatchObject({
+      vignette_id: firstNonAi.vignetteId,
       vignette_number: 0,
       is_practice: true,
-      task_type: "Information Seeking",
       directedness: "N/A",
       data_access: "N/A",
       visibility: "N/A",
-      teammate_name: "Riley",
-      question_order: ["q3", "q1", "q2", "q6", "q4", "q5"],
-      q1_value_feedback: "Agree",
-      time_spent_ms: 800,
     });
 
-    const firstNonAiRow = buildResponseRow(
+    const secondNonAiRow = buildResponseRow(
       {
-        pid: "P1",
-        vignetteId: "p02",
-        position: -1,
-        isPractice: true,
+        pid: "pid-row-c",
+        vignetteId: secondNonAi!.vignetteId,
+        position: secondNonAi!.apiPosition,
         answers: completeAnswers,
-        teammateName: "Jordan",
+        teammateName: "Sam",
         questionOrder: defaultQuestionOrder,
         timeSpentMs: 900,
       },
-      ["v01"],
+      sampleAiOrder,
     );
-    expect(firstNonAiRow).toMatchObject({
-      vignette_id: "p02",
-      vignette_number: -1,
-      is_practice: true,
-      task_type: "Brainstorming",
+
+    expect(secondNonAiRow).toMatchObject({
+      vignette_id: secondNonAi!.vignetteId,
+      vignette_number: secondNonAi!.apiPosition,
+      is_practice: false,
+      directedness: "N/A",
+      data_access: "N/A",
+      visibility: "N/A",
     });
   });
 });

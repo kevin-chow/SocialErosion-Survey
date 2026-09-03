@@ -46,3 +46,9 @@ export function getPracticeVignetteById(
   return practiceVignettes.find((vignette) => vignette.id === vignetteId);
 }
 
+export function getScenarioById(
+  vignetteId: string,
+): VignetteCondition | undefined {
+  return getVignetteById(vignetteId) ?? getPracticeVignetteById(vignetteId);
+}
+

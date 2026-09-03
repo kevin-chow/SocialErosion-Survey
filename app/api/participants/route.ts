@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { isPostgresError, query } from "@/lib/db";
 import { normalizeProlificValue } from "@/lib/prolific";
-import { counterbalanceConfig } from "@/lib/studyConfig";
+import { counterbalanceConfig, studySettings } from "@/lib/studyConfig";
 import { PID_PATTERN } from "@/lib/submission";
 
 type AssignmentRow = {
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
       !assignment ||
       !Array.isArray(assignment.vignette_order) ||
       assignment.vignette_order.length !==
-        counterbalanceConfig.vignettesPerParticipant
+        studySettings.aiVignettesPerParticipant
     ) {
       throw new Error("Counterbalance assignment was not returned.");
     }

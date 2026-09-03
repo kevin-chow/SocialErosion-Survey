@@ -6,16 +6,17 @@ import { VignettePanel } from "@/components/VignettePanel";
 import redirects from "@/config/redirects.json";
 import { buildCompletionQualtricsUrl } from "@/lib/prolific";
 import {
-  NON_AI_SCENARIO_COUNT,
-  NON_AI_VIGNETTE_NUMBERS,
-} from "@/lib/studyConstants";
+  getScenarioById,
+  studySettings,
+} from "@/lib/studyConfig";
 import {
   applyTeammateName,
+  buildScenarioAssignments,
   buildShuffledQuestionOrder,
   buildTeammateCycle,
   createRng,
   hashSeed,
-  selectSeededSubset,
+  type ScenarioAssignment,
   teammateConfig,
   teammateForStep,
 } from "@/lib/studyRandomization";
@@ -29,16 +30,14 @@ import type {
 import styles from "./study.module.css";
 
 interface StudyExperienceProps {
-  vignettes: VignetteCondition[];
-  practiceVignettes: VignetteCondition[];
   questionConfig: SharedQuestionConfig;
 }
 
 interface StudyStep {
-  kind: "practice" | "main";
   vignette: VignetteCondition;
-  /** -1 and 0 for initial non-AI scenarios; 1–8 for main scenarios. */
+  /** 0–9 for the ten displayed scenarios. */
   apiPosition: number;
+  isPractice: boolean;
   teammateName: string;
   attentionCheck?: AttentionCheckQuestion;
   attentionInsertAt?: number;
@@ -63,44 +62,29 @@ function withTeammateSegments(
   }));
 }
 
-
 function buildStudySteps(
   pid: string,
-  assigned: VignetteCondition[],
-  practiceOptions: VignetteCondition[],
+  assignments: ScenarioAssignment[],
+  scenarios: VignetteCondition[],
   attentionChecks: AttentionCheckQuestion[],
   questionCount: number,
 ): StudyStep[] {
-  const initialNonAiVignettes = selectSeededSubset(
-    `${pid}:practice`,
-    practiceOptions,
-    NON_AI_SCENARIO_COUNT,
-  );
   const teammateCycle = buildTeammateCycle(pid);
-  const steps: StudyStep[] = [
-    ...initialNonAiVignettes.map((vignette, index) => ({
-      kind: "practice" as const,
-      vignette,
-      apiPosition: NON_AI_VIGNETTE_NUMBERS[index],
-      teammateName: teammateForStep(teammateCycle, index),
-    })),
-    ...assigned.map((vignette, index) => ({
-      kind: "main" as const,
-      vignette,
-      apiPosition: index + 1,
-      teammateName: teammateForStep(
-        teammateCycle,
-        initialNonAiVignettes.length + index,
-      ),
-    })),
-  ];
+  const steps: StudyStep[] = scenarios.map((vignette, index) => ({
+    vignette,
+    apiPosition: assignments[index]?.apiPosition ?? index,
+    isPractice: assignments[index]?.isPractice ?? false,
+    teammateName: teammateForStep(teammateCycle, index),
+  }));
 
-  if (attentionChecks.length === 0 || assigned.length === 0) {
+  if (attentionChecks.length === 0 || scenarios.length <= 1) {
     return steps;
   }
 
   const rng = createRng(hashSeed(`${pid}:attention`));
-  const slotIndexes = assigned.map((_, index) => index);
+  const slotIndexes = steps
+    .map((_, index) => index)
+    .filter((index) => !steps[index]?.isPractice);
   for (let index = slotIndexes.length - 1; index > 0; index -= 1) {
     const swapWith = Math.floor(rng() * (index + 1));
     [slotIndexes[index], slotIndexes[swapWith]] = [
@@ -110,12 +94,12 @@ function buildStudySteps(
   }
 
   const chosenSlots = slotIndexes
-    .slice(0, Math.min(2, attentionChecks.length, assigned.length))
+    .slice(0, Math.min(2, attentionChecks.length, slotIndexes.length))
     .sort((left, right) => left - right);
 
-  chosenSlots.forEach((assignedIndex, checkIndex) => {
-    const step = steps[assignedIndex + initialNonAiVignettes.length];
-    if (!step || step.kind !== "main") return;
+  chosenSlots.forEach((scenarioIndex, checkIndex) => {
+    const step = steps[scenarioIndex];
+    if (!step) return;
     step.attentionCheck =
       attentionChecks[checkIndex % attentionChecks.length];
     step.attentionInsertAt = Math.floor(rng() * (questionCount + 1));
@@ -149,8 +133,6 @@ function buildDisplayQuestions(
 }
 
 export function StudyExperience({
-  vignettes,
-  practiceVignettes,
   questionConfig,
 }: StudyExperienceProps) {
   const router = useRouter();
@@ -201,7 +183,7 @@ export function StudyExperience({
     }
     if (
       !Array.isArray(vignetteOrder) ||
-      vignetteOrder.length !== 8 ||
+      vignetteOrder.length !== studySettings.aiVignettesPerParticipant ||
       vignetteOrder.some((id) => typeof id !== "string")
     ) {
       sessionStorage.removeItem("vignette-study:pid");
@@ -209,8 +191,17 @@ export function StudyExperience({
       return;
     }
 
-    const assigned = vignetteOrder.map((id) =>
-      vignettes.find((vignette) => vignette.id === id),
+    let assignments: ScenarioAssignment[];
+    try {
+      assignments = buildScenarioAssignments(storedPid, vignetteOrder);
+    } catch {
+      sessionStorage.removeItem("vignette-study:pid");
+      router.replace("/participant");
+      return;
+    }
+
+    const assigned = assignments.map(({ vignetteId }) =>
+      getScenarioById(vignetteId),
     );
     if (assigned.some((vignette) => !vignette)) {
       sessionStorage.removeItem("vignette-study:pid");
@@ -220,8 +211,8 @@ export function StudyExperience({
 
     const builtSteps = buildStudySteps(
       storedPid,
+      assignments,
       assigned as VignetteCondition[],
-      practiceVignettes,
       questionConfig.attentionChecks ?? [],
       questionConfig.questions.length,
     );
@@ -253,7 +244,7 @@ export function StudyExperience({
     );
     startedAtRef.current = Date.now();
     setReady(true);
-  }, [practiceVignettes, questionConfig, router, vignettes]);
+  }, [questionConfig, router]);
 
   useEffect(() => {
     if (!ready || completed || sessionEnded) return;
@@ -337,7 +328,7 @@ export function StudyExperience({
           pid,
           vignetteId: activeStep.vignette.id,
           position: activeStep.apiPosition,
-          isPractice: activeStep.kind === "practice",
+          isPractice: activeStep.isPractice,
           teammateName: activeStep.teammateName,
           questionOrder,
           answers: surveyAnswers,

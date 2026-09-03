@@ -1,6 +1,7 @@
 {
   "assignmentMode": "counterbalanced",
   "totalVignettes": 32,
-  "vignettesPerParticipant": 8,
+  "vignettesPerParticipant": 10,
+  "aiVignettesPerParticipant": 8,
   "questionsPerVignette": 6
 }
